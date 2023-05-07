@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+  
+
+
+
+
+/* Align left navigation bar links */
+.left {
+    order: 1;
+    margin-right: auto;
+}
+
+/* Align center navigation bar links */
+.center {
+    order: 2;
+}
+
+/* Align right navigation bar links */
+.right {
+    order: 3;
+    margin-left: auto;
+}
+
+.row-ul {
+    list-style: none;
+    display: flex;
+    color: black;
+}
+  
+.row-li {
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.circle {
+    border-radius: 100%;
+}
+
+.grad-lightblue {
+    background: linear-gradient(45deg, #2D8DC3, #7CDDFA);
+}
+
+.icon-row {
+    display: flex;
+    margin: 0;
+    padding: 5%;
+    justify-content: center;
+    align-items: center;
+}

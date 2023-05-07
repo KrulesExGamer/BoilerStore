@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Horizontal Navigation Bar</title>
+	<style>
+		/* Set the style for the navigation bar */
+		nav {
+			background-color: #333;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px;
+		}
+
+		/* Set the style for the navigation bar links */
+		nav a {
+			color: #fff;
+			padding: 10px;
+			text-decoration: none;
+		}
+
+		/* Align left navigation bar links */
+		nav .left {
+			order: 1;
+			margin-right: auto;
+		}
+
+		/* Align center navigation bar links */
+		nav .center {
+			order: 2;
+		}
+
+		/* Align right navigation bar links */
+		nav .right {
+			order: 3;
+			margin-left: auto;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<div class="left">
+				<a href="#">Link 1</a>
+			</div>
+			<div class="center">
+				<a href="#">Link 2</a>
+			</div>
+			<div class="right">
+				<a href="#">Link 3</a>
+			</div>
+		</nav>
+	</header>
+</body>
+</html>

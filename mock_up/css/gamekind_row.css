@@ -1,0 +1,57 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.product {
+    width: 300px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+  
+.product img {
+    width: 100%;
+}
+  
+.product h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+  
+.product p {
+    margin-bottom: 10px;
+}
+  
+.product button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+  
+.product button:hover {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    margin: 1%;
+    margin-top: 10vh;
+}

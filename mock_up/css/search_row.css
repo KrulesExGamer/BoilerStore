@@ -1,0 +1,77 @@
+.searchbar-container {
+    position: relative;
+    left: 0vw;
+    top: 0;
+    margin: 0 0 10vh 0;
+    padding: 10px;
+    width: calc(100% * 3 / 7);
+    background: linear-gradient(180deg, #55B5DF, #3D9DD3);
+    border-radius: 0 0 50px 50px;
+}
+
+.searchbar-container h2 {
+    font-size: 2em;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: -1%;
+}
+
+.searchbar-container .search-container {
+    width: 100%;
+    padding: 1.25% 2% 2% 2%;
+    position: relative;
+}
+  
+.searchbar-container input[type="text"] {
+    width: 100%;
+    font-size: 2em;
+    border: none;
+    padding: 2% 1%;
+    border-radius: 50px;
+    box-sizing: border-box;
+}
+  
+.searchbar-container input[type="text"] + i {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(-100%, -100%);
+    color: #2D8DC3;
+    font-size: 1.5em;
+    pointer-events: none;
+}
+  
+.searchbar-container input[type="text"]:focus + i {
+    color: blue;
+}
+
+
+.searchbar-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+  
+.searchbar-el-left, .searchbar-el-right {
+    flex: 1;
+}
+  
+.searchbar-el-center {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ccc;
+}
+  
+.searchbar-el-left {
+    order: 1;
+    text-align: right;
+}
+  
+.searchbar-el-right {
+    order: 3;
+    text-align: left;
+}
