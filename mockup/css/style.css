@@ -123,10 +123,8 @@ body {
 
 
 footer {
-    position: absolute;
-    left: 1%;
-    bottom: 1%;
-    margin-top: 5%;
+    position: relative;
+    margin: 25% 0 1% 1%;
 }
 
 
