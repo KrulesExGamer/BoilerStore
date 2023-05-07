@@ -3,6 +3,8 @@
 <head>
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
   <title>My Ecommerce Website</title>
 
@@ -11,6 +13,7 @@
   <link rel="stylesheet" href="css/home/header.css">
   <link rel="stylesheet" href="css/home/search_row.css">
   <link rel="stylesheet" href="css/home/gamekind_row.css">
+  <link rel="stylesheet" href="css/home/discover_row.css">
 
   <link rel="stylesheet" href="dep\font-awesome-4.7.0\css\font-awesome.min.css">
 
@@ -37,14 +40,11 @@
             </div>
         </nav>
 
-        <div class="row">
-            <div class="icon-row">
-                <ul class="row-ul">
-                    <li class="row-li">    <i class="fa fa-bars fa-3x" aria-hidden="true"></i>     </li>
-                    <li class="row-li">    <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>    </li>
-                </ul>
-            </div>
+  </header>
 
+
+    <main>
+        <div class="searchbar-row">
             <div class="searchbar-container">
                 <h2>    What are you looking for?   </h2>
                 <div class="search-container">
@@ -52,38 +52,88 @@
                 <i class="fa fa-search"></i>
                 </div>
             </div>
-    
-            <div>
-                <ul class="row-ul">
-                    <li class="row-li">    <i class="fa fa-bars fa-3x" aria-hidden="true"></i>     </li>
-                    <li class="row-li">    <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>    </li>
-                </ul>
+            <div class="icon-list">
+                <div class="circle-icon grad-lightblue"> <div> 
+                    <i class="fa fa-cubes fa-3x" aria-hidden="true"></i>  
+                </div> </div>
+                <div class="circle-icon grad-indigo"> <div> 
+                    <i class="fa fa-picture-o fa-3x" aria-hidden="true"></i>  
+                </div> </div>
+                <div class="circle-icon grad-violet"> <div> 
+                    <i class="fa fa-music fa-3x" aria-hidden="true"></i>  
+                </div> </div>
+                <div class="circle-icon grad-gold"> <div> 
+                    <i class="fa fa-file-code-o fa-3x" aria-hidden="true"></i>  
+                </div> </div>
+                <div class="circle-icon grad-lightgreen"> <div> 
+                    <i class="fa fa-ellipsis-h fa-3x" aria-hidden="true"></i>  
+                </div> </div>
             </div>
-        </div>   
-  </header>
+        </div>
+
+        <div class="gamekind-row">
+            <div class="gamekind-back"></div>
+            <div class="gamekind-content">
+                <div class="gamekind-content-wrapper">
+                    <div class="gamekind-search">
+                        <h2>    What kind of game you wanna make?   </h2>
+                        <div class="gamekind-search-container">
+                            <input type="text" placeholder="Search..">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="gamekind-row">
+                    <div class="gamekind"> <div> 
+                        <img src="https://via.placeholder.com/150" alt="Image of a game that is representing a game genre.">
+                    </div> </div> 
+                    
+                    <div class="gamekind"> <div> 
+                        <img src="https://via.placeholder.com/150" alt="Image of a game that is representing a game genre.">
+                    </div> </div> 
+
+                    <div class="gamekind"> <div> 
+                        <img src="https://via.placeholder.com/150" alt="Image of a game that is representing a game genre.">
+                    </div> </div> 
+
+                    <div class="gamekind"> <div> 
+                        <img src="https://via.placeholder.com/150" alt="Image of a game that is representing a game genre.">
+                    </div> </div> 
+            </div>
+        </div>
 
 
-  <main>
-        <section class="product">
-        <img src="https://via.placeholder.com/150" alt="Product Image">
-        <h2>Product Name</h2>
-        <p>Description of the product.</p>
-        <p>Price: $10.99</p>
-        <button>Add to Cart</button>
-        </section>
+        <div class="discover-row">
+            <div class="discover-back"></div>
+            <div class="discover-content">
+                <div class="discover-content-wrapper">
+                    <div class="discover-search">
+                        <h2>    Discover a new world of artistic expression!   </h2>
+                    </div>
+                </div>
+                <div id="discover-row">
+                    <div class="discover"> <div> 
+                        <img src="https://via.placeholder.com/150" alt="Image of a game that is representing a game genre.">
+                    </div> </div> 
+                    
+                    <div class="discover"> <div> 
+                        <img src="https://via.placeholder.com/150" alt="Image of a game that is representing a game genre.">
+                    </div> </div> 
 
-        <section class="product">
-        <img src="https://via.placeholder.com/150" alt="Product Image">
-        <h2>Product Name</h2>
-        <p>Description of the product.</p>
-        <p>Price: $15.99</p>
-        <button>Add to Cart</button>
-        </section>
+                    <div class="discover"> <div> 
+                        <img src="https://via.placeholder.com/150" alt="Image of a game that is representing a game genre.">
+                    </div> </div> 
+
+                    <div class="discover"> <div> 
+                        <img src="https://via.placeholder.com/150" alt="Image of a game that is representing a game genre.">
+                    </div> </div> 
+            </div>
+        </div>
   </main>
 
 
   <footer>
-    <p> &copy; 2023 My Ecommerce Website    </p>
+    <p> &copy; 2023 BoilerStore S.A.    </p>
   </footer>
 
 
