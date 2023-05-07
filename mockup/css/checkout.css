@@ -1,0 +1,23 @@
+table {
+    background-color: lightgray;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+table tr td {
+    border-bottom: 2px solid black;
+    padding: 5px;
+}
+
+.container {
+    width: 100%;
+    text-align: center;
+}
+
+.product_page {
+    background-color: gray;
+    width: 85%;
+    border-radius: 8%;
+    padding: 3%;
+    margin: auto auto;
+}
