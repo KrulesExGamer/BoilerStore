@@ -28,7 +28,6 @@ body {
 .row-ul {
     list-style: none;
     display: flex;
-    color: black;
 }
   
 .row-li {
@@ -43,17 +42,93 @@ body {
 }
 
 .circle {
-    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: gray;
+    padding: 3%;
 }
+
+.circle-border {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: gray;
+    padding: 0.5%;
+}
+
+
+.circle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: grey;
+}
+
+.circle-icon div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: white;
+    margin: 20px;
+    padding: 30px;
+}
+
+
+
+
+.white {
+    background-color: white;
+}
+
+.blue {
+    background-color: blue;
+}
+
 
 .grad-lightblue {
     background: linear-gradient(45deg, #2D8DC3, #7CDDFA);
+    color: #2D8DC3;
 }
 
-.icon-row {
-    display: flex;
-    margin: 0;
-    padding: 5%;
-    justify-content: center;
-    align-items: center;
+.grad-indigo {
+    background: linear-gradient(45deg, #3D4EE9 , #707DF3);
+    color: #4D5CE0;
 }
+
+.grad-violet {
+    background: linear-gradient(45deg, #B958DC, #D469FA);
+    color: #C760EB;
+}
+
+.grad-gold {
+    background: linear-gradient(45deg, #ECB06A, #D9C72A);
+    color: #E2BC48;
+}
+
+.grad-gold {
+    background: linear-gradient(45deg, #ECB06A, #D9C72A);
+    color: #E2BC48;
+}
+
+.grad-lightgreen {
+    background: linear-gradient(45deg, #6AEC8E, #4DD92A);
+    color: #5CE35F;
+}
+
+
+
+footer {
+    position: absolute;
+    left: 1%;
+    bottom: 1%;
+    margin-top: 5%;
+}
+
+
+
+

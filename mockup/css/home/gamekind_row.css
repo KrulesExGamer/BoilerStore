@@ -1,41 +1,90 @@
-main {
-    display: flex;
-    flex-wrap: wrap;
+.gamekind-row {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    padding: 1%;
 }
-  
-.product {
-    width: 300px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+
+.gamekind-back {
+    position: absolute;
+    top: 0;
+    left: -10%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(45deg, #C42D36, #6CBDEA);
+    z-index: 1;
+    transform: rotate(1deg);
 }
-  
-.product img {
+
+.gamekind-content {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    z-index: 2;
+    transform: rotate(1deg);
+}
+
+.gamekind-content-wrapper {
+    position: absolute;
+    left: +10%;
+    height: 100%;
     width: 100%;
 }
-  
-.product h2 {
-    font-size: 1.5rem;
-    margin-top: 10px;
-    margin-bottom: 5px;
+
+.gamekind-search {
+    position: relative;
+    background: linear-gradient(45deg, #C42D36, #df3d48);
+    border-radius: 0px 25px;
+    height: 100%;
+    transform: rotate(-1deg);
+
+    margin: 0;
+    padding: 1%;
+
+    width: 25%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: white;
+}
+
+
+.gamekind-search h2 {
+    font-size: 2em;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: -1%;
+}
+
+.gamekind-search-container {
+    width: 100%;
+    padding: 1.25% 2% 2% 2%;
+    position: relative;
 }
   
-.product p {
-    margin-bottom: 10px;
-}
-  
-.product button {
-    background-color: #333;
-    color: #fff;
+.gamekind-search-container input[type="text"] {
+    width: 100%;
+    font-size: 2em;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 2% 3%;
+    border-radius: 50px;
+    box-sizing: border-box;
 }
   
-.product button:hover {
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #333;
+.gamekind-search-container input[type="text"] + i {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(-100%, -70%);
+    color: red;
+    font-size: 1.5em;
+    pointer-events: none;
+}
+  
+.gamekind-search-container input[type="text"]:focus + i {
+    color: red;
 }
 
 
@@ -43,15 +92,37 @@ main {
 
 
 
+#gamekind-row {
+    position: relative;
+    
+    width: 60%;
+    height: 100%;
+    left: 35%;
+    padding-left: 5%;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
+.gamekind {
+    height: 100%;
+    width: 20%;
+    background-color: #dd3a45;
+    transform: rotate(-1deg);
+    border-radius: 0px 30px;
+    padding: 1%;
+}
 
+.gamekind div {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 30px;
+}
 
-
-
-
-
-footer {
-    margin: 1%;
-    margin-top: 10vh;
+.gamekind div img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 30px;
 }
