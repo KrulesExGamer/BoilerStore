@@ -22,6 +22,14 @@ You can find those under "/mockup/" in this repository.
 
 As of the last update, those screens are not responsive. They were made for desktop browsers.
 
+The mockup is structured like this:
+
+    mockup
+    | index.html
+    | other pages (.html)
+    | css (css style sheets)
+    | dep (dependencies and fons)
+    | img (images)
 
 ## Design principles
 Since we aim to promote artistic exppresion, our UI design was made around the idea of "creativity".
@@ -40,3 +48,23 @@ price range etc.
 game genre, target public, etc.
 - User must be abble to create assets bundles.
 - User must be abble to buy assets and asserts bundles.
+
+
+## Comments About the Code
+There is no meaningfull comment to add here for now, since we are in the design fase.
+
+## Test Plan
+To be created.
+
+## Test Results
+To be seen. At this point, we have few knolege about testing frameworks. 
+So, when it comes to thsting, we can only safely assume we are gonna pass it :p
+
+## Build Procedures
+The mockup is a simple html + css page: dowload it, doble click it and run it with a browser ans you're done.
+
+## Problems
+We had a lot of issues to centralize a div.
+
+## Comments
+Oh, hello there!
