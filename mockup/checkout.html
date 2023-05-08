@@ -7,91 +7,108 @@
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
     <link rel="stylesheet" href="css/home/header.css">
     <link rel="stylesheet" href="css/home/search_row.css">
     <link rel="stylesheet" href="css/home/gamekind_row.css">
-
     <link rel="stylesheet" href="dep\font-awesome-4.7.0\css\font-awesome.min.css">
-
-    <style>
-      /* Estilos de página */
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: #f2f2f2;
-      }
-      /* Estilos de formulário */
-      form {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      }
-      /* Estilos de campos de entrada */
-      input[type="text"],
-      input[type="email"],
-      input[type="tel"],
-      input[type="credit-card"] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-      }
-      /* Estilos de botão */
-      input[type="submit"] {
-        background-color: #4caf50;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        float: right;
-      }
-      input[type="submit"]:hover {
-        background-color: #45a049;
-      }
-    </style>
   </head>
   <body>
+    <header>
+        <nav>
+            <div class="left">
+                <a href="product.html">
+                    <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <div class="center">
+                <div class="image-title-container">
+                    <a href="index.html"><img src="img/boilerstore_logo.svg" alt="BoilerStore Logo"></a>
+                    <a href="index.html"><h1>BoilerStore</h1></a>
+                </div>
+            </div>
+            
+            <div class="right">
+                <ul class="row-ul">
+                    <li class="row-li">    <i class="fa fa-bars fa-3x" aria-hidden="true"></i>     </li>
+                    <li class="row-li">    <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
     <h1>Checkout</h1>
     <form action="processar_pagamento.php" method="post">
       <h2>Dados do Comprador</h2>
       <label for="nome">Nome Completo:</label>
-      <input type="text" id="nome" name="nome" required />
+      <input type="text" id="nome" name="nome" required/>
 
       <label for="email">Endereço de E-mail:</label>
-      <input type="email" id="email" name="email" required />
+      <input type="email" id="email" name="email" required/>
 
       <label for="telefone">Telefone:</label>
-      <input type="tel" id="telefone" name="telefone" required />
+      <input type="tel" id="telefone" name="telefone" required/>
 
-      <h2>Detalhes do Pedido</h2>
-      <label for="produto">Produto:</label>
-      <input type="text" id="produto" name="produto" required />
+      <h2>Endereço do Comprador</h2>
+      <label for="cep">CEP:</label>
+      <input type="number" id="cep" name="cep" required/>
 
-      <label for="preco">Preço:</label>
-      <input type="text" id="preco" name="preco" required />
+      <label for="estado">Estado:</label>
+      <select name="estado" id="estado" required>
+        <option value="AC">Acre</option>
+        <option value="AL">Alagoas</option>
+        <option value="AP">Amapá</option>
+        <option value="AM">Amazonas</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceará</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PA">Pará</option>
+        <option value="PB">Paraíba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernambuco</option>
+        <option value="PI">Piauí</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="RN">Rio Grande do Norte</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="SP">São Paulo</option>
+        <option value="SE">Sergipe</option>
+        <option value="TO">Tocantins</option>
+      </select>
+
+      <br>
+      <label for="cidade">Cidade:</label>
+      <input type="text" id="cidade" name="cidade" required/>
+
+      <label for="bairro">Bairro:</label>
+      <input type="text" id="bairro" name="bairro" required/>
+
+      <label for="rua">Rua:</label>
+      <input type="text" id="rua" name="rua" required/>
+
+      <label for="numero">Número:</label>
+      <input type="number" id="numero" name="numero" required/>
+
+      <h2>Detalhes do Pagamento</h2>
+      <label for="nome">Nome Impresso no Cartão:</label>
+      <input type="text" id="nome" name="nome" required/>
 
       <label for="cartao">Número do Cartão de Crédito:</label>
-      <input
-        type="credit-card"
-        id="cartao"
-        name="cartao"
-        pattern="[0-9]{16}"
-        required
-      />
+      <input type="credit-card" id="cartao" name="cartao" pattern="[0-9]{16}" required/>
 
       <label for="vencimento">Data de Vencimento:</label>
-      <input
-        type="month"
-        id="vencimento"
-        name="vencimento"
-        min="2023-05"
-        required
-      />
+      <input type="month" id="vencimento" name="vencimento" min="2023-05" required/>
 
-      <input type="submit" value="Pagar" />
+      <input type="submit" value="pagar"/>
     </form>
   </body>
 </html>
