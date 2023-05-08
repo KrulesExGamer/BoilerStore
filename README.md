@@ -31,3 +31,12 @@ We use the following elements to try to express such mood:
 - slight angles
 - non conformant diferently sized boxes
 - etc
+
+
+## Requirements
+- User must be able to search assets based on name, category, 
+price range etc.
+- User must be able to search suggested assets or assets bundles based on 
+game genre, target public, etc.
+- User must be abble to create assets bundles.
+- User must be abble to buy assets and asserts bundles.
