@@ -20,6 +20,9 @@ so the UI might change with time.
 We created a basic html + css mockup of some pages to serve as guide and prictice.
 You can find those under "/mockup/" in this repository.
 
+As of the last update, those screens are not responsive. They were made for desktop browsers.
+
+
 ## Design principles
 Since we aim to promote artistic exppresion, our UI design was made around the idea of "creativity".
 We use the following elements to try to express such mood:
