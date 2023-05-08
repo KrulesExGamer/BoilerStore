@@ -21,3 +21,9 @@ We created a basic html + css mockup of some pages to serve as guide and prictic
 You can find those under "/mockup/" in this repository.
 
 ## Design principles
+Since we aim to promote artistic exppresion, our UI design was made around the idea of "creativity".
+We use the following elements to try to express such mood:
+- smoth gradients
+- round and sharp corners combined
+- slight angles
+- non conformant diferently sized boxes
