@@ -52,7 +52,7 @@ To be determined. At this point, we have little knowledge about testing framewor
 The mockup is a simple HTML + CSS page. To view it, simply download the files, double-click "index.html", and open it in a web browser.
 
 ## Problems
-We encountered issues when trying to centralize a div... several times :\. 
+We encountered issues when trying to centralize a div... several times :( . 
 Actually, we still did not solve them all... But you know what they say: adapt, improvise, overcome!
 
 ## Comments
