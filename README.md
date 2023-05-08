@@ -4,6 +4,9 @@ In this project, we aim to build BoilerStore: an asset store for indie games, de
 
 Boilerstore will offer a unique approach to asset searching. Our search engine will provide users with the assets they are looking for based on their inputs. Additionally, it will list assets that might help users finish their game based on the kind of game they are making.
 
+## Navigation
+![navigation diagram](navigation/navigation_diagram.png)
+
 ## UI Design
 You can view our page and interaction designs in Figma [here](https://www.figma.com/file/0VzORJzqKJ0QuVIZ8dZElY/Web?type=design&node-id=0%3A1&t=3D4Uz93yfZ2p1mte-1). We are constantly iterating on different ideas and designs to see what works best, so the UI might change over time.
 
