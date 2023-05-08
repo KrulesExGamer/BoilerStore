@@ -12,7 +12,7 @@ finish your game based on what kind of game you are making.
 ## UI Desing
 You can see how we designed pages and interactions 
 [here](https://www.figma.com/file/0VzORJzqKJ0QuVIZ8dZElY/Web?type=design&node-id=0%3A1&t=3D4Uz93yfZ2p1mte-1).
-We are still iterating throw diferent ideas and diferrent designs to see what works best, 
+We are still iterating throgh diferent ideas and diferrent designs to see what works best, 
 so the UI might change with time.
 
 
