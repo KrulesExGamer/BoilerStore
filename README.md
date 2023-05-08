@@ -19,3 +19,5 @@ so the UI might change with time.
 ## Html5 + CSS3 Mockup
 We created a basic html + css mockup of some pages to serve as guide and prictice.
 You can find those under "/mockup/" in this repository.
+
+## Design principles
