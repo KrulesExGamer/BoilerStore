@@ -17,7 +17,7 @@ table tr td {
 .product_page {
     background-color: gray;
     width: 85%;
-    border-radius: 8%;
+    border-radius: 0 8%;
     padding: 3%;
     margin: auto auto;
 }
