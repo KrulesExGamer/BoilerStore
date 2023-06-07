@@ -1,0 +1,19 @@
+.IconButton h4 {
+    white-space: nowrap;
+    hyphens: none;
+    margin-top: 5px;
+}
+
+.IconButton {
+    padding: 10px;
+}
+
+.IconButton:hover {
+    color: lightgray;
+}
+
+@media (max-width: 768px) {
+    .IconButton h4 {
+        display: none;
+    }
+}

@@ -1,30 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './AppHeader.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faBarsStaggered, faUser} from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faBarsStaggered, faUser } from '@fortawesome/free-solid-svg-icons';
 import logo from './boilerstore_logo.svg';
-import SearchBar, {SearchProps} from './../components/SearchBar'
+import SearchBar, { SearchProps } from './../components/SearchBar'
+import IconButton from '../components/IconButton';
 
 
-const AppHeader = ({searchQuerySetter} : SearchProps) => {
+const SEARCHBAR_MIN_WIDTH = 1152;
+
+
+const AppHeader = ({ searchQuerySetter }: SearchProps) => {
+    let [breakSearchBar, setBreakSearchBar] = useState(false);
+
+    useEffect(() => {
+        function handleResize() {
+            console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
+            setBreakSearchBar(SEARCHBAR_MIN_WIDTH < window.innerWidth);
+            //if (SEARCHBAR_MIN_WIDTH < window.innerWidth && breakSearchBar) setBreakSearchBar(false);
+            //else if (SEARCHBAR_MIN_WIDTH >= window.innerWidth && !breakSearchBar) setBreakSearchBar(true);
+        }
+
+        //if (960 < window.innerWidth && breakSearchBar) setBreakSearchBar(false);
+        //else if (960 >= window.innerWidth && !breakSearchBar) setBreakSearchBar(true);
+        
+
+        window.addEventListener('resize', handleResize)
+    })
+
     return (
         <header className='AppHeader'>
+
             <nav className='header-navbar'>
-                <div className='left-links'>
+                <div className='navbar-left'>
                     <img className='boilerstore-logo' alt='BoilerStore Logo' src={logo} />
-                    <h1>BoilerStore</h1>
+                    <h1 className='boilerstore-main-title'>BoilerStore</h1>
                 </div>
-                <div className='center-logo'>
+                <div className='navbar-center'>
                     <div className='logo-container'>
-                        <SearchBar searchQuerySetter={searchQuerySetter} />
+                        {breakSearchBar && (<SearchBar searchQuerySetter={searchQuerySetter} />)}
                     </div>
                 </div>
-                <div className='right-links'>
-                    <a href='#'><FontAwesomeIcon icon={faUser} /><h4>Sign In</h4></a>
-                    <a href='#'><FontAwesomeIcon icon={faCartShopping} /><h4>Your Cart</h4></a>
-                    <a href='#'><FontAwesomeIcon icon={faBarsStaggered} /><h4>More</h4></a>
+                <div className='navbar-right'>
+                    <IconButton icon={faUser} label='Sign In' href='#' onClick={() => { }} />
+                    <IconButton icon={faCartShopping} label='Your Cart' href='#' onClick={() => { }} />
+                    <IconButton icon={faBarsStaggered} label='More' href='#' onClick={() => { }} />
                 </div>
             </nav>
+
+            {!breakSearchBar && (
+                <div className='searchbar-on-newline'> <p>debug</p><SearchBar searchQuerySetter={searchQuerySetter} /> </div>
+            )}
+
         </header>
     );
 };

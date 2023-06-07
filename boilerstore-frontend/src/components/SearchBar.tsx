@@ -2,6 +2,7 @@ import React from 'react';
 import './SearchBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import IconButton from './IconButton';
 
 
 export interface SearchProps {
@@ -16,7 +17,7 @@ const AppHeader = ({searchQuerySetter} : SearchProps) => {
                 placeholder="Search..."
                 onChange={(event) => {console.log(event.target.value); searchQuerySetter(event.target.value);}}
             />
-            <div className='magnifyingGlass'><FontAwesomeIcon icon={faMagnifyingGlass} size='lg' /></div>
+            <div className='magnifyingGlass'> <IconButton icon={faMagnifyingGlass}  href='#' onClick={() => { }} /> </div>
         </form>
     );
 };
