@@ -24,7 +24,14 @@
 
 .center-logo {
     flex-grow: 1;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
 }
 
 .right-links a {
@@ -33,4 +40,5 @@
 
 .boilerstore-logo {
     width: calc(15px + 5vmin);
+    margin-right: 20px;
 }

@@ -12,8 +12,10 @@ const AppHeader = () => {
                     <a href="#"><FontAwesomeIcon icon={faCartShopping} /></a>
                 </div>
                 <div className="center-logo">
-                    <img className="boilerstore-logo" alt="BoilerStore Logo" src={logo} />
-                    <h1>BoilerStore</h1>
+                    <div className="logo-container">
+                        <img className="boilerstore-logo" alt="BoilerStore Logo" src={logo} />
+                        <h1>BoilerStore</h1>
+                    </div>
                 </div>
                 <div className="right-links">
                     <a href="#"><FontAwesomeIcon icon={faBarsStaggered} /></a>
