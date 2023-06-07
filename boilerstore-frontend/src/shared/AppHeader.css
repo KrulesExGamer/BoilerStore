@@ -51,3 +51,7 @@
         display: none;
     }
 }
+
+.searchbar-on-newline {
+    margin: calc(10px + 2vh) calc(10px + 1vw);
+}

@@ -16,9 +16,9 @@ const AppHeader = ({ searchQuerySetter }: SearchProps) => {
     useEffect(() => {
         function handleResize() {
             console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
-            setBreakSearchBar(SEARCHBAR_MIN_WIDTH < window.innerWidth);
-            //if (SEARCHBAR_MIN_WIDTH < window.innerWidth && breakSearchBar) setBreakSearchBar(false);
-            //else if (SEARCHBAR_MIN_WIDTH >= window.innerWidth && !breakSearchBar) setBreakSearchBar(true);
+            //setBreakSearchBar(SEARCHBAR_MIN_WIDTH < window.innerWidth);
+            if (SEARCHBAR_MIN_WIDTH < window.innerWidth && breakSearchBar) setBreakSearchBar(false);
+            else if (SEARCHBAR_MIN_WIDTH >= window.innerWidth && !breakSearchBar) setBreakSearchBar(true);
         }
 
         //if (960 < window.innerWidth && breakSearchBar) setBreakSearchBar(false);
@@ -38,7 +38,7 @@ const AppHeader = ({ searchQuerySetter }: SearchProps) => {
                 </div>
                 <div className='navbar-center'>
                     <div className='logo-container'>
-                        {breakSearchBar && (<SearchBar searchQuerySetter={searchQuerySetter} />)}
+                        {!breakSearchBar && (<SearchBar searchQuerySetter={searchQuerySetter} />)}
                     </div>
                 </div>
                 <div className='navbar-right'>
@@ -48,8 +48,8 @@ const AppHeader = ({ searchQuerySetter }: SearchProps) => {
                 </div>
             </nav>
 
-            {!breakSearchBar && (
-                <div className='searchbar-on-newline'> <p>debug</p><SearchBar searchQuerySetter={searchQuerySetter} /> </div>
+            {breakSearchBar && (
+                <div className='searchbar-on-newline'> <SearchBar searchQuerySetter={searchQuerySetter} /> </div>
             )}
 
         </header>
