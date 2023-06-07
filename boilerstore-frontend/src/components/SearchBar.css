@@ -1,0 +1,32 @@
+.SearchBar {
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.SearchBar input {
+    background: whitesmoke;
+    flex: 1;
+    width: auto;
+    width: 80%;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-size: 1em;
+    padding: 10px 30px;
+    color: #2077a8;
+    font-weight: bold;
+    text-align: left;
+}
+
+.magnifyingGlass {
+    color: whitesmoke;
+    display: inline;
+    margin: 0 10px;
+    width: 10px;
+    cursor: pointer;
+}
+
+.magnifyingGlass:hover {
+    color: lightgray;
+    display: inline;
+}

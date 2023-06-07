@@ -1,6 +1,7 @@
 .AppHeader {
-    background: linear-gradient(45deg, #2D8DC3, #7CDDFA);
-    padding: 10px;
+    background: linear-gradient(45deg, #125981, #449db8);
+    padding: 5px 20px;
+    min-height: 30px;
 }
 
 .header-navbar {
@@ -27,11 +28,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .right-links a {
