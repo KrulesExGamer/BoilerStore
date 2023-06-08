@@ -1,0 +1,8 @@
+.QuickSearchTopics {
+    margin-top: 20px;
+}
+
+.QuickSearchTopics ul li {
+    display: inline;
+    float: left;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import './EyeCatcher.css';
-import bottle from './../img/bottle.png';
+import bottle from './../img/bottle-removebg-preview.png';
 
 const images = [
     {image: bottle, description: 'Aaaa'},

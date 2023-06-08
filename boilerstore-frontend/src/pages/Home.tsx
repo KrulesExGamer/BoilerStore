@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 
 import EyeCatcher from '../shared/EyeCatcher';
 
+import Topics from '../shared/Topics';
+
 
 const Home = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -20,7 +22,7 @@ const Home = () => {
     return (
         <main className='Home'>
             <EyeCatcher />
-            <p><br/>Hello, World! {searchQuery}</p>
+            <Topics />
         </main>
     );
 };
