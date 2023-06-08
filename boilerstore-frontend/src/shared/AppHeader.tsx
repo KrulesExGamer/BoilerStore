@@ -40,9 +40,9 @@ const AppHeader = ({ searchQuerySetter }: SearchProps) => {
                     </div>
                 </div>
                 <div className='navbar-right'>
-                    <IconButton icon={faUser} label='Sign In' href='#' onClick={() => { }} />
-                    <IconButton icon={faCartShopping} label='Your Cart' href='#' onClick={() => { }} />
-                    <IconButton icon={faBarsStaggered} label='More' href='#' onClick={() => { }} />
+                    <IconButton icon={faUser} label='Sign In' />
+                    <IconButton icon={faCartShopping} label='Your Cart' />
+                    <IconButton icon={faBarsStaggered} label='More' />
                 </div>
             </nav>
 

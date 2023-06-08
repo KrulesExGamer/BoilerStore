@@ -4,15 +4,14 @@ import { useState } from "react";
 
 import './reset.css';
 import './index.css';
-import './App.css';
-
+import './Layout.css';
 
 
 const Layout = () => {
     let [searchQuery, setSearchQuery] = useState('');
 
     return (
-        <div className='App'>
+        <div className='Layout'>
             <AppHeader searchQuerySetter={setSearchQuery} />
 
             <Outlet />

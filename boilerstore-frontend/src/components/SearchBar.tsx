@@ -17,7 +17,7 @@ const AppHeader = ({searchQuerySetter} : SearchProps) => {
                 placeholder="Search..."
                 onChange={(event) => {console.log(event.target.value); searchQuerySetter(event.target.value);}}
             />
-            <div className='magnifyingGlass'> <IconButton icon={faMagnifyingGlass}  href='#' onClick={() => { }} /> </div>
+            <div className='magnifyingGlass'> <IconButton icon={faMagnifyingGlass} /> </div>
         </form>
     );
 };
