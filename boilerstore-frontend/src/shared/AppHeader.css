@@ -1,7 +1,10 @@
 .AppHeader {
+    box-sizing: border-box;
+
     background: linear-gradient(45deg, #125981, #449db8);
     padding: 5px 20px;
     min-height: 30px;
+    min-width: 200px;
 }
 
 .header-navbar {
@@ -15,6 +18,11 @@
     display: flex;
     align-items: center;
 }
+
+/*
+.navbar-left {
+    margin-left: calc(20px + 2vmin);
+}*/
 
 .navbar-left a,
 .navbar-right a {
@@ -46,12 +54,12 @@
     margin-right: 20px;
 }
 
-@media (max-width: 468px) {
+@media (max-width: 400px) {
     .boilerstore-main-title {
         display: none;
     }
 }
 
 .searchbar-on-newline {
-    margin: calc(10px + 2vh) calc(10px + 1vw);
+    margin: calc(10px + 2vh) calc(5px + 1vw) calc(5px + 1vh) calc(5px + 1vw);
 }

@@ -9,7 +9,6 @@ import IconButton from '../components/IconButton';
 
 const SEARCHBAR_MIN_WIDTH = 1152;
 
-
 const AppHeader = ({ searchQuerySetter }: SearchProps) => {
     let [breakSearchBar, setBreakSearchBar] = useState(false);
 
@@ -21,12 +20,11 @@ const AppHeader = ({ searchQuerySetter }: SearchProps) => {
             else if (SEARCHBAR_MIN_WIDTH >= window.innerWidth && !breakSearchBar) setBreakSearchBar(true);
         }
 
-        //if (960 < window.innerWidth && breakSearchBar) setBreakSearchBar(false);
-        //else if (960 >= window.innerWidth && !breakSearchBar) setBreakSearchBar(true);
-        
-
         window.addEventListener('resize', handleResize)
     })
+
+    if (SEARCHBAR_MIN_WIDTH < window.innerWidth && breakSearchBar) setBreakSearchBar(false);
+    else if (SEARCHBAR_MIN_WIDTH >= window.innerWidth && !breakSearchBar) setBreakSearchBar(true);
 
     return (
         <header className='AppHeader'>
