@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './AppHeader.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faBarsStaggered, faUser } from '@fortawesome/free-solid-svg-icons';
-import logo from './boilerstore_logo.svg';
+import logo from './../img/boilerstore_logo.svg';
 import SearchBar, { SearchProps } from './../components/SearchBar'
 import IconButton from '../components/IconButton';
 

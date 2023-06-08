@@ -5,6 +5,8 @@
     padding: 5px 20px;
     min-height: 30px;
     min-width: 200px;
+
+    font-size: calc(10px + 1vmin);
 }
 
 .header-navbar {
@@ -61,5 +63,5 @@
 }
 
 .searchbar-on-newline {
-    margin: calc(10px + 2vh) calc(5px + 1vw) calc(5px + 1vh) calc(5px + 1vw);
+    margin: calc(5px + 2vh) calc(2px + 1vw) calc(2px + 1vh) calc(2px + 1vw);
 }

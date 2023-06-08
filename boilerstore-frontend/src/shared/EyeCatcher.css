@@ -1,0 +1,19 @@
+.EyeCatcher {
+    width: 100%;
+    height: calc(150px + 20vh);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+    Overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.EyeCatcher div {
+    width: fit-content;
+    block-size: fit-content;
+} 
+
+.EyeCatcher div img {
+    width: 40%;
+}
