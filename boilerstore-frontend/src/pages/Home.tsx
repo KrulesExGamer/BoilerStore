@@ -21,8 +21,10 @@ const Home = () => {
 
     return (
         <main className='Home'>
-            <EyeCatcher />
-            <Topics />
+            <div className='topicsPlusEyeCathcer'>
+                <Topics />
+                <EyeCatcher />
+            </div>
         </main>
     );
 };

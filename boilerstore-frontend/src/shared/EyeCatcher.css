@@ -1,7 +1,6 @@
 .EyeCatcher {
     width: 100%;
     height: calc(150px + 20vh);
-    background: radial-gradient(rgba(64, 64, 64, 1), rgba(0, 0, 0, 1));
     Overflow: hidden;
 
     display: flex;

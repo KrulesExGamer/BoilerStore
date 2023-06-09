@@ -1,8 +1,10 @@
 .QuickSearchTopics {
-    margin-top: 20px;
+    padding: 10px;
+    height: 110px;
 }
 
 .QuickSearchTopics ul li {
-    display: inline;
-    float: left;
+    display: inline-flex;
+    float: center;
+    margin: calc(5px + 1vmin) calc(5px + 1vmin);
 }

@@ -1,3 +1,9 @@
 .Home {
+    margin: 0;
     color: black;
+}
+
+.topicsPlusEyeCathcer {
+    margin: 0;
+    background: radial-gradient(rgb(54, 54, 54), black);
 }
