@@ -6,6 +6,7 @@
 
 .IconButton {
     padding: 10px;
+    cursor: pointer;
 }
 
 .IconButton:hover {
