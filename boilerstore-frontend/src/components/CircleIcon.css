@@ -6,6 +6,7 @@
     width: 100px;
     height: 100px;
     margin: 0 20px;
+
 }
 
 .outter-circle,
@@ -44,4 +45,34 @@
 .inner-circle:hover {
     background-color: lightgray;
     box-shadow: 10px 10px 20px;
+}
+
+@media (max-width: 900px) {
+    .circle-icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 10px;
+    }
+
+    .circle-icon:hover {
+        width: 60px;
+        height: 60px;
+    }
+    
+
+    .outter-circle {
+        padding: 5px;
+    }
+
+    .outter-circle:hover {
+        padding: 7px;
+    }
+
+    .inner-circle {
+        box-shadow: 3px 3px 6px;
+    }
+
+    .inner-circle:hover {
+        box-shadow: 6px 6px 12px;
+    }    
 }

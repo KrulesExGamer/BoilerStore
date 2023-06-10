@@ -5,26 +5,16 @@ import { faCartShopping, faBarsStaggered, faUser } from '@fortawesome/free-solid
 import logo from './../img/boilerstore_logo.svg';
 import SearchBar, { SearchProps } from './../components/SearchBar'
 import IconButton from '../components/IconButton';
+import {useWindowResize} from '../utils/windowSize'
 
 
 const SEARCHBAR_MIN_WIDTH = 1152;
 
-const AppHeader = ({ searchQuerySetter }: SearchProps) => {
-    let [breakSearchBar, setBreakSearchBar] = useState(false);
 
-    useEffect(() => {
-        function handleResize() {
-            console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
-            //setBreakSearchBar(SEARCHBAR_MIN_WIDTH < window.innerWidth);
-            if (SEARCHBAR_MIN_WIDTH < window.innerWidth && breakSearchBar) setBreakSearchBar(false);
-            else if (SEARCHBAR_MIN_WIDTH >= window.innerWidth && !breakSearchBar) setBreakSearchBar(true);
-        }
 
-        window.addEventListener('resize', handleResize)
-    })
-
-    if (SEARCHBAR_MIN_WIDTH < window.innerWidth && breakSearchBar) setBreakSearchBar(false);
-    else if (SEARCHBAR_MIN_WIDTH >= window.innerWidth && !breakSearchBar) setBreakSearchBar(true);
+const AppHeader = ({ searchQuerySetter } : SearchProps) => {
+    const {width} = useWindowResize();
+    const breakSearchBar = SEARCHBAR_MIN_WIDTH > width;
 
     return (
         <header className='AppHeader'>

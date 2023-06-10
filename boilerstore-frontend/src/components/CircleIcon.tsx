@@ -2,6 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './CircleIcon.css';
 import {findMiddleColor} from '../utils/colorUtils'
+import { useWindowResize } from '../utils/windowSize';
+
+
+const WIDTH_TO_RESIZE = 900;
 
 /**
  * CircleIcon Component
@@ -18,7 +22,13 @@ import {findMiddleColor} from '../utils/colorUtils'
  * @param {string} props.borderColor - The color of the circle's border.
  * @returns {JSX.Element} - The rendered CircleIcon component.
  */
-const CircleIcon = (props: { icon: any, color1: string, color2: string }): JSX.Element => {
+const CircleIcon = (props : { icon : any, color1: string, color2: string }) : JSX.Element => {
+    const {width} = useWindowResize();
+
+    const faSize = WIDTH_TO_RESIZE >= width ? '1x' : '2x';
+    const iconSize = WIDTH_TO_RESIZE >= width ? (80) : (150);
+    const maxIcons = Math.floor(width / iconSize);
+
     const middleColor = findMiddleColor(props.color1, props.color2);
     const lighterColor = findMiddleColor(`#${middleColor}`, '#');
 
@@ -34,7 +44,7 @@ const CircleIcon = (props: { icon: any, color1: string, color2: string }): JSX.E
                 }}
             >
                 <div className="inner-circle">
-                    <FontAwesomeIcon icon={props.icon} size="2x"/>
+                    <FontAwesomeIcon icon={props.icon} size={faSize} />
                     <div className="circle"></div>
                 </div>
             </div>

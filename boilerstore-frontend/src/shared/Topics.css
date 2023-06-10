@@ -1,10 +1,19 @@
 .QuickSearchTopics {
     padding: 10px;
-    height: 110px;
+    min-height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .QuickSearchTopics ul li {
     display: inline-flex;
     float: center;
     margin: calc(5px + 1vmin) calc(5px + 1vmin);
+}
+
+@media (max-width: 900px) {
+    .QuickSearchTopics {
+        min-height: 110px;
+    }
 }
