@@ -11,7 +11,11 @@ const ItemWindow = (props: {
     windowData: WindowData, 
     colors: [string, string],
     width : string | null,
-    height : string | null;
+    height : string | null,
+    price : string | null,
+    
+    displayType : boolean | null,
+    displayPrice : boolean | null,
 }) => {
     const [mouseOver, setMouseOver] = useState(false); // initiate it at false
     const [boxShadow, setBoxShadow] = useState(`2px 2px 4px ${props.colors[0]}`);
@@ -69,7 +73,9 @@ const ItemWindow = (props: {
                         {props.windowData.title}
                     </h3>
                     <img className='ItemWindow-img ItemWindow-stackItem' src={pickImg(imgIndex)} alt={slides[imgIndex].description} />
-
+                    {props.displayPrice && (
+                        <div className='price'> </div>
+                    )}
                 </div>
             </div>
         </article>
@@ -79,6 +85,9 @@ const ItemWindow = (props: {
 ItemWindow.defaultProps = {
     width: null,
     height: null,
+    price: '',
+    displayType: null,
+    displayPrice: null,
 };
 
 export default ItemWindow;

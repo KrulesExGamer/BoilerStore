@@ -17,7 +17,7 @@ export const GameGenresSection = () => {
             morePage='/game-genres'
             moreText='More game genres...'
 
-            searchQueryFormat='/search_genres?search_query=__PLACEHOLDER__'
+            searchQueryFormat='/game-genres?search_query=__PLACEHOLDER__'
 
             searchBarColor='red'
             shadowColors={['darkred', 'violet']}
@@ -43,7 +43,7 @@ export const AssetTypesSection = () => {
             morePage='/asset-types'
             moreText='More game genres...'
 
-            searchQueryFormat='/search_asset_types?search_query=__PLACEHOLDER__'
+            searchQueryFormat='/asset_types?search_query=__PLACEHOLDER__'
 
             searchBarColor='green'
             shadowColors={['darkred', 'violet']}
