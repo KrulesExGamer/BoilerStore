@@ -126,7 +126,7 @@ const AppSection = (props : {
             <div className='more-parent'>
                 <div className='more'>
                     <Link to={props.morePage}>
-                        <IconButton icon={props.moreIcon} label={props.moreText} />
+                        <IconButton icon={props.moreIcon} label={props.moreText} hideTextOnSmallScreen={false} />
                     </Link>
                 </div>
             </div>
