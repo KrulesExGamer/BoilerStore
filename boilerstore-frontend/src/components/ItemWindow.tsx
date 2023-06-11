@@ -5,7 +5,15 @@ import Circle from './Circle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export type Slide = { staticImage: string, dynamicImage: string | undefined, description: string, darkImage: boolean | undefined };
-export type WindowData = { title: string, description: string, slides: Slide[], icon: any, key: string};
+export type WindowData = { 
+    title: string, 
+    description: string, 
+    slides: Slide[], 
+    icon: any, 
+    key: string,
+    price : number,
+    discount : number,
+};
 
 const ItemWindow = (props: { 
     windowData: WindowData, 
@@ -35,7 +43,9 @@ const ItemWindow = (props: {
             )
             : slides[i].staticImage;
 
-    const price = (null === props.price || undefined === props.price) ? '$ 0.00' : props.price;
+    const oldPrice = `$ ${(props.windowData.price).toFixed(2)}`
+    const price = `$ ${(props.windowData.price * (1 - props.windowData.discount)).toFixed(2)}`;
+    const discount = `${(props.windowData.discount * 100).toFixed(2)}%`;
 
     return (
         <article className='ItemWindow' style={{
@@ -76,9 +86,32 @@ const ItemWindow = (props: {
                     >
                         {props.windowData.title}
                     </h3>
+
                     <img className='ItemWindow-img ItemWindow-stackItem' src={pickImg(imgIndex)} alt={slides[imgIndex].description} />
                     {props.displayPrice && (
-                        <div className='price ItemWindow-stackItem'>sd{price}qqqs</div>
+                        <div className='price ItemWindow-stackItem'>{price}</div>
+                    )}
+                    
+                    {props.displayPrice && (
+                        <div 
+                            className='priceExtra ItemWindow-stackItem'
+                            style={{
+                                color: slides[imgIndex].darkImage ? 'white' : 'black',
+                                background:
+                                    slides[imgIndex].darkImage
+                                        ? 'linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))'
+                                        : 'linear-gradient(0deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0))',
+                            }}
+                        >
+                            <p> 
+                                <span className='old-price'> {oldPrice} </span>
+                                <span className='discount'> {discount} </span>
+                            </p>
+                        </div>
+                    )}
+
+                    {props.displayPrice && (
+                        <div className='price ItemWindow-stackItem'>{price}</div>
                     )}
                 </div>
             </div>
@@ -90,6 +123,7 @@ ItemWindow.defaultProps = {
     width: null,
     height: null,
     price: null,
+
     displayType: null,
     displayPrice: null,
     addToCart : null, 

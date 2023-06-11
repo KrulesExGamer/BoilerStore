@@ -133,8 +133,7 @@
     }
 
     .placeHolder {
-        display: none;
-        width:  0vw;
+        width: 20vw;
     }
 
     .arrow-left,
@@ -147,3 +146,26 @@
     }
 }
 
+@media (max-width: 768px) {
+    .placeHolder {
+        width:  30vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .placeHolder {
+        width:  35vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .placeHolder {
+        width:  70vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .placeHolder {
+        width:  100vw;
+    }
+}
