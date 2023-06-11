@@ -65,6 +65,12 @@
     color: black;
 }
 
+.price {
+    left: 50px;
+    bottom: 50px;
+    z-index: 12;
+}
+
 
 @media (max-width: 768px) {
     .ItemWindow {

@@ -97,6 +97,8 @@ export const PopularThisWeekSection = () => {
             searchBarColor='orange'
             shadowColors={['darkred', 'orange']}
             bgColors={['violet', 'orange']}
+
+            displayPrice={true}
         />
     );
 };

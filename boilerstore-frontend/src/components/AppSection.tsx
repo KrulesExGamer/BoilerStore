@@ -101,7 +101,10 @@ const AppSection = (props : {
 
             {props.hasSearchBar && (
                 <div className='searchbar-div'>
-                    <SearchBar color={props.searchBarColor} queryFormat={props.searchQueryFormat} />
+                    <SearchBar 
+                        color={props.searchBarColor} 
+                        queryFormat={props.searchQueryFormat} 
+                    />
                 </div>
             )}
 
@@ -111,6 +114,7 @@ const AppSection = (props : {
                     colors={props.shadowColors} 
                     itemQuery={props.itemQueryFormat} 
                     searchQuery={props.searchQueryFormat} 
+                    displayPrice={props.displayPrice}
                 />
             </div>
             <div className='more-parent'>
