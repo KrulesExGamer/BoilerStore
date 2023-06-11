@@ -17,6 +17,8 @@ export const GameGenresSection = () => {
             morePage='/game-genres'
             moreText='More game genres...'
 
+            searchQueryFormat='/search_genres?search_query=__PLACEHOLDER__'
+
             searchBarColor='red'
             shadowColors={['darkred', 'violet']}
             bgColors={['#db1f1f', '#eb3a84']}
@@ -41,6 +43,8 @@ export const AssetTypesSection = () => {
             morePage='/asset-types'
             moreText='More game genres...'
 
+            searchQueryFormat='/search_asset_types?search_query=__PLACEHOLDER__'
+
             searchBarColor='green'
             shadowColors={['darkred', 'violet']}
             bgColors={['#7F4F8F', 'green']}
@@ -60,6 +64,8 @@ export const ForYouSection = () => {
             title='Check this out!! ;)'
             titleWeight='bold'
             titleSize='1.8em'
+
+            itemQueryFormat='/asset?asset=__PLACEHOLDER__'
 
             morePage='/results?spetial_tag=for-you'
             moreText='More assets...'
@@ -82,6 +88,8 @@ export const PopularThisWeekSection = () => {
             title='Popular this week!!'
             titleWeight='bold'
             titleSize='1.8em'
+
+            itemQueryFormat='/asset?asset=__PLACEHOLDER__'
 
             morePage='/results?spetial_tag=popular-this-week'
             moreText='More assets...'
