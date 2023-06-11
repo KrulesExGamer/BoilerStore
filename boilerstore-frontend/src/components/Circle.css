@@ -1,8 +1,8 @@
 .Circle {
     border-radius: 50%;
     width: fit-content;
-    block-size: fit-content;
-    display: 'flex';
-    justify-content: 'center';
-    align-items: 'middle';
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

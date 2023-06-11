@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './CircleIcon.css';
-import {findMiddleColor} from '../utils/colorUtils'
+import { findMiddleColor } from '../utils/colorUtils'
 import { useWindowResize } from '../utils/windowSize';
 
 
@@ -22,8 +22,8 @@ const WIDTH_TO_RESIZE = 900;
  * @param {string} props.borderColor - The color of the circle's border.
  * @returns {JSX.Element} - The rendered CircleIcon component.
  */
-const CircleIcon = (props : { icon : any, color1: string, color2: string }) : JSX.Element => {
-    const {width} = useWindowResize();
+const CircleIcon = (props: { icon: any, color1: string, color2: string }): JSX.Element => {
+    const { width } = useWindowResize();
 
     const faSize = WIDTH_TO_RESIZE >= width ? '1x' : '2x';
     const iconSize = WIDTH_TO_RESIZE >= width ? (80) : (150);
@@ -34,11 +34,11 @@ const CircleIcon = (props : { icon : any, color1: string, color2: string }) : JS
 
     return (
         <div className="circle-icon">
-            <div 
-                className="outter-circle" 
-                style={{ 
-                    background: `linear-gradient(45deg, ${props.color1}, ${props.color2})`, 
-                    color: `#${middleColor}`, 
+            <div
+                className="outter-circle"
+                style={{
+                    background: `linear-gradient(45deg, ${props.color1}, ${props.color2})`,
+                    color: `#${middleColor}`,
                     boxShadow: `2px 2px 5px #${middleColor}`,
                     textShadow: `2px 2px 5px #${middleColor}`,
                 }}

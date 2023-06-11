@@ -7,6 +7,7 @@ import EyeCatcher from '../shared/EyeCatcher';
 
 import Topics from '../shared/Topics';
 import GameGenres from '../shared/GameGenres';
+import AssetType from '../shared/AssetType';
 
 
 
@@ -28,6 +29,9 @@ const Home = () => {
                 <EyeCatcher />
             </div>
             <GameGenres />
+            <AssetType />
+            {/* TODO: add section 'check this out!' */}
+            {/* TODO: add section 'popular this week' */}
         </main>
     );
 };

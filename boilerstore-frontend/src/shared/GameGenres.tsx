@@ -15,6 +15,7 @@ let gameGenres: GameGenre[] = [
         title: 'Firts Person Shoter', 
         description: 'A fi', 
         icon: undefined,
+        key: 'fps',
         slides: [
             {staticImage: fps, dynamicImage: undefined, description: 'A porsche.', darkImage: false, },
         ] ,
@@ -22,7 +23,8 @@ let gameGenres: GameGenre[] = [
     { 
         title: 'Bullet Hell', 
         description: 'A fi', 
-        icon: faMusic,
+        icon: undefined,
+        key: 'bullet-hell',
         slides: [
             {staticImage: bulletHell, dynamicImage: bulletHellGif, description: 'A porsche.', darkImage: true, },
         ] ,
@@ -31,6 +33,7 @@ let gameGenres: GameGenre[] = [
         title: 'Zelda Likeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
         description: 'A fi', 
         icon: undefined,
+        key: 'zelda-like',
         slides: [
             {staticImage: zeldaLike, dynamicImage: undefined, description: 'A porsche.', darkImage: false, },
         ] ,
@@ -38,14 +41,17 @@ let gameGenres: GameGenre[] = [
 ];
 
 const GameGenres = () => {
+    
+
     return (
         <section className='GameGenres' >
+            <p>	( ´◔ ω◔`) ノシ </p>
             <h2> What kind of game you wanna make? </h2>
             <div className='searchbar-div'>
                 <SearchBar color='#d63737' />
             </div>
 
-            <div className='container'><SectionSlider list={gameGenres} color1='#c51c62' color2='#d63737' /></div>
+            <div className='container'><SectionSlider list={gameGenres} colors={['#c22', '#b11']} /></div>
 
         </section>
     );

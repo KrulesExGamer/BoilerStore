@@ -3,7 +3,7 @@
 
     background: linear-gradient(45deg, #0b3e5c, #2c788f);
     padding: 5px 20px;
-    min-height: 30px;
+
     min-width: 200px;
 
     font-size: calc(10px + 1vmin);
@@ -11,6 +11,7 @@
 }
 
 .header-navbar {
+    min-height: 74px;
     display: flex;
     align-items: center;
     justify-content: space-between;

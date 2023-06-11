@@ -1,15 +1,27 @@
-.GameGenres {
-    background: linear-gradient(45deg, #d63737, #c51c62);
+.AssetType {
+    background: linear-gradient(45deg, #7F4F8F, #731DE0);
     color: white;
     padding: 30px 10px;
 }
 
-.GameGenres p {
-    font-size: 2em;
-    font-weight: bold;
+.more-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.GameGenres h2 {
+.more {
+    display: inline-flex;
+    float: center;
+    font-size: 1em;
+}
+
+.AssetType p {
+    font-size: 2em;
+    font-weight: 400;
+}
+
+.AssetType h2 {
     font-size: 2em;
     margin: 10px 10px 30px 10px;
     font-weight: bold;
