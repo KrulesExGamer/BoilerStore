@@ -21,6 +21,8 @@ let Data: WindowData[] = [
         slides: [
             { staticImage: fps, dynamicImage: undefined, description: 'A porsche.', darkImage: false, },
         ],
+        price: 1.87,
+        discount: 0.05,
     },
     {
         title: 'Bullet Hell',
@@ -30,6 +32,8 @@ let Data: WindowData[] = [
         slides: [
             { staticImage: bulletHell, dynamicImage: bulletHellGif, description: 'A porsche.', darkImage: true, },
         ],
+        price: 12.87,
+        discount: 0.05,
     },
     {
         title: 'Zelda Likeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
@@ -39,6 +43,8 @@ let Data: WindowData[] = [
         slides: [
             { staticImage: zeldaLike, dynamicImage: undefined, description: 'A porsche.', darkImage: false, },
         ],
+        price: 1.87,
+        discount: 0.05,
     },
 ];
 
