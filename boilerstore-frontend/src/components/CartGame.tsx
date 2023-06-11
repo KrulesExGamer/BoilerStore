@@ -90,3 +90,5 @@ const CartGame = (props: {
         </article>
     );
 };
+
+export default CartGame;
