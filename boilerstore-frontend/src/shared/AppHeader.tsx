@@ -8,10 +8,7 @@ import IconButton from '../components/IconButton';
 import { useWindowResize } from '../utils/windowSize'
 import { Link } from 'react-router-dom';
 
-
 const SEARCHBAR_MIN_WIDTH = 1152;
-
-
 
 const AppHeader = () => {
     const { width } = useWindowResize();
@@ -35,16 +32,16 @@ const AppHeader = () => {
                     </div>
                 </div>
                 <div className='navbar-right'>
-                    <IconButton icon={faUser} label='Sign In' />
+                    <Link to='/signup'><IconButton icon={faUser} label='Sign In' /></Link>
                     <IconButton icon={faCartShopping} label='Your Cart' />
                     <IconButton icon={faBarsStaggered} label='More' />
                 </div>
             </nav>
+            
 
             {breakSearchBar && (
                 <div className='searchbar-on-newline'> <SearchBar /> </div>
             )}
-
         </header>
     );
 };

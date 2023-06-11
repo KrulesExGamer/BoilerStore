@@ -1,0 +1,32 @@
+body {
+    background-color: black;
+}
+
+p {
+    padding: 3px;
+}
+
+input {
+    border: 1px black solid;
+}
+
+button {
+    border: 5px black solid;
+}
+
+button:hover {
+    background-color: aqua;
+}
+
+.conteiner-middle-center {
+    background-color: green ;
+}
+
+.item-middle-center {
+    width: 60%;
+}
+
+.login-container {
+    width: 100%;
+    background-color: white;
+}
