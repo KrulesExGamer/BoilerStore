@@ -3,7 +3,7 @@ import './AppHeader.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faBarsStaggered, faUser } from '@fortawesome/free-solid-svg-icons';
 import logo from './../img/boilerstore_logo.svg';
-import SearchBar, { SearchProps } from './../components/SearchBar'
+import SearchBar from './../components/SearchBar'
 import IconButton from '../components/IconButton';
 import {useWindowResize} from '../utils/windowSize'
 
@@ -12,7 +12,7 @@ const SEARCHBAR_MIN_WIDTH = 1152;
 
 
 
-const AppHeader = ({ searchQuerySetter } : SearchProps) => {
+const AppHeader = () => {
     const {width} = useWindowResize();
     const breakSearchBar = SEARCHBAR_MIN_WIDTH > width;
 
@@ -26,7 +26,7 @@ const AppHeader = ({ searchQuerySetter } : SearchProps) => {
                 </div>
                 <div className='navbar-center'>
                     <div className='logo-container'>
-                        {!breakSearchBar && (<SearchBar searchQuerySetter={searchQuerySetter} />)}
+                        {!breakSearchBar && (<SearchBar />)}
                     </div>
                 </div>
                 <div className='navbar-right'>
@@ -37,7 +37,7 @@ const AppHeader = ({ searchQuerySetter } : SearchProps) => {
             </nav>
 
             {breakSearchBar && (
-                <div className='searchbar-on-newline'> <SearchBar searchQuerySetter={searchQuerySetter} /> </div>
+                <div className='searchbar-on-newline'> <SearchBar /> </div>
             )}
 
         </header>

@@ -9,11 +9,9 @@ import AppFooter from "./shared/AppFooter";
 
 
 const Layout = () => {
-    let [searchQuery, setSearchQuery] = useState('');
-
     return (
         <div className='Layout'>
-            <AppHeader searchQuerySetter={setSearchQuery} />
+            <AppHeader />
 
             <Outlet />
 
