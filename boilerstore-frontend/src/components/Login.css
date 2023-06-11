@@ -12,10 +12,16 @@ input {
 
 button {
     border: 5px black solid;
+    width: 20%;
+    text-align: center;
 }
 
 button:hover {
     background-color: aqua;
+}
+
+button:active {
+    background-color: blue;
 }
 
 .conteiner-middle-center {
