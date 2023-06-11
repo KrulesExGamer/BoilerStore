@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import EyeCatcher from '../shared/EyeCatcher';
 
 import Topics from '../shared/Topics';
+import GameGenres from '../shared/GameGenres';
+
 
 
 const Home = () => {
@@ -25,6 +27,7 @@ const Home = () => {
                 <Topics />
                 <EyeCatcher />
             </div>
+            <GameGenres />
         </main>
     );
 };

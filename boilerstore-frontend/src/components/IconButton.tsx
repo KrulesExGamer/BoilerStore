@@ -2,17 +2,14 @@ import React from 'react';
 import './IconButton.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBug } from '@fortawesome/free-solid-svg-icons';
+import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 
-export interface  IconButtonProps {
-    icon : any,
-    label : string,
-}
 
-const IconButton = ({icon, label} : IconButtonProps) => {
+const IconButton = (props : {icon : any, label : string, size : SizeProp | undefined}) => {
     return (
         <div className='IconButton'>
-            <FontAwesomeIcon icon={icon} size='lg' />
-            <h4>{label}</h4>
+            <FontAwesomeIcon icon={props.icon} size={props.size} />
+            <h4>{props.label}</h4>
         </div>
     );
 };
@@ -20,6 +17,7 @@ const IconButton = ({icon, label} : IconButtonProps) => {
 IconButton.defaultProps = {
     icon: faBug,
     label: '',
+    size: 'lg',
 };
 
 export default IconButton;

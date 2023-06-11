@@ -1,0 +1,34 @@
+.SectionSlider {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 500px;
+}
+
+
+.SectionSlider ul li {
+    display: inline-flex;
+    float: center;
+    margin: 20px;
+}
+
+
+
+.arrow-left,
+.arrow-right {
+    display: flex;
+    align-items: center;
+}
+
+.arrow-right {
+    justify-content: flex-end;
+}
+
+
+.animate-out {
+    transition-delay: 100ms;
+    transition: transform 0.5s ease-in;
+    transform: translateX(-200vw);
+}
+

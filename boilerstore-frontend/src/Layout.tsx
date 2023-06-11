@@ -5,6 +5,7 @@ import { useState } from "react";
 import './reset.css';
 import './index.css';
 import './Layout.css';
+import AppFooter from "./shared/AppFooter";
 
 
 const Layout = () => {
@@ -15,6 +16,8 @@ const Layout = () => {
             <AppHeader searchQuerySetter={setSearchQuery} />
 
             <Outlet />
+
+            <AppFooter />
         </div>
     )
 };

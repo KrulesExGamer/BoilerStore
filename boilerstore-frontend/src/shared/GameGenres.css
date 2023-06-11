@@ -1,0 +1,23 @@
+.GameGenres {
+    background: linear-gradient(45deg, #d63737, #c51c62);
+    color: white;
+    padding: 30px 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container SectionSlider {
+    display: inline-flex;
+    float: center;
+}
+
+
+.searchbar-div {
+    width: 50vw;
+    margin: 30px 20px;
+    margin-left: 25vw;
+}
