@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './CartGame.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const CartGame = (props: { 
-    cartGame: CartGame, 
+const CartGame = (props: {
     colors: [string, string],
     width : string | null,
     height : string | null,
@@ -31,7 +30,7 @@ const CartGame = (props: {
         <article className='CartGame' style={{
             width: null === props.width ? ';' : props.width, 
             height: null === props.height ? ';' : props.height,
-            height: null === props.padding ? ';' : props.padding, 
+            padding: null === props.padding ? ';' : props.padding, 
         }}>
 
             <div
@@ -48,36 +47,43 @@ const CartGame = (props: {
                     boxShadow: boxShadow,
                 }}
             >
-                <div class="cart_game">
-                    <img src="
-                        {props.cartGame.img}
-                        ">
+                <div className="cart_game">
+                    <img className="game_img" src="
+                        {props.img}
+                        "/>
 
-                    <p class="game_name">
-                        {props.cartGame.name}
+                    <p className="game_name">
+                        {props.name}
                     </p>
 
-                    <p class="game_systems">
-                        {props.cartGame.systems}
+                    <p className="game_systems">
+                        {props.systems}
                     </p>
 
-                    <div>
-                        {(discounted < 0) ? (
-                            <p class="price">
-                                {prop.price}
-                            </p>
-                        ) :
-                            (<p class="price">
+                    {(discounted < 0) ? (
+                        <div className="game_price">
+                            <p className="price">
                                 {price}
                             </p>
-                            <p class="discount_price">
+                            <p className="remove_from_cart">
+                                Remover
+                            </p>
+                        </div>
+                    ) :
+                        (
+                        <div className="game_price">
+                            <p className="price">
+                                {price}
+                            </p>
+                            <p className="discount_price">
                                 {discounted}
                             </p>
-                        }
-                        <p class="remove_from_cart" onClick{console.log("remove")}>
-                            Remover
-                        </p>
-                    </div>
+                            <p className="remove_from_cart">
+                                Remover
+                            </p>
+                        </div>)
+                    }
+                    
                 </div>
 
             </div>
