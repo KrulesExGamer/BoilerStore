@@ -1,15 +1,26 @@
-.GameGenres {
-    background: linear-gradient(45deg, #db1f1f, #eb3a84);
+.AppSection {
     color: white;
     padding: 30px 10px;
 }
 
-.GameGenres p {
-    font-size: 2em;
-    font-weight: bold;
+.more-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.GameGenres h2 {
+.more {
+    display: inline-flex;
+    float: center;
+    font-size: 1em;
+}
+
+.AppSection p {
+    font-size: 2em;
+    font-weight: 400;
+}
+
+.AppSection h2 {
     font-size: 2em;
     margin: 10px 10px 30px 10px;
     font-weight: bold;

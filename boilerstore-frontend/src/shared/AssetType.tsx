@@ -53,7 +53,7 @@ const AssetType = () => {
                 <SearchBar color='#731DE0' />
             </div>
 
-            <div className='container'><SectionSlider list={AssetTypes} colors={['#7F4F8F', '#731DE0']} /></div>
+            <div className='container'><SectionSlider list={AssetTypes} colors={['#7F4F8F', '#731DE0']} itemQuery={''} searchQuery={''} /></div>
             <div className='more-parent'>
                 <div className='more'>
                     <Link to='/show?what=asset-types'>

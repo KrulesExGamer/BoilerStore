@@ -1,0 +1,10 @@
+.conteiner-middle-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-middle-center {
+    display: inline-flex;
+    float: center;
+}

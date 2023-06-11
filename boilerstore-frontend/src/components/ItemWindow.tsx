@@ -5,9 +5,14 @@ import Circle from './Circle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export type Slide = { staticImage: string, dynamicImage: string | undefined, description: string, darkImage: boolean | undefined };
-export type WindowData = { title: string, description: string, slides: Slide[], icon: any, key: string | undefined };
+export type WindowData = { title: string, description: string, slides: Slide[], icon: any, key: string};
 
-const ItemWindow = (props: { windowData: WindowData, colors: [string, string] }) => {
+const ItemWindow = (props: { 
+    windowData: WindowData, 
+    colors: [string, string],
+    width : string | null,
+    height : string | null;
+}) => {
     const [mouseOver, setMouseOver] = useState(false); // initiate it at false
     const [boxShadow, setBoxShadow] = useState(`2px 2px 4px ${props.colors[0]}`);
     let imgIndex = 0;
@@ -25,7 +30,10 @@ const ItemWindow = (props: { windowData: WindowData, colors: [string, string] })
             : slides[i].staticImage;
 
     return (
-        <article className='ItemWindow'>
+        <article className='ItemWindow' style={{
+            width: null === props.width ? ';' : props.width, 
+            height: null === props.height ? ';' : props.height, 
+        }}>
 
             <div
                 className='ItemWindow-container'
@@ -66,6 +74,11 @@ const ItemWindow = (props: { windowData: WindowData, colors: [string, string] })
             </div>
         </article>
     );
+};
+
+ItemWindow.defaultProps = {
+    width: null,
+    height: null,
 };
 
 export default ItemWindow;

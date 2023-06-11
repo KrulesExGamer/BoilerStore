@@ -51,7 +51,7 @@ const GameGenres = () => {
                 <SearchBar color='#d63737' />
             </div>
 
-            <div className='container'><SectionSlider list={gameGenres} colors={['#c22', '#b11']} /></div>
+            <div className='container'><SectionSlider list={gameGenres} colors={['#c22', '#b11']} searchQuery={''} itemQuery={''} /></div>
 
         </section>
     );

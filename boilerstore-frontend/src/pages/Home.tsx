@@ -8,7 +8,10 @@ import EyeCatcher from '../shared/EyeCatcher';
 import Topics from '../shared/Topics';
 import GameGenres from '../shared/GameGenres';
 import AssetType from '../shared/AssetType';
+import AppSection from '../components/AppSection';
+import { faGamepad, faImage } from '@fortawesome/free-solid-svg-icons';
 
+import {GameGenresSection, AssetTypesSection, ForYouSection, PopularThisWeekSection} from '../shared/MainSections'
 
 
 const Home = () => {
@@ -25,13 +28,12 @@ const Home = () => {
     return (
         <main className='Home'>
             <div className='topicsPlusEyeCathcer'>
-                <Topics />
-                <EyeCatcher />
+                <GameGenresSection />
+                <AssetTypesSection />
+                <ForYouSection />
+                <PopularThisWeekSection />
             </div>
-            <GameGenres />
-            <AssetType />
-            {/* TODO: add section 'check this out!' */}
-            {/* TODO: add section 'popular this week' */}
+            
         </main>
     );
 };
