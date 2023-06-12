@@ -17,13 +17,13 @@ import '../shared_styles/colors.css';
 
 
 interface AssetData {
-    status: string, title: string, key: string, description: string, images: string[]
+    status: string, price : number, discount : number, title: string, key: string, description: string, images: string[]
 }
 
-const assetNotFound: AssetData = { status: '404', title: '', key: '', description: '', images : [] };
+const assetNotFound: AssetData = { status: '404', price: 0, discount: 0, title: '', key: '', description: '', images : [] };
 
 const AssetList: { [key: string]: AssetData } = {
-    'AmazingCar': { status: '200', title: 'AmazingCar', key: 'AmazingCar', description: 'An amizing car! \n aaa', images: [porsche] }
+    'AmazingCar': { status: '200', title: 'AmazingCar', price: 10, discount: 0, key: 'AmazingCar', description: 'An amizing car! \n aaa', images: [porsche] }
 };
 
 const FetchAsset = async (FetchQuery: string) => {
@@ -88,18 +88,26 @@ const Assets = () => {
                             </div>
                             <div className='right-side'>
                                 <div className='buttons-container conteiner-middle-center'>
-                                    <button className='add-to-cart asset-field item-middle-center'>
-                                        <p>Add to cart</p>
+                                    <button className='add-to-cart asset-field item-middle-center txt-center'>
+                                        <div className='txt-center aaa'>Add to cart</div>
                                     </button>
                                     <div className='buttons-container-middiv item-middle-center'></div>
-                                    <button className='buy-now asset-field item-middle-center'>
-                                        <p>Buy now</p>
+                                    <button className='buy-now asset-field item-middle-center txt-center'>
+                                    <div className='txt-center aaa'>Buy now</div>
                                     </button>
                                 </div>
                                 
                                 <div className='description asset-field conteiner-middle-center'> 
                                     {assetData.description}
                                 </div>
+
+                                <div className='description asset-field conteiner-middle-center'> 
+                                    $ {assetData.price}
+                                </div>
+                                <button className='asset-field item-middle-center txt-center'>
+                                    <div className='txt-center aaa'>Edit</div>
+                                </button>
+
                             </div>
                             {/* TODO: ADD EXTRA IMAGES
                                 <SectionSlider list={[]} colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0)']} itemQuery={`/asset?asset=${assetKey}&img_index=${imgIndex}`} searchQuery={''} />
