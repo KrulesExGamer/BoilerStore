@@ -73,6 +73,8 @@ export const ForYouSection = () => {
             searchBarColor='orange'
             shadowColors={['darkred', 'orange']}
             bgColors={['violet', 'orange']}
+
+            displayPrice={true}
         />
     );
 };
