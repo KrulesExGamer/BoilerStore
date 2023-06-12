@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { validateAccount } from '../utils/validateAccount';
 import '../shared_styles/alignment.css'
 import '../shared_styles/unselectable.css'
 import './Login.css'
-import { validateAccount } from '../utils/validateAccount';
 
-const Login = () => {
+const Signup = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,17 +15,15 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const accounts = [{name: "Jorge", email: "jorge@mail.com", password:"123"}, 
-                      {name: "Ademir", email: "admin@mail.com", password:"admin"}]
-
-    const checkLogin = () => {
-        if (name === "" || password === "")
+    const checkSignup = () => {
+        if (name === "" || email === "" || password === "")
             setError("Erro: Há campos não preenchidos!");
         
-        if (validateAccount({task: "login", name: name, email: email, password: password}))
-            navigate("/")
+        if (validateAccount({task: "signup", name: name, email: email}))
+            navigate("/");
 
-        setError("Erro: Usuário e/ou senha inválidos!");
+        else
+            setError("Erro: Usuário e/ou email já foram cadastrados!");
     }
 
     return (
@@ -35,27 +33,34 @@ const Login = () => {
                 
                 <p className='welcome'>
                     ʕっ•ᴥ•ʔっ <br/>
-                    Welcome Back!! :)
+                    Welcome aboard!! :)
                 </p>
                 <p>
                     <input style={{marginRight: "15%"}}
                         onChange={(event)=>setName(event.target.value)} 
                         type="text"
-                        placeholder='Email or username...'
+                        placeholder='Username...'
                         id="name" />
                 </p>
                 <p>
-                    <input style={{marginLeft: "15%"}}
+                   <input style={{marginLeft: "15%"}}
+                        onChange={(event)=>setEmail(event.target.value)} 
+                        type="text"
+                        placeholder='Email...'
+                        id="name" />
+                </p>
+                <p>
+                    <input style={{marginRight: "15%"}}
                         onChange={(event)=>setPassword(event.target.value)} 
                         type="password" 
                         placeholder="Password" 
                         id="password" />
                 </p>
                 <p>
-                    <button className='unselectable' onClick={checkLogin}>Login</button>
+                    <button className='unselectable' onClick={checkSignup}>Sign Up</button>
                 </p>
                 
-                <Link to='/signup'><p className='link'>Newbie?</p></Link>
+                <Link to='/login'><p className='link'>Already a homie?</p></Link>
                 <Link to='/recovery'><p className='link'>Having some skill issues?</p></Link>
                 
             </div>
@@ -65,4 +70,4 @@ const Login = () => {
 
 
 
-export default Login;
+export default Signup;
