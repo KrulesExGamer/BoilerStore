@@ -8,3 +8,7 @@
     display: inline-flex;
     float: center;
 }
+
+.txt-center {
+    text-align: center;
+}
