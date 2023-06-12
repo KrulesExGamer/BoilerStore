@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import CartGame from './CartGame';
-// import './CartList.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type t_game = {
@@ -11,7 +9,7 @@ type t_game = {
     price : number | null,
     discount : number | null,
     name : string | null,
-    img: string | null,
+    img: any,
     systems: string | null,
     
     displayType : boolean | null,
@@ -20,20 +18,4 @@ type t_game = {
     removeFromCart : () => any | null,
 };
 
-const GameList = (props:{
-        games: t_game[],
-    }) => {
-    const games = props.games;
-    const listGames = games.map((game) =>
-    <CartGame {...game}/>);
-
-    return (
-        <ul className='cart_ul'>{listGames.map((game) =>
-            <li>{game}</li>
-            )}
-        </ul>
-    );
-}
-
-export default GameList;
-
+export default t_game;

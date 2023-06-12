@@ -1,23 +1,9 @@
 import React, { useState } from 'react';
 import './CartGame.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import t_game from "../gamesForCart/t_game";
 
-const CartGame = (props: {
-    colors: [string, string],
-    width : string | null,
-    height : string | null,
-    padding : string | null,
-    price : number | null,
-    discount : number | null,
-    name : string | null,
-    img: any,
-    systems: string | null,
-    
-    displayType : boolean | null,
-    displayPrice : boolean | null,
-
-    removeFromCart : () => any | null,
-}) => {
+const CartGame = (props:t_game) => {
     const [mouseOver, setMouseOver] = useState(false); // initiate it at false
     const [boxShadow, setBoxShadow] = useState(`2px 2px 4px ${props.colors[0]}`);
 

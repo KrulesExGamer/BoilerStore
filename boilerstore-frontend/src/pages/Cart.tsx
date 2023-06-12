@@ -7,10 +7,14 @@ import "../img/bullet_hell.jpeg" ;
 
 import GameList from '../components/CartList';
 import gamesList from '../gamesForCart/tempGameList';
+import TotalPrice from '../components/TotalPrice';
 
 const Cart = () => {
     return (
-        <GameList games={gamesList}/>
+        <div>
+            <GameList games={gamesList}/>
+            <TotalPrice games={gamesList}/>
+        </div>
     );
 }
 

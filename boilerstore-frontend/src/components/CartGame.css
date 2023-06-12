@@ -48,4 +48,7 @@
 .game_img{
 	height:70px;
 	width:120px;
+	border: 1px solid;
+	border-color: #06382c;
+	border-radius: 3px;
 }

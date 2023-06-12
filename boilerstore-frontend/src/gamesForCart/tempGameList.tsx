@@ -2,23 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import zelda from "../img/zelda_like.png";
 import hell from "../img/bullet_hell.jpeg" ;
-
-type t_game = {
-    colors: [string, string],
-    width : string | null,
-    height : string | null,
-    padding : string | null,
-    price : number | null,
-    discount : number | null,
-    name : string | null,
-    img: string | null,
-    systems: string | null,
-    
-    displayType : boolean | null,
-    displayPrice : boolean | null,
-
-    removeFromCart : () => any | null,
-};
+import t_game from "../gamesForCart/t_game";
 
 const game1:t_game = {
     colors: ["#f00", "#0f0"],
