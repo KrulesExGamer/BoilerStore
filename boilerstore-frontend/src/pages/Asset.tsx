@@ -87,12 +87,13 @@ const Assets = () => {
                                 <img className='item-middle-center' src={assetData.images[0]}/>
                             </div>
                             <div className='right-side'>
-                                <div className='buttons-container'>
-                                    <button className='add-to-cart'>
+                                <div className='buttons-container conteiner-middle-center'>
+                                    <button className='add-to-cart asset-field item-middle-center'>
                                         <p>Add to cart</p>
                                     </button>
-                                    <button className='buy-now'>
-                                        <p>Add to cart</p>
+                                    <div className='buttons-container-middiv item-middle-center'></div>
+                                    <button className='buy-now asset-field item-middle-center'>
+                                        <p>Buy now</p>
                                     </button>
                                 </div>
                                 

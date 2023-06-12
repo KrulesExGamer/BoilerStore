@@ -4,7 +4,7 @@
     height: 100%;
     padding: calc(40px + 4vh) calc(40px + 4vw);
 
-    background: 
+    background:
         linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(238, 130, 238, 0.5)),
         linear-gradient(45deg, rgba(155, 74, 8, 0.5), rgba(131, 69, 231, 0.5));
 }
@@ -12,7 +12,7 @@
 .asset-container {
     margin: 0px;
     border-radius: 50px;
-    display:flex;
+    display: flex;
 }
 
 .asset-title {
@@ -45,7 +45,7 @@ button {
 
 .main-banner {
     overflow: hidden;
-    
+
     box-shadow: 3px 3px 6px gray;
     max-width: 50%;
 
@@ -54,12 +54,50 @@ button {
     border-radius: calc(20px + 2vmin);
 }
 
-.add-to-cart {
-    border-radius: 20px 0 20px 0;
-    
+.buttons-container-middiv {
+    margin: 0;
+    width: 5px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: red;
 }
 
 .buttons-container {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: calc(10px + 1vmin);
+    width: 100%;
+    text-align: center;
+}
+
+.buttons-container>* {
+    display: inline-flex;
+    margin: 0;
+}
+
+.buy-buttons {
+    margin-top: 0;
+    width: 50%;
+}
+
+.buy-buttons p {
+    text-align: center;
+}
+
+.add-to-cart p {
+    text-align: center;
+}
+
+.add-to-cart {
+    border-radius: 20px 0 0 20px;
+    margin-left: 0;
+    width: 50%;
+}
+
+.buy-now {
+    border-radius: 0 20px 20px 0;
+    margin-right: 0;
 }
 
