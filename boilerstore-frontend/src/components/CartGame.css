@@ -1,0 +1,19 @@
+div{
+	background-color: #222;
+}
+
+.cart_game{
+	display: block
+}
+
+.cart_game > *{
+	display: inline-block;
+}
+
+.game_name, .game_img{
+	position: left;
+}
+
+.game_price, .game_systems{
+	position: left;
+}

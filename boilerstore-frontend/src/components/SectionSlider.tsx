@@ -21,6 +21,8 @@ const SectionSlider = (props: {
 
     windowWidth : string | null,
     windowHeight : string | null,
+
+    displayPrice : boolean | null,
 }) => {
     const { width } = useWindowResize();
     const listContainerRef = useRef<HTMLDivElement>(null);
@@ -76,7 +78,9 @@ const SectionSlider = (props: {
                         props.list.map(
                             (item) => { return (
                                 <Link to={ props.itemQuery.replace('__PLACEHOLDER__', item.key) }>
-                                    <li key={item.key}><ItemWindow windowData={item} colors={props.colors} /></li>
+                                    <li key={item.key}>
+                                        <ItemWindow windowData={item} colors={props.colors} displayPrice={props.displayPrice} />
+                                    </li>
                                 </Link>
                             ); }
                         )
@@ -100,6 +104,7 @@ const SectionSlider = (props: {
 SectionSlider.defaultProps = {
     windowWidth: null,
     windowHeight: null,
+    displayPrice: null,
 };
 
 export type { Slide, WindowData };

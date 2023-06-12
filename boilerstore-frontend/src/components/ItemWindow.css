@@ -65,6 +65,41 @@
     color: black;
 }
 
+.price {
+    left: 5%;
+    bottom: 5%;
+    z-index: 12;
+    background: linear-gradient(45deg, rgb(77, 196, 77), darkgreen);
+    padding: 5px 10px;
+    border-radius: 20px;
+
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.priceExtra {
+    right: 5%;
+    bottom: 5%;
+    
+    z-index: 11;
+    border-radius: 20px;
+    padding: 2px 4px;
+    display: block;
+    font-weight: bold;
+}
+
+.old-price {
+    font-size: 0.4em;
+    text-decoration: line-through;
+    margin-right: 10px;
+    margin: auto 10px auto 10px;
+}
+
+.discount {
+    font-size: 0.6em;
+}
+
+
 
 @media (max-width: 768px) {
     .ItemWindow {

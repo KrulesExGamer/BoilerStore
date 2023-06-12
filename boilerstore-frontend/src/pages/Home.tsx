@@ -5,13 +5,8 @@ import { useEffect } from 'react';
 
 import EyeCatcher from '../shared/EyeCatcher';
 
-import Topics from '../shared/Topics';
-import GameGenres from '../shared/GameGenres';
-import AssetType from '../shared/AssetType';
-import AppSection from '../components/AppSection';
-import { faGamepad, faImage } from '@fortawesome/free-solid-svg-icons';
-
 import {GameGenresSection, AssetTypesSection, ForYouSection, PopularThisWeekSection} from '../shared/MainSections'
+import Topics from '../shared/Topics';
 
 
 const Home = () => {
@@ -28,11 +23,13 @@ const Home = () => {
     return (
         <main className='Home'>
             <div className='topicsPlusEyeCathcer'>
-                <GameGenresSection />
-                <AssetTypesSection />
-                <ForYouSection />
-                <PopularThisWeekSection />
+                <Topics />
+                <EyeCatcher />
             </div>
+            <GameGenresSection />
+            <AssetTypesSection />
+            <ForYouSection />
+            <PopularThisWeekSection />
             
         </main>
     );

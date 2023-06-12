@@ -5,13 +5,27 @@ import Circle from './Circle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export type Slide = { staticImage: string, dynamicImage: string | undefined, description: string, darkImage: boolean | undefined };
-export type WindowData = { title: string, description: string, slides: Slide[], icon: any, key: string};
+export type WindowData = { 
+    title: string, 
+    description: string, 
+    slides: Slide[], 
+    icon: any, 
+    key: string,
+    price : number,
+    discount : number,
+};
 
 const ItemWindow = (props: { 
     windowData: WindowData, 
     colors: [string, string],
     width : string | null,
-    height : string | null;
+    height : string | null,
+    price : string | null,
+    
+    displayType : boolean | null,
+    displayPrice : boolean | null,
+
+    addToCart : () => any | null,
 }) => {
     const [mouseOver, setMouseOver] = useState(false); // initiate it at false
     const [boxShadow, setBoxShadow] = useState(`2px 2px 4px ${props.colors[0]}`);
@@ -28,6 +42,10 @@ const ItemWindow = (props: {
                     : slides[i].staticImage
             )
             : slides[i].staticImage;
+
+    const oldPrice = `$ ${(props.windowData.price).toFixed(2)}`
+    const price = `$ ${(props.windowData.price * (1 - props.windowData.discount)).toFixed(2)}`;
+    const discount = `${(props.windowData.discount * 100).toFixed(2)}%`;
 
     return (
         <article className='ItemWindow' style={{
@@ -68,8 +86,33 @@ const ItemWindow = (props: {
                     >
                         {props.windowData.title}
                     </h3>
-                    <img className='ItemWindow-img ItemWindow-stackItem' src={pickImg(imgIndex)} alt={slides[imgIndex].description} />
 
+                    <img className='ItemWindow-img ItemWindow-stackItem' src={pickImg(imgIndex)} alt={slides[imgIndex].description} />
+                    {props.displayPrice && (
+                        <div className='price ItemWindow-stackItem'>{price}</div>
+                    )}
+                    
+                    {props.displayPrice && (
+                        <div 
+                            className='priceExtra ItemWindow-stackItem'
+                            style={{
+                                color: slides[imgIndex].darkImage ? 'white' : 'black',
+                                background:
+                                    slides[imgIndex].darkImage
+                                        ? 'linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))'
+                                        : 'linear-gradient(0deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0))',
+                            }}
+                        >
+                            <p> 
+                                <span className='old-price'> {oldPrice} </span>
+                                <span className='discount'> {discount} </span>
+                            </p>
+                        </div>
+                    )}
+
+                    {props.displayPrice && (
+                        <div className='price ItemWindow-stackItem'>{price}</div>
+                    )}
                 </div>
             </div>
         </article>
@@ -79,6 +122,11 @@ const ItemWindow = (props: {
 ItemWindow.defaultProps = {
     width: null,
     height: null,
+    price: null,
+
+    displayType: null,
+    displayPrice: null,
+    addToCart : null, 
 };
 
 export default ItemWindow;

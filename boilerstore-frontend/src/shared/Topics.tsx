@@ -5,24 +5,16 @@ import { faCartShopping, faCubes, faMusic, faImage, faPersonRunning, faCode, faE
 import CircleIcon from '../components/CircleIcon';
 import { Circle } from '@react-three/drei';
 import { useWindowResize } from '../utils/windowSize';
+import { Link } from 'react-router-dom';
 
-// const topicList = [
-//     { icon: faCubes, color1: '#2D92CB', color2: '#2A9AD9',},
-//     { icon: faMusic, color1: '#3D4EE9', color2: '#707DF3',},
-//     { icon: faImage, color1: '#B958DC', color2: '#D469FA',},
-//     { icon: faPersonRunning, color1: '#CB2D2D', color2: '#D92A2A',},
-//     { icon: faCode, color1: '#CBBB2D', color2: '#D9C72A',},
-//     { icon: faEllipsis, color1: '#43CB2D', color2: '#4DD92A',},
-// ];
+const ellipsis = { icon: faEllipsis, color1: '#338C26', color2: '#3DA624', assetType: 'more'};
 
-const ellipsis = { icon: faEllipsis, color1: '#338C26', color2: '#3DA624' };
-
-const topicList = [
-    { icon: faCubes, color1: '#1D6491', color2: '#1B71A9' },
-    { icon: faMusic, color1: '#2E39B7', color2: '#5E6CCE' },
-    { icon: faImage, color1: '#8F42B8', color2: '#A75DD0' },
-    { icon: faPersonRunning, color1: '#A62626', color2: '#A82424' },
-    { icon: faCode, color1: '#A69726', color2: '#C7B123' },
+const assetTypeList = [
+    { icon: faCubes, color1: '#1D6491', color2: '#1B71A9', assetType: '3d-model' },
+    { icon: faMusic, color1: '#2E39B7', color2: '#5E6CCE', assetType: 'music' },
+    { icon: faImage, color1: '#8F42B8', color2: '#A75DD0', assetType: 'image' },
+    { icon: faPersonRunning, color1: '#A62626', color2: '#A82424', assetType: 'animation' },
+    { icon: faCode, color1: '#A69726', color2: '#C7B123', assetType: 'code' },
 ];
 
 const WIDTH_TO_RESIZE = 900;
@@ -34,16 +26,16 @@ const Topics = () => {
     const maxIcons = Math.floor(width / iconSize);
     let topics = 
         (1 < maxIcons) 
-        ? topicList.slice(0, maxIcons - 2).concat([ellipsis])
+        ? assetTypeList.slice(0, maxIcons - 2).concat([ellipsis])
         : [ellipsis];
 
     return (
         <section className='QuickSearchTopics' >
             <ul>
                 {
-                    topics.map((props) => {
+                    topics.map((assetType) => {
                         return (
-                            <li><CircleIcon {...props} /></li>
+                            <li><Link to={`/asset-type?asset_type=${assetType.assetType}`}><CircleIcon {...assetType} /></Link></li>
                         );
                     })}
             </ul>

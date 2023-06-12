@@ -32,9 +32,9 @@ const AppHeader = () => {
                     </div>
                 </div>
                 <div className='navbar-right'>
-                    <Link to='/signup'><IconButton icon={faUser} label='Sign In' /></Link>
-                    <IconButton icon={faCartShopping} label='Your Cart' />
-                    <IconButton icon={faBarsStaggered} label='More' />
+                    <Link to='/login'><IconButton icon={faUser} label='Sign In' /></Link>
+                    <Link to='/cart-page'><IconButton icon={faCartShopping} label='Your Cart' /></Link>
+                    <Link to='/more'><IconButton icon={faBarsStaggered} label='More' /></Link>
                 </div>
             </nav>
             
