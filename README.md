@@ -1,4 +1,4 @@
-# BoilerStore
+# BoilerStore (DO NOT REVIEW)
 
 In this project, we aim to build BoilerStore: an asset store for indie games, designed by game devs for game devs. The store will offer a wide range of assets, from 3D models to music and more.
 
