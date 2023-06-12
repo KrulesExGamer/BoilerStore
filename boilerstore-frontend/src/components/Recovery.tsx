@@ -36,14 +36,15 @@ const Recovery = () => {
                     Forgot your account’s password? Enter your email address and we’ll send you a recovery link.
                 </p>
                 <p>
-                    <input style={{marginRight: "20%"}}
+                    <input className='login_input'
+                        style={{marginRight: "20%"}}
                         onChange={(event)=>setEmail(event.target.value)} 
                         type="email"
                         placeholder='Email...'
                         id="email" />
                 </p>
                 <p>
-                    <button className='unselectable' onClick={checkRecovery}>Recovery</button>
+                    <button className='login_button unselectable' onClick={checkRecovery}>Recovery</button>
                 </p>
             </div>
         </div></div>
