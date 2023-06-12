@@ -35,5 +35,5 @@ const GameList = (props:{
     );
 }
 
-
+export default GameList;
 

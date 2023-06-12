@@ -36,7 +36,7 @@ const AppHeader = () => {
                 </div>
                 <div className='navbar-right'>
                     <Link to='/login'><IconButton icon={faUser} label='Sign In' /></Link>
-                    <Link to='/cart-page'><IconButton icon={faCartShopping} label='Your Cart' /></Link>
+                    <Link to='/cart'><IconButton icon={faCartShopping} label='Your Cart' /></Link>
                     <Link to='/more'><IconButton icon={faBarsStaggered} label='More' /></Link>
                 </div>
             </nav>

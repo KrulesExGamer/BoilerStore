@@ -10,7 +10,7 @@ const CartGame = (props: {
     price : number | null,
     discount : number | null,
     name : string | null,
-    img: string | null,
+    img: any,
     systems: string | null,
     
     displayType : boolean | null,
@@ -27,66 +27,59 @@ const CartGame = (props: {
     const discounted = (0 === discount) ? -1 : (100-discount)*price/100;
 
     return (
-        <article className='CartGame' style={{
+        <article className='cartGame' style={{
             width: null === props.width ? ';' : props.width, 
             height: null === props.height ? ';' : props.height,
-            padding: null === props.padding ? ';' : props.padding, 
-        }}>
+            padding: null === props.padding ? ';' : props.padding,
+        }} onMouseEnter={(event) => {
+                setMouseOver(true);
+                setBoxShadow(`4px 4px 8px ${props.colors[1]}`);
+            }}
+            onMouseLeave={() => {
+                setMouseOver(false);
+                setBoxShadow(`2px 2px 4px ${props.colors[0]}`);
+            }}
+        >
+           <div className="left_elements">
+                <img className="game_img" src=
+                    {props.img }
+                    />
 
-            <div
-                className='CartGame-container'
-                onMouseEnter={(event) => {
-                    setMouseOver(true);
-                    setBoxShadow(`4px 4px 8px ${props.colors[1]}`);
-                }}
-                onMouseLeave={() => {
-                    setMouseOver(false);
-                    setBoxShadow(`2px 2px 4px ${props.colors[0]}`);
-                }}
-                style={{
-                    boxShadow: boxShadow,
-                }}
-            >
-                <div className="cart_game">
-                    <img className="game_img" src="
-                        {props.img}
-                        "/>
-
-                    <p className="game_name">
-                        {props.name}
-                    </p>
-
-                    <p className="game_systems">
-                        {props.systems}
-                    </p>
-
-                    {(discounted < 0) ? (
-                        <div className="game_price">
-                            <p className="price">
-                                {price}
-                            </p>
-                            <p className="remove_from_cart">
-                                Remover
-                            </p>
-                        </div>
-                    ) :
-                        (
-                        <div className="game_price">
-                            <p className="price">
-                                {price}
-                            </p>
-                            <p className="discount_price">
-                                {discounted}
-                            </p>
-                            <p className="remove_from_cart">
-                                Remover
-                            </p>
-                        </div>)
-                    }
-                    
-                </div>
-
+                <p className="game_name">
+                    {props.name}
+                </p>
             </div>
+
+            <div className="right_elements">
+                <p className="game_systems">
+                    {props.systems}
+                </p>
+
+                {(discounted < 0) ? (
+                    <div className="game_pricing">
+                        <p className="game_price"> $
+                            {price.toFixed(2)}
+                        </p>
+                        <p className="remove_from_cart">
+                            Remover
+                        </p>
+                    </div>
+                ) :
+                    (
+                    <div className="game_pricing">
+                        <p className="game_non_discounted"> $
+                            {price.toFixed(2)}
+                        </p>
+                        <p className="game_discounted"> $
+                            {discounted.toFixed(2)}
+                        </p>
+                        <p className="remove_from_cart">
+                            Remover
+                        </p>
+                    </div>)
+                }
+            </div>
+            
         </article>
     );
 };

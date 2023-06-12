@@ -1,0 +1,59 @@
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import zelda from "../img/zelda_like.png";
+import hell from "../img/bullet_hell.jpeg" ;
+
+type t_game = {
+    colors: [string, string],
+    width : string | null,
+    height : string | null,
+    padding : string | null,
+    price : number | null,
+    discount : number | null,
+    name : string | null,
+    img: string | null,
+    systems: string | null,
+    
+    displayType : boolean | null,
+    displayPrice : boolean | null,
+
+    removeFromCart : () => any | null,
+};
+
+const game1:t_game = {
+    colors: ["#f00", "#0f0"],
+    width : "600px",
+    height : "100px",
+    padding : "10px",
+    price : 60,
+    discount : 10,
+    name : "Power",
+    img: zelda,
+    systems: "A",
+
+    displayType : true,
+    displayPrice : true,
+
+    removeFromCart : () => {},
+};
+
+const game2:t_game = {
+    colors: ["#f00" , "#00f"],
+    width : "600px",
+    height : "100px",
+    padding : "10px",
+    price : 50,
+    discount : 0,
+    name : "Tower",
+    img: hell,
+    systems: "A, B",
+
+    displayType : true,
+    displayPrice : true,
+
+    removeFromCart : () => {},
+};
+
+const gamesList = [game1, game2]
+
+export default gamesList;
