@@ -68,3 +68,7 @@
 .searchbar-on-newline {
     margin: calc(5px + 2vh) calc(2px + 1vw) calc(2px + 1vh) calc(2px + 1vw);
 }
+
+button {
+    all: unset;
+}

@@ -8,10 +8,7 @@ import IconButton from '../components/IconButton';
 import { useWindowResize } from '../utils/windowSize'
 import { Link } from 'react-router-dom';
 
-
 const SEARCHBAR_MIN_WIDTH = 1152;
-
-
 
 const AppHeader = () => {
     const { width } = useWindowResize();
@@ -40,11 +37,11 @@ const AppHeader = () => {
                     <Link to='/more'><IconButton icon={faBarsStaggered} label='More' /></Link>
                 </div>
             </nav>
+            
 
             {breakSearchBar && (
                 <div className='searchbar-on-newline'> <SearchBar /> </div>
             )}
-
         </header>
     );
 };
