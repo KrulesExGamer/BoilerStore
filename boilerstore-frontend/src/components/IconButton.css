@@ -22,7 +22,7 @@
 }
 
 @media (max-width: 768px) {
-    .IconButton h4 {
+    .hidable {
         display: none;
     }
 }

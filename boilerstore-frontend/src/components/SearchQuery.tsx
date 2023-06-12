@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import './Asset.css'
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -17,18 +16,34 @@ import '../shared_styles/colors.css';
 
 
 interface AssetData {
-    status: string, price : number, discount : number, title: string, key: string, description: string, images: string[]
+    status: string, title: string, key: string, description: string, images: string[]
 }
 
-const assetNotFound: AssetData = { status: '404', price: 0, discount: 0, title: '', key: '', description: '', images : [] };
+const assetNotFound: AssetData = { status: '404', title: '', key: '', description: '', images : [] };
 
 const AssetList: { [key: string]: AssetData } = {
-    'AmazingCar': { status: '200', title: 'AmazingCar', price: 10, discount: 0, key: 'AmazingCar', description: 'An amizing car! \n aaa', images: [porsche] }
+    'AmazingCar': { status: '200', title: 'AmazingCar', key: 'AmazingCar', description: 'An amizing car! \n aaa', images: [porsche] },
+    'Ultimate Character Controller': { status: '200', title: 'Ultimate Character Controller', key: 'Ultimate Character Controller', description: 'An amizing car! \n aaa', images: [porsche] },
+    'Playmaker': { status: '200', title: 'Playmaker', key: 'Playmaker', description: 'An amizing car! \n aaa', images: [porsche] },
+    'Gaia': { status: '200', title: 'Gaia', key: 'Gaia', description: 'An amizing car! \n aaa', images: [porsche] },
+    'Amplify Shader Editor': { status: '200', title: 'Amplify Shader Editor', key: 'Amplify Shader Editor', description: 'An amizing car! \n aaa', images: [porsche] },
+    'Cinemachine': { status: '200', title: 'Cinemachine', key: 'Cinemachine', description: 'An amizing car! \n aaa', images: [porsche] },
+    'Adventure Creator': { status: '200', title: 'Adventure Creator', key: 'Adventure Creator', description: 'An amizing car! \n aaa', images: [porsche] },
+    'Final IK': { status: '200', title: 'Final IK', key: 'Final IK', description: 'An amizing car! \n aaa', images: [porsche] },
+    'Post Processing Stack': { status: '200', title: 'Post Processing Stack', key: 'Post Processing Stack', description: 'An amizing car! \n aaa', images: [porsche] },
+    'Odin Inspector and Serializer': { status: '200', title: 'Odin Inspector and Serializer', key: 'Odin Inspector and Serializer', description: 'An amizing car! \n aaa', images: [porsche] },
+    'Realistic Effects Pack': { status: '200', title: 'Realistic Effects Pack', key: 'Realistic Effects Pack', description: 'An amizing car! \n aaa', images: [porsche] },
 };
 
-const FetchAsset = async (FetchQuery: string) => {
-    const assetKey = FetchQuery.replace('/api/assets/', '');
-    return AssetList[assetKey] ? JSON.stringify(AssetList[assetKey]) : JSON.stringify(assetNotFound);
+const FetchAssets = async (FetchQuery: string) => {
+    let results : AssetData[] = [];
+    for (let key in AssetList) {
+        let asset = AssetList[key];
+        
+        if (asset.title.includes(FetchQuery))
+            results.push(asset);
+    }
+    return JSON.stringify(results);
 };
 
 const FetchAssetImages = async (FetchQuery: string) => {
@@ -37,7 +52,7 @@ const FetchAssetImages = async (FetchQuery: string) => {
 };
 
 
-const Assets = () => {
+const SearchQuery = () => {
     const [imgIndex, setImgIndex] = useState(0);
     const [assetKey, setAssetKey] = useState('');
 
@@ -58,7 +73,7 @@ const Assets = () => {
         setAssetKey(null === assetParam ? '' : assetParam);
 
         if (assetParam) {
-            FetchAsset(`/api/assets/${assetParam}`)
+            FetchAssets(`${assetParam}`)
                 .then(response => JSON.parse(response))
                 .then(data => {
                     // Handle the fetched data
@@ -88,26 +103,18 @@ const Assets = () => {
                             </div>
                             <div className='right-side'>
                                 <div className='buttons-container conteiner-middle-center'>
-                                    <button className='add-to-cart asset-field item-middle-center txt-center'>
-                                        <div className='txt-center aaa'>Add to cart</div>
+                                    <button className='add-to-cart asset-field item-middle-center'>
+                                        <p>Add to cart</p>
                                     </button>
                                     <div className='buttons-container-middiv item-middle-center'></div>
-                                    <button className='buy-now asset-field item-middle-center txt-center'>
-                                    <div className='txt-center aaa'>Buy now</div>
+                                    <button className='buy-now asset-field item-middle-center'>
+                                        <p>Buy now</p>
                                     </button>
                                 </div>
                                 
                                 <div className='description asset-field conteiner-middle-center'> 
                                     {assetData.description}
                                 </div>
-
-                                <div className='description asset-field conteiner-middle-center'> 
-                                    $ {assetData.price}
-                                </div>
-                                <button className='asset-field item-middle-center txt-center'>
-                                    <div className='txt-center aaa'>Edit</div>
-                                </button>
-
                             </div>
                             {/* TODO: ADD EXTRA IMAGES
                                 <SectionSlider list={[]} colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0)']} itemQuery={`/asset?asset=${assetKey}&img_index=${imgIndex}`} searchQuery={''} />
@@ -127,4 +134,4 @@ const Assets = () => {
     );
 };
 
-export default Assets;
+export default SearchQuery;

@@ -8,10 +8,9 @@ import Signup from './components/Signup';
 import Recovery from './components/Recovery';
 import Asset from './pages/Asset';
 import Cart from './pages/Cart';
+import SearchQuery from './components/SearchQuery';
 
 const App = () => {
-  let [SearchQuery, setSearchQuery] = useState('');
-
   return (
     <BrowserRouter>
       <Routes>
@@ -23,6 +22,7 @@ const App = () => {
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/recovery' element={<Recovery />}></Route>
+        <Route path='/results' element={<SearchQuery />}></Route>
       </Routes>
     </BrowserRouter>
   );
