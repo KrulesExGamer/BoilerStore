@@ -1,12 +1,4 @@
-body {
-    background-color: black;
-}
-
-p {
-    padding: 3px;
-}
-
-input {
+.login_input {
     border: 3px black solid;
     text-align: left;
     height: 2.5em;
@@ -16,7 +8,7 @@ input {
     border-radius: 40px;
 }
 
-button {
+.login_button {
     border: 3px black solid;
     border-radius: 40px;
     background-color: blue;
@@ -27,11 +19,11 @@ button {
     text-align: center;
 }
 
-button:hover {
+.login_button:hover {
     background-color: aqua;
 }
 
-button:active {
+.login_button:active {
     background-color: blue;
 }
 
@@ -52,6 +44,10 @@ button:active {
     margin-bottom : 5%;
     text-align: center;
     width: 100%;
+}
+
+.login-container p {
+    padding: 3px;
 }
 
 .error {

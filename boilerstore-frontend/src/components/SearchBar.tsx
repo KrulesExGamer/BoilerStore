@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import IconButton from './IconButton';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Console } from 'console';
 
 
@@ -37,7 +38,7 @@ const SearchBar = (props: {
                 style={{ color: props.color }}
                 onChange={(event) => {setQuery(event.target.value);}}
             />
-            <div className='magnifyingGlass'> <IconButton icon={faMagnifyingGlass} /> </div>
+            <button className='magnifyingGlass'> <IconButton icon={faMagnifyingGlass} /> </button>
         </form>
     );
 };

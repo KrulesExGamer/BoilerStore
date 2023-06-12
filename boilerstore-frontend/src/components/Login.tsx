@@ -38,21 +38,23 @@ const Login = () => {
                     Welcome Back!! :)
                 </p>
                 <p>
-                    <input style={{marginRight: "15%"}}
+                    <input className='login_input'
+                    style={{marginRight: "15%"}}
                         onChange={(event)=>setName(event.target.value)} 
                         type="text"
                         placeholder='Email or username...'
                         id="name" />
                 </p>
                 <p>
-                    <input style={{marginLeft: "15%"}}
+                    <input className='login_input'
+                    style={{marginLeft: "15%"}}
                         onChange={(event)=>setPassword(event.target.value)} 
                         type="password" 
                         placeholder="Password" 
                         id="password" />
                 </p>
                 <p>
-                    <button className='unselectable' onClick={checkLogin}>Login</button>
+                    <button className='login_button unselectable' onClick={checkLogin}>Login</button>
                 </p>
                 
                 <Link to='/signup'><p className='link'>Newbie?</p></Link>
