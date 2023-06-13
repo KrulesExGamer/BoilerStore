@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { validateAccount } from '../utils/validateAccount';
+import { validateAccount } from '../utils/apiCalls';
 import '../shared_styles/alignment.css'
 import '../shared_styles/unselectable.css'
 import './Login.css'
