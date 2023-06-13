@@ -57,10 +57,20 @@ const AssetPageContents = (props: {
             left={(<>
                 <ImageSelector images={assetImgs} />
             </>)}
-            right={(<>
-                <h2 className='round-line-div'>{props.assetData.title}</h2>
-                <p className='round-line-div'>{props.assetData.description}</p>
-            </>)}
+            right={(
+                <div className='right-side-asset-data'>
+                    <h2 className='round-line-div'>{props.assetData.title}</h2>
+                    <div className='asset-description round-line-div'>
+                        <p>{props.assetData.description}</p>
+                    </div>
+                    
+                    <ul className='asset-tags-list'>
+                        {props.assetData.tags.map((tag) => (
+                            <li> {`#${tag} `} </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         />
     );
 }

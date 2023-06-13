@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export const useWindowResize: () => { width: number, height: number } = () => {
     const [dimensions, setDimensions] = useState({
@@ -24,4 +25,16 @@ export const useWindowResize: () => { width: number, height: number } = () => {
     }, []);
 
     return dimensions;
+};
+
+export const useSearchParams = () : {[key: string]: any;} => {
+    const location = useLocation();
+    let [args, setArgs] = useState <{[key: string]: any;}> ({});
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        setArgs(searchParams as {[key: string]: any});
+    }, [location]);
+
+    return args;
 };
