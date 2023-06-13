@@ -1,11 +1,13 @@
-import { BACKEND_URL, USING_MOCKUP } from "./constants";
+import { BACKEND_URL, ERROR_400_NOT_AN_ASSET, ERROR_404, USING_MOCKUP } from "./constants";
 import { LISTS_OF_CONTENTS, userAccounts } from "./mockupData";
-import { AssetType, AssetTypeData, GameGenre, GameGenreData, Asset, createDynamicImg, Result } from "./types";
+import { AssetType, AssetTypeData, GameGenre, GameGenreData, Asset, createDynamicImg, Result, isAsset, fetchApiResult } from "./types";
 import fetch from 'node-fetch';
 
 
-// Example of query: 'api/assets/cool-model
-export async function fetchApi(query: string): Promise<Result> {
+
+// Example of query: 'api/asset/cool-model
+export async function fetchApi(query: string): Promise<fetchApiResult> {
+    // TODO: Implement real api calls.
     // if (USING_MOCKUP) {
     //     try {
     //         const response = await fetch(`${BACKEND_URL}/${query}`);
@@ -23,12 +25,20 @@ export async function fetchApi(query: string): Promise<Result> {
     //     }
     // }
 
-    const queryComponents = query.split('/');
-    const listOfContent = LISTS_OF_CONTENTS[queryComponents[1]];
-    const fetchedData = listOfContent.find((el: any) => el.key === queryComponents[2]);
+    try {
+        const queryComponents = query.split('/');
+        const listOfContent = LISTS_OF_CONTENTS[queryComponents[1]];
+        const fetchedData = listOfContent.find((el: any) => el.key === queryComponents[2]);
 
-    return { ok: fetchedData !== undefined, value: fetchedData };
+        if (undefined === fetchedData || null === fetchedData) throw ERROR_404;
+
+        return fetchedData;
+    } catch (err) {
+        throw err;
+    }
 }
+
+
 
 export async function fetchImage(url: string): Promise<String> {
     // return USING_MOCKUP
@@ -37,16 +47,31 @@ export async function fetchImage(url: string): Promise<String> {
     return LISTS_OF_CONTENTS[url.replace(BACKEND_URL, '')];
 }
 
-export async function fetchAsset(assetKey: string) {
-    return fetchApi(`api/asset/${assetKey}`);
+export async function fetchAsset(assetKey: string) : Promise<any> {
+    try {
+        const result = fetchApi(`api/asset/${assetKey}`);
+        if (isAsset(result)) throw ERROR_400_NOT_AN_ASSET;
+        return result;
+    } catch (err) {
+        throw err;
+    }
 }
 
-export async function fetchGameGenres(gameGenreKey: string) {
-    return fetchApi(`api/game-genre/${gameGenreKey}`);
+export async function fetchGameGenre(gameGenreKey: string) {
+    try {
+        return fetchApi(`api/game-genre/${gameGenreKey}`);
+    } catch (err) {
+        throw err;
+    }
 }
 
-export async function fetchAssetTypes(assetTypeKey: string) {
-    return fetchApi(`api/asset-type/${assetTypeKey}`);
+export async function fetchAssetType(assetTypeKey: string) {
+    try {
+        return fetchApi(`api/asset-type/${assetTypeKey}`);
+    } catch (err) {
+        throw err;
+    }
+
 }
 
 // TODO : implement searchAssets
@@ -71,7 +96,7 @@ export async function updateAsset(args: {
 }
 
 
-export function validateAccount({task = "", name = "", email = "", password = ""}) {
+export function validateAccount({ task = "", name = "", email = "", password = "" }) {
     if (task === "login") {
         for (let account of userAccounts)
             // More secure algorythm will be used in later implementations
@@ -99,7 +124,7 @@ export function validateAccount({task = "", name = "", email = "", password = ""
         return false;
     }
 
-    else 
+    else
         return false;
 }
 

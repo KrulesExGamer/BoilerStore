@@ -111,7 +111,7 @@ export interface DynamicImg {
     dynamic: ImgData | null,
 }
 
-export function createDynamicImg (args : {
+export function createDynamicImg(args: {
     staticUrl: string,
     staticDescription: string,
     staticDarkImage?: boolean,
@@ -119,7 +119,7 @@ export function createDynamicImg (args : {
     dynamicUrl?: string | null,
     dynamicDescription?: string | null,
     dynamicDarkImage?: boolean,
-}) : DynamicImg {
+}): DynamicImg {
     return {
         static: {
             url: args.staticUrl,
@@ -163,16 +163,100 @@ export interface Result {
 }
 
 export interface UserAccount {
-    userName : string,
-    password : string, // TODO : substitute by hash
-    email : string,
-    isAdmin : boolean,
+    userName: string,
+    password: string, // TODO : substitute by hash
+    email: string,
+    isAdmin: boolean,
 }
 
 export interface UserState {
-    isLoggedIn : boolean,
+    isLoggedIn: boolean,
 
-    userName? : string,
-    email? : string,
-    isAdmin? : boolean,
+    userName?: string,
+    email?: string,
+    isAdmin?: boolean,
 }
+
+
+export function isImgData(obj: any): obj is ImgData {
+    return typeof obj?.url === 'string' && typeof obj?.description === 'string';
+}
+
+export function isDynamicImg(obj: any): obj is DynamicImg {
+    return (
+        typeof obj === 'object' &&
+        isImgData(obj?.static) &&
+        (isImgData(obj?.dynamic) || obj?.dynamic === null)
+    );
+}
+
+export function isSlideList(obj: any): obj is SlideList {
+    return Array.isArray(obj?.slides);
+}
+
+export function isAsset(obj: any): obj is Asset {
+    return (
+        typeof obj?.title === 'string' &&
+        typeof obj?.description === 'string' &&
+        typeof obj?.seller === 'string' &&
+        typeof obj?.key === 'string' &&
+        Array.isArray(obj?.type) &&
+        obj?.type.every((type: any) => type in AssetType) &&
+        Array.isArray(obj?.tags) &&
+        obj?.tags.every((tag: any) => typeof tag === 'string') &&
+        isSlideList(obj?.slides) &&
+        typeof obj?.price === 'number' &&
+        typeof obj?.discount === 'number'
+    );
+}
+
+
+
+export function isGameGenre(obj: any): obj is GameGenre {
+    return Object.values(GameGenre).includes(obj);
+}
+
+export function isAssetType(obj: any): obj is AssetType {
+    return Object.values(AssetType).includes(obj);
+}
+
+export function isUserAccount(obj: any): obj is UserAccount {
+    return (
+        typeof obj?.userName === 'string' &&
+        typeof obj?.password === 'string' &&
+        typeof obj?.email === 'string' &&
+        typeof obj?.isAdmin === 'boolean'
+    );
+}
+
+
+export function isGameGenreData(obj: any): obj is GameGenreData {
+    return (
+        typeof obj?.name === 'string' &&
+        Object.values(GameGenre).includes(obj?.key) &&
+        typeof obj?.icon === 'string' &&
+        typeof obj?.description === 'string' &&
+        Array.isArray(obj?.examples) &&
+        obj?.examples.every((example: any) => typeof example === 'string')
+    );
+}
+
+export function isAssetTypeData(obj: any): obj is AssetTypeData {
+    return (
+        typeof obj?.name === 'string' &&
+        Object.values(AssetType).includes(obj?.key) &&
+        typeof obj?.icon === 'string' &&
+        typeof obj?.description === 'string' &&
+        Array.isArray(obj?.examples) &&
+        obj?.examples.every((example: any) => typeof example === 'string')
+    );
+}
+
+
+
+
+export type fetchApiResult = (
+    Asset
+    | AssetType
+    | GameGenre
+);

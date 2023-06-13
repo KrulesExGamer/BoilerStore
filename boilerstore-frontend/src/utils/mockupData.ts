@@ -89,8 +89,8 @@ export const assets: Asset[] = [
 
 export const LISTS_OF_CONTENTS: any = {
     'AssetsType': assetsTypes,
-    'GameGenres': gameGenres,
-    'Assets': assets,
+    'GameGenre': gameGenres,
+    'Asset': assets,
 };
 
 export const userAccounts: UserAccount[] = [
