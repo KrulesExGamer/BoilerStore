@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { validateAccount } from '../utils/apiCalls';
 import { UserContext } from '../Context';
+import SimpleHeader from '../components/SimpleHeader';
 import '../shared_styles/alignment.css';
 import '../shared_styles/unselectable.css';
 import './Signup.css';
@@ -83,7 +84,7 @@ const Signup = () => {
     }
 
     const loadForm = () => {
-        if (userState)
+        if (userState?.isLoggedIn)
         return signupForm();
 
     else 
@@ -92,12 +93,13 @@ const Signup = () => {
 
     return (
         <div className='signup-background'>
+            <SimpleHeader />
             <div className='conteiner-middle-center'>
                 <div className='item-middle-center item-signup'>
                     <div className='login-container'>
                         {errorText != "" && <p className='error'>{`${errorText}`}</p>}
                         
-                        {userState && welcomeMessage()}
+                        {userState?.isLoggedIn && welcomeMessage()}
                         
                         {loadForm()}
                         

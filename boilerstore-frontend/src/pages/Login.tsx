@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { validateAccount } from '../utils/apiCalls';
 import { UserContext } from '../Context';
+import SimpleHeader from '../components/SimpleHeader';
+import { UserState } from '../utils/types';
 import '../shared_styles/alignment.css'
 import '../shared_styles/unselectable.css'
 import './Login.css'
@@ -34,7 +36,11 @@ const Login = () => {
 
     const performLogin = () => {
         if (checkLogin()) {
-            navigate('/')
+            navigate('/');
+            if (setUserState !== undefined)
+                setUserState({isLoggedIn: true});
+            // There is a slight chance that the function will be undefined
+            // Gonna fix that later
         }
     }
 
@@ -73,7 +79,7 @@ const Login = () => {
     }
 
     const loadForm = () => {
-        if (userState)
+        if (!userState?.isLoggedIn)
             return loginForm();
 
         else 
@@ -82,13 +88,13 @@ const Login = () => {
 
     return (
         <div className='login-background'>
-
+            <SimpleHeader />
             <div className='conteiner-middle-center conteiner-login'>
                 <div className='item-middle-center item-login'>
                     <div className='login-container'>
                         {errorText !== '' && <p className='error'>{`${errorText}`}</p>}
                         
-                        {userState && welcomeMessage()}
+                        {!userState?.isLoggedIn && welcomeMessage()}
                         
                         {loadForm()}
                         
