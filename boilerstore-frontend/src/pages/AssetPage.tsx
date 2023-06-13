@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import './AssetPage.css';
 import '../shared_styles/common.css';
 
-import { Asset, Result, SlideList } from '../utils/types';
+import { Asset, ImgData, Result, SlideList } from '../utils/types';
 import { useLocation } from 'react-router-dom';
 import { fetchAsset } from '../utils/apiCalls';
 import { STATUS_MSG_100_YET_TO_SENT } from '../utils/appConstants';
+import TwinLayout from './TwinLayout';
+import ImageSelector from '../components/ImageSelector';
 
 
 // Custom hook to manage the asset key passed by the url
@@ -43,17 +45,23 @@ const useAssetData = (assetKey: string) => {
 
 const AssetPageContents = (props: {
     assetData: Asset,
-    assetImgs: SlideList | null,
+    assetImgs: ImgData[] | null,
 }) => {
+    const assetImgs = props.assetImgs ?? [{
+        url: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_521061.png&f=1&nofb=1&ipt=f161d9fa1c208cc5d1126fbaf6be445c4fb82a64a8cbbedad0c422893d2f4200&ipo=images',
+        description: 'A BUG!!! This is just an example Image.',
+    }];
+
     return (
-        <>
-            <p>Hello World!</p>
-            <div className='AssetPage-rightside'></div>
-            <div className='AssetPage-leftside'>
+        <TwinLayout
+            left={(<>
+                <ImageSelector images={assetImgs} />
+            </>)}
+            right={(<>
                 <h2 className='round-line-div'>{props.assetData.title}</h2>
                 <p className='round-line-div'>{props.assetData.description}</p>
-            </div>
-        </>
+            </>)}
+        />
     );
 }
 

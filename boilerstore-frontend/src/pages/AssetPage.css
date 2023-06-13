@@ -6,6 +6,23 @@
     min-width: 100vw;
     min-height: 105vh;
 
-    padding: calc(10px + 1vh) calc(10px + 1vw);
+    padding: calc(30px + 3vh) calc(20px + 2vw);
 }
 
+.AssetPage {
+    max-height: 90vh;
+    background-color: red;
+    overflow: hidden;
+}
+
+
+
+@media (max-width: 960px) {
+    .AssetPage {
+        max-height: 10000vh;
+    }
+}
+
+.AssetSection {
+    padding: calc(30px + 3vh) calc(10px + 2vw);
+}
