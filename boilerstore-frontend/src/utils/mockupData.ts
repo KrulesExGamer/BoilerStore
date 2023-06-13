@@ -1,6 +1,9 @@
 import { BACKEND_URL, ERROR_MSG_400, ERROR_MSG_400_INVALID_PATH, ERROR_MSG_404 } from "./appConstants";
 import { AssetType, AssetTypeData, GameGenre, GameGenreData, Asset, createDynamicImg, Result, UserAccount, FetchApiResponse } from "./types";
 
+import boilerstoreLogo from '../boilerstore_logo.svg';
+
+
 
 export const assetsTypes: AssetTypeData[] = [
     {
