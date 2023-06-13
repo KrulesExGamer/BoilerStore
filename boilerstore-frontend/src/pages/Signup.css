@@ -1,4 +1,4 @@
-.recovery-background {
+.signup-background {
     background-image: url('../img/Fenix.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -6,7 +6,7 @@
     height: 100vh;
 }
 
-.recovery_input {
+.signup_input {
     border: 3px black solid;
     text-align: left;
     height: 2.5em;
@@ -14,10 +14,9 @@
     width: 60%;
     padding-left: 10px;
     border-radius: 40px;
-    margin-right: 20%;
 }
 
-.recovery_button {
+.signup_button {
     border: 3px black solid;
     border-radius: 40px;
     background-color: blue;
@@ -28,15 +27,15 @@
     text-align: center;
 }
 
-.recovery_button:hover {
+.signup_button:hover {
     background-color: aqua;
 }
 
-.recovery_button:active {
+.signup_button:active {
     background-color: blue;
 }
 
-.item-recovery {
+.item-signup {
     margin-top: 5%;
     width: 35%;
     border: 10px black solid;
@@ -44,28 +43,15 @@
     background-color: white;
 }
 
-.recovery-container {
+.signup-container {
     margin-top: 5%;
     margin-bottom : 5%;
     text-align: center;
     width: 100%;
 }
 
-.recovery-container p {
+.signup-container p {
     padding: 3px;
-    min-height: 50px;
-}
-
-.recovery-message {
-    font-size: 1.2em;
-    font-weight: bolder; 
-    text-align: left;
-    margin: 0% 10% 0% 10%; 
-}
-
-.recovery-success {
-    font-weight: bolder;
-    font-size: 1.2em;
 }
 
 .error {
@@ -81,4 +67,11 @@
     text-decoration: underline;
     color: blue;
     font-size: 1.2em;
+}
+
+.welcome {
+    text-align: left;
+    margin-left: 10%;
+    font-size: 1.1em;
+    color: blue;
 }

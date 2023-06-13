@@ -2,19 +2,19 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { validateAccount } from '../utils/apiCalls';
-import '../shared_styles/alignment.css'
-import '../shared_styles/unselectable.css'
-import './Login.css'
+import '../shared_styles/alignment.css';
+import '../shared_styles/unselectable.css';
+import './Signup.css';
 
 const Signup = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
     const [errorText, setError] = useState("");
 
     const navigate = useNavigate();
 
+    // Verifica se o email e/ou nome já estão cadastrados
     const checkSignup = () => {
         if (name === "" || email === "" || password === "")
             setError("Erro: Há campos não preenchidos!");
@@ -26,15 +26,18 @@ const Signup = () => {
             setError("Erro: Usuário e/ou email já foram cadastrados!");
     }
 
-    return (
-        <div className='conteiner-middle-center'><div className='item-middle-center'>
-            <div className='login-container'>
-                {errorText != "" && <p className='error'>{`${errorText}`}</p>}
-                
-                <p className='welcome'>
-                    ʕっ•ᴥ•ʔっ <br/>
-                    Welcome aboard!! :)
-                </p>
+    const welcomeMessage = () => {
+        return (
+            <p className='welcome'>
+                ʕっ•ᴥ•ʔっ <br/>
+                Welcome aboard!! :)
+            </p>
+        );
+    }
+
+    const signupForm = () => {
+        return (
+            <>
                 <p>
                     <input className='login_input'
                         style={{marginRight: "15%"}}
@@ -44,7 +47,7 @@ const Signup = () => {
                         id="name" />
                 </p>
                 <p>
-                   <input className='login_input'
+                <input className='login_input'
                         style={{marginLeft: "15%"}}
                         onChange={(event)=>setEmail(event.target.value)} 
                         type="text"
@@ -62,13 +65,27 @@ const Signup = () => {
                 <p>
                     <button className='login_button unselectable' onClick={checkSignup}>Sign Up</button>
                 </p>
-                
-                <Link to='/login'><p className='link'>Already a homie?</p></Link>
-                <Link to='/recovery'><p className='link'>Having some skill issues?</p></Link>
-                
+            </>
+        );
+    }
+
+    return (
+        <div className='signup-background'>
+            <div className='conteiner-middle-center'>
+                <div className='item-middle-center item-signup'>
+                    <div className='login-container'>
+                        {errorText != "" && <p className='error'>{`${errorText}`}</p>}
+                        
+                        {welcomeMessage()}
+                        
+                        {signupForm()}
+                        
+                        <Link to='/login'><p className='link'>Already have an account?</p></Link>
+                    </div>
+                </div>
             </div>
-        </div></div>
-    )
+        </div>
+    );
 }
 
 

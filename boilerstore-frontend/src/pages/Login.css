@@ -1,3 +1,11 @@
+.login-background {
+    background-image: url('../img/Fenix.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+}
+
 .login_input {
     border: 3px black solid;
     text-align: left;
@@ -27,11 +35,7 @@
     background-color: blue;
 }
 
-.conteiner-middle-center {
-    background-color: green ;
-}
-
-.item-middle-center {
+.item-login {
     margin-top: 5%;
     width: 35%;
     border: 10px black solid;
@@ -54,7 +58,6 @@
     color: red;
     font-weight: bolder;
     font-size: 1.2em;
-    /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
     margin-left: 20%;
     margin-right: 20%;
     background-color: #FBB;
