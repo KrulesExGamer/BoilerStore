@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Layout from './Layout';
 import Home from './pages/Home';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Recovery from './components/Recovery';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Recovery from './pages/Recovery';
 import Asset from './pages/Asset';
 import Cart from './pages/Cart';
 import SearchQuery from './components/SearchQuery';
