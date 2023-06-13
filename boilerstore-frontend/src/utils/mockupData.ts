@@ -26,7 +26,7 @@ export const gameGenres: GameGenreData[] = [
     },
 ];
 
-export let assets: Asset[] = [
+export const assets: Asset[] = [
     {
         title: 'Firts Person Shoter',
         description: 'A fi',

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../shared_styles/alignment.css'
 import '../shared_styles/unselectable.css'
 import './Login.css'
-import { validateAccount } from '../utils/validateAccount';
+import { validateAccount } from '../utils/apiCalls';
 
 const Login = () => {
     const [name, setName] = useState("");

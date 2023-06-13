@@ -6,22 +6,22 @@ import fetch from 'node-fetch';
 
 // Example of query: 'api/assets/cool-model
 export async function fetchApi(query: string): Promise<Result> {
-    if (USING_MOCKUP) {
-        try {
-            const response = await fetch(`${BACKEND_URL}/${query}`);
-            const resultData = await response.json();
-            return {
-                ok: true,
-                value: resultData,
-            };
-        } catch (error) {
-            console.log('Error:', error);
-            return {
-                ok: false,
-                value: error,
-            };
-        }
-    }
+    // if (USING_MOCKUP) {
+    //     try {
+    //         const response = await fetch(`${BACKEND_URL}/${query}`);
+    //         const resultData = await response.json();
+    //         return {
+    //             ok: true,
+    //             value: resultData,
+    //         };
+    //     } catch (error) {
+    //         console.log('Error:', error);
+    //         return {
+    //             ok: false,
+    //             value: error,
+    //         };
+    //     }
+    // }
 
     const queryComponents = query.split('/');
     const listOfContent = LISTS_OF_CONTENTS[queryComponents[1]];
@@ -31,9 +31,10 @@ export async function fetchApi(query: string): Promise<Result> {
 }
 
 export async function fetchImage(url: string): Promise<String> {
-    return USING_MOCKUP
-        ? LISTS_OF_CONTENTS[url.replace(BACKEND_URL, '')]
-        : fetch(url);
+    // return USING_MOCKUP
+    //     ? LISTS_OF_CONTENTS[url.replace(BACKEND_URL, '')]
+    //     : fetch(url);
+    return LISTS_OF_CONTENTS[url.replace(BACKEND_URL, '')];
 }
 
 export async function fetchAsset(assetKey: string) {

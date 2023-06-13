@@ -168,3 +168,11 @@ export interface UserAccount {
     email : string,
     isAdmin : boolean,
 }
+
+export interface UserState {
+    isLoggedIn : boolean,
+
+    userName? : string,
+    email? : string,
+    isAdmin? : boolean,
+}
