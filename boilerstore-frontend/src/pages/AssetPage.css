@@ -1,0 +1,11 @@
+.AssetSection {
+    color: black;
+
+    background: linear-gradient(45deg, lightblue, cyan);
+
+    min-width: 100vw;
+    min-height: 105vh;
+
+    padding: calc(10px + 1vh) calc(10px + 1vw);
+}
+

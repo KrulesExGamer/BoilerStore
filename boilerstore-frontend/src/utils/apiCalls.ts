@@ -47,12 +47,14 @@ export async function fetchAsset(assetKey: string): Promise<Result<Asset>> {
     const fetchedData = await fetchApi(`api/asset/${assetKey}`);
     console.log('got to fetchAsset');
 
-    if (fetchedData.ok && !isAsset(fetchedData.content)) {
-        return {
-            ok: false,
-            content: ERROR_MSG_400_NOT_AN_ASSET,
-        };
-    }
+    // NOTE: isAsset function is not working properly
+    // TODO: fix isAsset
+    // if (fetchedData.ok && !isAsset(fetchedData.content)) {
+    //     return {
+    //         ok: false,
+    //         content: ERROR_MSG_400_NOT_AN_ASSET,
+    //     };
+    // }
 
     return fetchedData as Result<Asset>;
 }
