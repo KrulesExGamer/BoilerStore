@@ -5,7 +5,7 @@ import { faCartShopping, faBarsStaggered, faUser } from '@fortawesome/free-solid
 import logo from './../img/boilerstore_logo.svg';
 import SearchBar from './../components/SearchBar'
 import IconButton from '../components/IconButton';
-import { useWindowResize } from '../utils/windowSize'
+import { useWindowResize } from '../utils/customHooks'
 import { Link } from 'react-router-dom';
 
 const SEARCHBAR_MIN_WIDTH = 1152;
