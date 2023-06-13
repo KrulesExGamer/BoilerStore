@@ -26,7 +26,9 @@ const useAssetData = (assetKey: string) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data : Asset = await fetchAsset(assetKey);
+                const data : any = await fetchAsset(assetKey);
+                console.log('got to component, assetKey is:');
+                console.log(assetKey);
                 setAssetData(data);
             } catch (error) {
                 // Handle error, e.g., show an error message or fallback content

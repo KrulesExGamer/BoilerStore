@@ -1,12 +1,20 @@
-import { BACKEND_URL, ERROR_400_NOT_AN_ASSET, ERROR_404, USING_MOCKUP } from "./constants";
-import { LISTS_OF_CONTENTS, userAccounts } from "./mockupData";
-import { AssetType, AssetTypeData, GameGenre, GameGenreData, Asset, createDynamicImg, Result, isAsset, fetchApiResult } from "./types";
-import fetch from 'node-fetch';
+import { BACKEND_URL, ERROR_MSG_400_NOT_AN_ASSET, ERROR_MSG_400_NOT_IMPLEMENTED, USING_MOCKUP } from "./appConstants";
+import { fetchMockupData, userAccounts } from "./mockupData";
+import { Asset, FetchApiResponse, Result, isAsset } from "./types";
 
 
 
 // Example of query: 'api/asset/cool-model
-export async function fetchApi(query: string): Promise<fetchApiResult> {
+export async function fetchApi(query: string): Promise<Result<FetchApiResponse>> {
+    if (USING_MOCKUP) {
+        return fetchMockupData(query);
+    }
+
+    return {
+        ok: false,
+        content: ERROR_MSG_400_NOT_IMPLEMENTED,
+    };
+
     // TODO: Implement real api calls.
     // if (USING_MOCKUP) {
     //     try {
@@ -24,37 +32,29 @@ export async function fetchApi(query: string): Promise<fetchApiResult> {
     //         };
     //     }
     // }
-
-    try {
-        const queryComponents = query.split('/');
-        const listOfContent = LISTS_OF_CONTENTS[queryComponents[1]];
-        const fetchedData = listOfContent.find((el: any) => el.key === queryComponents[2]);
-
-        if (undefined === fetchedData || null === fetchedData) throw ERROR_404;
-
-        return fetchedData;
-    } catch (err) {
-        throw err;
-    }
 }
 
 
 
-export async function fetchImage(url: string): Promise<String> {
-    // return USING_MOCKUP
-    //     ? LISTS_OF_CONTENTS[url.replace(BACKEND_URL, '')]
-    //     : fetch(url);
-    return LISTS_OF_CONTENTS[url.replace(BACKEND_URL, '')];
-}
+// export async function fetchImage(url: string): Promise<String> {
+//     // return USING_MOCKUP
+//     //     ? LISTS_OF_CONTENTS[url.replace(BACKEND_URL, '')]
+//     //     : fetch(url);
+//     return LISTS_OF_CONTENTS[url.replace(BACKEND_URL, '')];
+// }
 
-export async function fetchAsset(assetKey: string) : Promise<any> {
-    try {
-        const result = fetchApi(`api/asset/${assetKey}`);
-        if (isAsset(result)) throw ERROR_400_NOT_AN_ASSET;
-        return result;
-    } catch (err) {
-        throw err;
+export async function fetchAsset(assetKey: string): Promise<Result<Asset>> {
+    const fetchedData = await fetchApi(`api/asset/${assetKey}`);
+    console.log('got to fetchAsset');
+
+    if (fetchedData.ok && !isAsset(fetchedData.content)) {
+        return {
+            ok: false,
+            content: ERROR_MSG_400_NOT_AN_ASSET,
+        };
     }
+
+    return fetchedData as Result<Asset>;
 }
 
 export async function fetchGameGenre(gameGenreKey: string) {
@@ -65,35 +65,35 @@ export async function fetchGameGenre(gameGenreKey: string) {
     }
 }
 
-export async function fetchAssetType(assetTypeKey: string) {
-    try {
-        return fetchApi(`api/asset-type/${assetTypeKey}`);
-    } catch (err) {
-        throw err;
-    }
+// export async function fetchAssetType(assetTypeKey: string) {
+//     try {
+//         return fetchApi(`api/asset-type/${assetTypeKey}`);
+//     } catch (err) {
+//         throw err;
+//     }
 
-}
+// }
 
-// TODO : implement searchAssets
-export async function searchAssets(args: {
-    query: string,
-    assetTypes: AssetType[],
-    tags: string[],
-    author: string,
-    dateRange: [string, string],
-    priceRange: [number, number],
-}) {
-    return new Promise(() => '');
-}
+// // TODO : implement searchAssets
+// export async function searchAssets(args: {
+//     query: string,
+//     assetTypes: AssetType[],
+//     tags: string[],
+//     author: string,
+//     dateRange: [string, string],
+//     priceRange: [number, number],
+// }) {
+//     return new Promise(() => '');
+// }
 
-// TODO : implement updateAsset
-export async function updateAsset(args: {
-    assetKey: string,
-    newAsset: Asset,
-    credentials: string,
-}) {
-    return { status: 'Sucess' };
-}
+// // TODO : implement updateAsset
+// export async function updateAsset(args: {
+//     assetKey: string,
+//     newAsset: Asset,
+//     credentials: string,
+// }) {
+//     return { status: 'Sucess' };
+// }
 
 
 export function validateAccount({ task = "", name = "", email = "", password = "" }) {

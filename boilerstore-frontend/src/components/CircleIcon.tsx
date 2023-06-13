@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './CircleIcon.css';
 import { findMiddleColor } from '../utils/colorUtils'
-import { useWindowResize } from '../utils/windowSize';
+import { useWindowResize } from '../utils/customHooks';
 
 
 const WIDTH_TO_RESIZE = 900;

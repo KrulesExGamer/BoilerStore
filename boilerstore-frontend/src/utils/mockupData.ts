@@ -1,5 +1,5 @@
-import { BACKEND_URL } from "./constants";
-import { AssetType, AssetTypeData, GameGenre, GameGenreData, Asset, createDynamicImg, Result, UserAccount } from "./types";
+import { BACKEND_URL, ERROR_MSG_400, ERROR_MSG_400_INVALID_PATH, ERROR_MSG_404 } from "./appConstants";
+import { AssetType, AssetTypeData, GameGenre, GameGenreData, Asset, createDynamicImg, Result, UserAccount, FetchApiResponse } from "./types";
 
 
 export const assetsTypes: AssetTypeData[] = [
@@ -71,7 +71,7 @@ export const assets: Asset[] = [
         seller: 'Aaa',
         type: [AssetType.Image],
         tags: ['a', 'b'],
-        key: 'bullet-hell',
+        key: 'zelda-like',
         slides: {
             slides: [
                 createDynamicImg({
@@ -86,11 +86,12 @@ export const assets: Asset[] = [
 ];
 
 
-
-export const LISTS_OF_CONTENTS: any = {
-    'AssetsType': assetsTypes,
-    'GameGenre': gameGenres,
-    'Asset': assets,
+export const LISTS_OF_CONTENTS: {
+    [key: string]: AssetTypeData[] | GameGenreData[] | Asset[]
+} = {
+    'asset-type': assetsTypes,
+    'game-genre': gameGenres,
+    'asset': assets,
 };
 
 export const userAccounts: UserAccount[] = [
@@ -98,10 +99,45 @@ export const userAccounts: UserAccount[] = [
     { userName: "Ademir", email: "admin@mail.com", password: "admin", isAdmin: true, },
 ];
 
-export async function fetchMockupData(query: string): Promise<Result> {
+export async function fetchMockupData(query: string): Promise<Result<FetchApiResponse>> {
     const queryComponents = query.split('/');
-    const listOfContent = LISTS_OF_CONTENTS[queryComponents[1]];
-    const fetchedData = listOfContent.find((el: any) => el.key === queryComponents[2]);
+    const listOfContent = LISTS_OF_CONTENTS[queryComponents[1]];//as (AssetTypeData[] | GameGenreData[] | Asset[] | null | undefined);
+    //const fetchedData = listOfContent.find((el: any) => el.key === queryComponents[2]) 
 
-    return { ok: fetchedData !== undefined, value: fetchedData };
+    if (null === listOfContent || undefined === listOfContent) {
+        return {
+            ok: false,
+            content: ERROR_MSG_400_INVALID_PATH,
+        };
+    }
+
+    console.log('request');
+    console.log(queryComponents[2]);
+
+    let fetchedData: null | FetchApiResponse = null;
+
+    for (const el of listOfContent) {
+        console.log(el.key);
+        if (0 === el.key.localeCompare(queryComponents[2])) {
+            fetchedData = el as FetchApiResponse;
+            break;
+        }
+    }
+
+    if (null === fetchedData || undefined === fetchedData) {
+        return {
+            ok: false,
+            content: ERROR_MSG_404,
+        };
+    }
+
+    console.log('got here A');
+    let result = fetchedData;
+    console.log('Result is');
+    console.log(result);
+
+    return {
+        ok: true,
+        content: fetchedData,
+    };
 }
