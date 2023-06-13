@@ -1,7 +1,8 @@
 import { BACKEND_URL, ERROR_400_NOT_AN_ASSET, ERROR_404, USING_MOCKUP } from "./constants";
 import { LISTS_OF_CONTENTS, userAccounts } from "./mockupData";
-import { AssetType, AssetTypeData, GameGenre, GameGenreData, Asset, createDynamicImg, Result, isAsset, fetchApiResult } from "./types";
+import { AssetType, AssetTypeData, GameGenre, GameGenreData, Asset, createDynamicImg, Result, isAsset, fetchApiResult, UserState } from "./types";
 import fetch from 'node-fetch';
+import { types } from "util";
 
 
 
@@ -96,17 +97,28 @@ export async function updateAsset(args: {
 }
 
 
+export function validateLogin(name : string, password : string) {
+    const none : UserState = {isLoggedIn: false};
+    
+    for (let account of userAccounts)
+        // More secure algorythm will be used in later implementations
+        if ((account.userName === name || account.email === name) && account.password === password)
+        {    
+            const login : UserState = {
+                isLoggedIn: true, 
+                userName: account.userName, 
+                email: account.email, 
+                isAdmin: account.isAdmin
+            }
+
+            return login;
+        }
+
+    return none;
+}
+
 export function validateAccount({ task = "", name = "", email = "", password = "" }) {
-    if (task === "login") {
-        for (let account of userAccounts)
-            // More secure algorythm will be used in later implementations
-            if ((account.userName === name || account.email === name) && account.password === password)
-                return true
-
-        return false;
-    }
-
-    else if (task === "signup") {
+    if (task === "signup") {
         for (let account of userAccounts)
             // More secure algorythm will be used in later implementations
             if (account.userName === name || account.email === email)

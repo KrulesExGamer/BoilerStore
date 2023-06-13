@@ -19,20 +19,20 @@
 .logoff_button {
     border: 3px black solid;
     border-radius: 40px;
-    background-color: blue;
+    background-color: red;
     color: white;
-    font-size: 2em;
-    width: 60%;
+    font-size: 1em;
+    width: 30%;
     padding: 5px 0px 5px 0px;
     text-align: center;
 }
 
 .logoff_button:hover {
-    background-color: aqua;
+    background-color: lightcoral;
 }
 
 .logoff_button:active {
-    background-color: blue;
+    background-color: darkred;
 }
 
 .item-logoff {

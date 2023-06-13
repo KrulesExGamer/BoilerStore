@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { validateAccount } from '../utils/apiCalls';
+import { validateLogin } from '../utils/apiCalls';
 import { UserContext } from '../Context';
 import SimpleHeader from '../components/SimpleHeader';
-import { UserState } from '../utils/types';
+import { UserState, UserAccount } from '../utils/types';
 import '../shared_styles/alignment.css'
 import '../shared_styles/unselectable.css'
 import './Login.css'
@@ -20,29 +20,25 @@ const Login = () => {
 
     // Verifica se a conta existe e se os dados estão corretos
     const checkLogin = () => {
-        if (name === '' || password === '') {
+        if (name === '' || password === '')
             setError('Erro: Há campos não preenchidos!');
-            return false;
-        }
-        
-        if (validateAccount({task: 'login', name: name, password: password}))
-            return true;
 
-        else {
+        const account : UserState = validateLogin(name, password);
+        performLogin(account);
+    }
+
+    const performLogin = (account : UserState) => {
+        if (account.isLoggedIn === false) {
             setError('Erro: Usuário e/ou senha inválidos!');
-            return false;
+            return;
         }
-    }
 
-    const performLogin = () => {
-        if (checkLogin()) {
-            navigate('/');
-            if (setUserState !== undefined)
-                setUserState({isLoggedIn: true});
-            // There is a slight chance that the function will be undefined
-            // Gonna fix that later
-        }
+        if (setUserState !== undefined)
+            setUserState(account);
+
+        navigate('/');
     }
+    
 
     const welcomeMessage = () => {
         return (
@@ -73,7 +69,7 @@ const Login = () => {
                         id='password' />
                 </p>
 
-                <p><button className='login_button unselectable' onClick={performLogin}>Login</button></p>
+                <p><button className='login_button unselectable' onClick={checkLogin}>Login</button></p>
             </>
         );
     }
@@ -83,7 +79,7 @@ const Login = () => {
             return loginForm();
 
         else 
-            return (<p className='login-message'>Você já está logado!</p>)
+            return (<p className='login-message'>You're already logged in, {userState.userName}!</p>)
     }
 
     return (

@@ -35,7 +35,7 @@ const AppHeader = () => {
                 </div>
                 <div className='navbar-right'>
                     {!userState?.isLoggedIn && <Link to='/login'><IconButton icon={faUser} label='Sign In' /></Link>}
-                    {userState?.isLoggedIn && <Link to='/login'><IconButton icon={faSignOutAlt} label='Sign Out' /></Link>}
+                    {userState?.isLoggedIn && <Link to='/logoff'><IconButton icon={faSignOutAlt} label='Sign Out' /></Link>}
                     
                     <Link to='/cart'><IconButton icon={faCartShopping} label='Your Cart' /></Link>
                     <Link to='/more'><IconButton icon={faBarsStaggered} label='More' /></Link>

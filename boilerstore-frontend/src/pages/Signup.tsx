@@ -36,6 +36,9 @@ const Signup = () => {
 
     const performSignup = () => {
         if (checkSignup()) {
+            if (setUserState !== undefined)
+                setUserState({isLoggedIn: true, userName: name, email: email, isAdmin: false})
+                
             navigate('/');
         }
     }
@@ -84,11 +87,11 @@ const Signup = () => {
     }
 
     const loadForm = () => {
-        if (userState?.isLoggedIn)
-        return signupForm();
+        if (!userState?.isLoggedIn)
+            return signupForm();
 
-    else 
-        return (<p className='signup-message'>Você já está logado!</p>)
+        else 
+            return (<p className='signup-message'>You're already logged in, {userState.userName}!</p>)
     }
 
     return (
@@ -99,7 +102,7 @@ const Signup = () => {
                     <div className='login-container'>
                         {errorText != "" && <p className='error'>{`${errorText}`}</p>}
                         
-                        {userState?.isLoggedIn && welcomeMessage()}
+                        {!userState?.isLoggedIn && welcomeMessage()}
                         
                         {loadForm()}
                         
