@@ -54,6 +54,11 @@
     padding: 3px;
 }
 
+.login-message {
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+
 .error {
     color: red;
     font-weight: bolder;
