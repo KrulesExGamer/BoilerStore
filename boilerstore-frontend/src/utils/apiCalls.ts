@@ -47,7 +47,7 @@ export async function fetchImage(url: string): Promise<Result<any>> {
     };
 }
 
-export async function fetchAssetImages(asset: Asset): Promise<any[]> {
+export async function fetchAssetImages(asset: Asset): Promise<ImageTagData[]> {
     let promises = asset.slides.slides.map(async (item) => {
         if ((item as ImgData)?.url) {
             const response = await fetchImage((item as ImgData)?.url);
@@ -80,8 +80,11 @@ export async function fetchAssetImages(asset: Asset): Promise<any[]> {
 
     let results = [];
 
+    console.log('Results of Fetch Image');
     for (let p of promises) {
-        results.push(await p);
+        let result = await p;
+        results.push(result);
+        console.log(result);
     }
 
     return results;

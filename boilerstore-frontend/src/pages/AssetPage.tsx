@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import './AssetPage.css';
 import '../shared_styles/common.css';
 
-import { Asset, ImgData, Result, SlideList } from '../utils/types';
+import { Asset, ImageTagData, ImgData, Result, SlideList } from '../utils/types';
 import { useLocation } from 'react-router-dom';
 import { fetchAsset, fetchAssetImages } from '../utils/apiCalls';
 import { STATUS_MSG_100_YET_TO_SENT } from '../utils/appConstants';
@@ -46,37 +46,40 @@ const useAssetData = (assetKey: string) => {
     return assetData;
 };
 
-const useAssetImages = (assetData: Result<Asset>) => {
-    const [images, setImages] = useState<any[]>([]);
+// const useAssetImages = (assetData: Result<Asset>) : ImageTagData[] => {
+//     const [images, setImages] = useState<ImageTagData[]>([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            if (assetData.ok) {
-                const images = await fetchAssetImages(assetData.content as Asset);
-                setImages(images);
-            } else {
-                setImages([]);
-            }
-        };
+//     useEffect(() => {
+//         const fetchData = async () => {
+//             if (assetData.ok) {
+//                 const images = structuredClone(await fetchAssetImages(assetData.content as Asset));
+//                 setImages(images);
 
-        fetchData();
-    }, [assetData]);
+//                 console.log('Got Some Images');
+//                 console.log(images);
+//             }
+//         };
 
-    return images;
-};
+//         fetchData();
+//     }, [assetData]);
+
+//     return images;
+// };
 
 const AssetPageContents = (props: {
     assetData: Asset,
-    assetImgs: ImgData[] | null,
+    assetImgs: ImageTagData[] | null,
 }) => {
     let [editing, setEditing] = useState(false);
 
     const {userState, setUserState} = useContext(UserContext)
     const debbug_is_adming = true;
 
-    const assetImgs = props.assetImgs ?? [{
-        url: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_521061.png&f=1&nofb=1&ipt=f161d9fa1c208cc5d1126fbaf6be445c4fb82a64a8cbbedad0c422893d2f4200&ipo=images',
-        description: 'A BUG!!! This is just an example Image.',
+    const assetImgs : ImageTagData[] = props.assetImgs ?? [{
+        ok: true,
+        src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_521061.png&f=1&nofb=1&ipt=f161d9fa1c208cc5d1126fbaf6be445c4fb82a64a8cbbedad0c422893d2f4200&ipo=images',
+        alt: 'A BUG!!! This is just an example Image.',
+        err: '',
     }];
 
     return (
@@ -149,19 +152,22 @@ const Loading = () => {
     );
 }
 
-const useAssetPageBody = (assetData: Result<Asset>) => {
+const useAssetPageBody = (args : {
+    assetData: Result<Asset>,
+    assetImages : ImageTagData[],
+}) => {
     let [assetPageBody, setAssetPageBody] = useState(<Loading />);
 
     useEffect(() => {
-        if (assetData.ok) {
+        if (args.assetData.ok) {
             setAssetPageBody(<AssetPageContents
-                assetData={assetData.content as Asset}
-                assetImgs={null}
+                assetData={args.assetData.content as Asset}
+                assetImgs={args.assetImages}
             />);
-        } else if (assetData.content !== STATUS_MSG_100_YET_TO_SENT) {
+        } else if (args.assetData.content !== STATUS_MSG_100_YET_TO_SENT) {
             setAssetPageBody(<AssetNotFound />);
         }
-    }, [assetData]);
+    }, [args.assetData, args.assetImages]);
 
     return assetPageBody;
 };
@@ -170,8 +176,28 @@ const useAssetPageBody = (assetData: Result<Asset>) => {
 const AssetPage = () => {
     let assetKey = useAssetKey();
     let assetData = useAssetData(assetKey);
-    let assetImages = useAssetImages(assetData);
-    let assetPageBody = useAssetPageBody(assetData);
+    const [assetImages, setAssetImages] = useState<ImageTagData[]>([]);
+    //let assetImages = useAssetImages(assetData);
+    let assetPageBody = useAssetPageBody({
+        assetData: assetData,
+        assetImages : assetImages,
+    });
+
+    
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (assetData.ok) {
+                const images = structuredClone(await fetchAssetImages(assetData.content as Asset));
+                setAssetImages(images);
+
+                console.log('Got Some Images');
+                console.log(images);
+            }
+        };
+
+        fetchData();
+    }, [assetData]);
 
     return (
         <section className='AssetSection'>
