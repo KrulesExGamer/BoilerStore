@@ -261,3 +261,10 @@ export interface Result <T = any> {
     ok : boolean,
     content : T | string, 
 }
+
+export interface ImageTagData {
+    ok: boolean,
+    src : any,
+    alt : string,
+    err: string,
+}

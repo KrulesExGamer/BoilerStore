@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react';
 import './Cart.css'
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import "../img/zelda_like.png";
-import "../img/bullet_hell.jpeg" ;
+import "../img/zelda-like.png";
+import "../img/bullet-hell.jpeg" ;
 
 import GameList from '../components/CartList';
 import gamesList from '../gamesForCart/tempGameList';
