@@ -199,7 +199,7 @@ const useAssetPageBody = (args: {
 
 const AssetPage = () => {
     let [update, setUpdate] = useState(false);
-    let refetch = () => {console.log('refetch'); setUpdate(!update);};
+    let refetch = () => {console.log('refetch   '); setUpdate(!update);};
 
     let assetKey = useAssetKey();
     let assetData = useAssetData({assetKey: assetKey, refetch: update});
