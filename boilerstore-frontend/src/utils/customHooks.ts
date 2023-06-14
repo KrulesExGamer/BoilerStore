@@ -27,13 +27,12 @@ export const useWindowResize: () => { width: number, height: number } = () => {
     return dimensions;
 };
 
-export const useSearchParams = () : {[key: string]: any;} => {
+export const useSearchParams = () : URLSearchParams => {
     const location = useLocation();
-    let [args, setArgs] = useState <{[key: string]: any;}> ({});
+    let [args, setArgs] = useState <URLSearchParams> (new URLSearchParams(location.search));
 
     useEffect(() => {
-        const searchParams = new URLSearchParams(location.search);
-        setArgs(searchParams as {[key: string]: any});
+        setArgs(new URLSearchParams(location.search));
     }, [location]);
 
     return args;
