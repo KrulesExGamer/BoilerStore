@@ -1,6 +1,6 @@
-import { BACKEND_URL, ERROR_MSG_400_NOT_AN_ASSET, ERROR_MSG_400_NOT_IMPLEMENTED, USING_MOCKUP } from "./appConstants";
-import { fetchMockupData, userAccounts } from "./mockupData";
-import { Asset, FetchApiResponse, Result, isAsset, UserState } from "./types";
+import { BACKEND_URL, ERROR_MSG_400, ERROR_MSG_400_NOT_AN_ASSET, ERROR_MSG_400_NOT_IMPLEMENTED, USING_MOCKUP } from "./appConstants";
+import { fetchMockupData, fetchMockupImg, userAccounts } from "./mockupData";
+import { Asset, DynamicImg, FetchApiResponse, ImageTagData, ImgData, Result, isAsset } from "./types";
 
 
 
@@ -36,12 +36,57 @@ export async function fetchApi(query: string): Promise<Result<FetchApiResponse>>
 
 
 
-// export async function fetchImage(url: string): Promise<String> {
-//     // return USING_MOCKUP
-//     //     ? LISTS_OF_CONTENTS[url.replace(BACKEND_URL, '')]
-//     //     : fetch(url);
-//     return LISTS_OF_CONTENTS[url.replace(BACKEND_URL, '')];
-// }
+export async function fetchImage(url: string): Promise<Result<any>> {
+    if (USING_MOCKUP) {
+        return fetchMockupImg(url);
+    }
+
+    return {
+        ok: false,
+        content: ERROR_MSG_400_NOT_IMPLEMENTED,
+    };
+}
+
+export async function fetchAssetImages(asset: Asset): Promise<any[]> {
+    let promises = asset.slides.slides.map(async (item) => {
+        if ((item as ImgData)?.url) {
+            const response = await fetchImage((item as ImgData)?.url);
+
+            const result: ImageTagData = {
+                ok: response.ok,
+                src: response.ok ? response.content : '',
+                err: response.ok ? '' : response.content,
+                alt: (item as ImgData)?.description,
+            };
+
+            return result;
+        }
+
+        if ((item as DynamicImg)?.static) {
+            const response = await fetchImage((item as DynamicImg)?.static.url);
+
+            const result: ImageTagData = {
+                ok: response.ok,
+                src: response.ok ? response.content : '',
+                err: response.ok ? '' : response.content,
+                alt: (item as DynamicImg)?.static.description,
+            };
+
+            return result;
+        }
+
+        return { ok: false, err: ERROR_MSG_400, src: '', alt: '' };
+    });
+
+    let results = [];
+
+    for (let p of promises) {
+        results.push(await p);
+    }
+
+    return results;
+}
+
 
 export async function fetchAsset(assetKey: string): Promise<Result<Asset>> {
     const fetchedData = await fetchApi(`api/asset/${assetKey}`);
@@ -98,34 +143,20 @@ export async function fetchGameGenre(gameGenreKey: string) {
 // }
 
 
-export function validateLogin(name : string, password : string) {
-    const none : UserState = {isLoggedIn: false};
-    
-    for (let account of userAccounts)
-        // More secure algorythm will be used in later implementations
-        if ((account.userName.toLocaleLowerCase() === name.toLocaleLowerCase() 
-            || account.email.toLocaleLowerCase() === name.toLocaleLowerCase()) 
-                && account.password === password)
-        {    
-            const login : UserState = {
-                isLoggedIn: true, 
-                userName: account.userName, 
-                email: account.email, 
-                isAdmin: account.isAdmin
-            }
-
-            return login;
-        }
-
-    return none;
-}
-
 export function validateAccount({ task = "", name = "", email = "", password = "" }) {
-    if (task === "signup") {
+    if (task === "login") {
         for (let account of userAccounts)
             // More secure algorythm will be used in later implementations
-            if (account.userName.toLocaleLowerCase() === name.toLocaleLowerCase() 
-                || account.email.toLocaleLowerCase() === email.toLocaleLowerCase())
+            if ((account.userName === name || account.email === name) && account.password === password)
+                return true
+
+        return false;
+    }
+
+    else if (task === "signup") {
+        for (let account of userAccounts)
+            // More secure algorythm will be used in later implementations
+            if (account.userName === name || account.email === email)
                 return false
 
         return true;
@@ -143,5 +174,3 @@ export function validateAccount({ task = "", name = "", email = "", password = "
     else
         return false;
 }
-
-export { BACKEND_URL };

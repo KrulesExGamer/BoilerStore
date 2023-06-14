@@ -1,7 +1,25 @@
-import { BACKEND_URL, ERROR_MSG_400, ERROR_MSG_400_INVALID_PATH, ERROR_MSG_404 } from "./appConstants";
+import { BACKEND_URL, ERROR_MSG_400_INVALID_PATH, ERROR_MSG_404 } from "./appConstants";
 import { AssetType, AssetTypeData, GameGenre, GameGenreData, Asset, createDynamicImg, Result, UserAccount, FetchApiResponse } from "./types";
 
-import boilerstoreLogo from '../boilerstore_logo.svg';
+import boilerstoreLogo from '../img/boilerstore-logo.svg';
+import bottle from '../img/bottle.png';
+import bottleRemovebgPreview from '../img/bottle-removebg-preview.png';
+import bulletHell from '../img/bullet-hell.jpeg';
+import enterTheGungeon from '../img/enter-the-gungeon.gif';
+import fps from '../img/fps.jpeg';
+import porsche from '../img/porsche.png';
+import zeldaLike from '../img/zelda-like.png';
+
+export const images: { [key: string]: string } = {
+    'boilerstore-logo.svg': boilerstoreLogo,
+    'bottle.png': bottle,
+    'bottle-removebg-preview.png': bottleRemovebgPreview,
+    'bullet-hell.jpeg': bulletHell,
+    'enter-the-gungeon.gif': enterTheGungeon,
+    'fps.jpeg': fps,
+    'porsche.png': porsche,
+    'zelda-like.png': zeldaLike,
+};
 
 
 
@@ -58,9 +76,9 @@ export const assets: Asset[] = [
         slides: {
             slides: [
                 createDynamicImg({
-                    staticUrl: BACKEND_URL + '/' + 'bullet_hell.jpeg',
+                    staticUrl: BACKEND_URL + '/' + 'bullet-hell.jpeg',
                     staticDarkImage: true,
-                    staticDescription: BACKEND_URL + '/' + 'enterTheGungeon.gif',
+                    staticDescription: BACKEND_URL + '/' + 'enter-the-gungeon.gif',
                     dynamicDarkImage: true,
                 }),
             ],
@@ -78,7 +96,7 @@ export const assets: Asset[] = [
         slides: {
             slides: [
                 createDynamicImg({
-                    staticUrl: BACKEND_URL + '/' + 'zelda_like.png',
+                    staticUrl: BACKEND_URL + '/' + 'zelda-like.png',
                     staticDescription: '',
                 }),
             ],
@@ -143,4 +161,19 @@ export async function fetchMockupData(query: string): Promise<Result<FetchApiRes
         ok: true,
         content: fetchedData,
     };
+}
+
+
+export async function fetchMockupImg(url: string) {
+    const imgKey: string = url.replace(BACKEND_URL + '/', '');
+    const img = images[imgKey];
+    const errorResult = {
+        ok: false,
+        content: ERROR_MSG_404,
+    };
+
+    return undefined === img ? errorResult : {
+        ok: true,
+        content: img,
+    }
 }
