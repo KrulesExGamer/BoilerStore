@@ -82,6 +82,27 @@ button.buy{
 	color: #ccc;
 }
 
+/* For empty cart */
+.empty{
+    background: linear-gradient(0deg, #6f3e00, #6f003e);
+    
+    padding: 50px calc(50% - 350px);
+    margin:100px 50px;
+    border-radius:80px;
+
+    min-height:160px;
+}
+
+.empty_text{
+    width:600px;
+    min-height:60px;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+
+/* For different screens*/
+
 @media (max-width:800px){
     .buyBox{
         width: 80%;
