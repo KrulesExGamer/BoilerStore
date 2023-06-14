@@ -49,7 +49,26 @@ To be created.
 To be determined. At this point, we have little knowledge about testing frameworks. So when it comes to testing, we can only assume that we are going to pass it.
 
 ## Build Procedures
-The mockup is a simple HTML + CSS page. To view it, simply download the files, double-click "index.html", and open it in a web browser.
+Install nvm:
+Linux and MacOS
+`wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash`
+Windows
+`https://github.com/coreybutler/nvm-windows/releases`
+
+Then install node using nvm:
+`nvm install node`
+
+Now clone our repository and install node modules
+```
+git clone https://github.com/KrulesExGamer/BoilerStore
+cd BoilerStore/boilerstore-frontend/
+npm i
+```
+
+Now you only need to start the server and it should be up and running:
+`npm start`
+
+
 
 ## Problems
 We encountered issues when trying to centralize a div... several times :( . 
