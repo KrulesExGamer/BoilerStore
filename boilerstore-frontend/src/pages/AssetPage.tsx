@@ -75,7 +75,7 @@ const AssetPageContents = (props: {
     let [editing, setEditing] = useState(false);
 
     const { userState, setUserState } = useContext(UserContext)
-    const debbug_is_adming = true;
+    const debbug_is_adming = false;
 
     const assetImgs: ImageTagData[] = props.assetImgs ?? [{
         ok: true,
