@@ -27,6 +27,7 @@ export const useWindowResize: () => { width: number, height: number } = () => {
     return dimensions;
 };
 
+
 export const useSearchParams = () : URLSearchParams => {
     const location = useLocation();
     let [args, setArgs] = useState <URLSearchParams> (new URLSearchParams(location.search));
