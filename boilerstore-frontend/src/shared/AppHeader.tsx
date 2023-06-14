@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { faCartShopping, faBarsStaggered, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../Context';
-import { useWindowResize } from '../utils/windowSize'
-import './AppHeader.css';
+import { useWindowResize } from '../utils/customHooks'
 import { Link } from 'react-router-dom';
-import logo from './../img/boilerstore_logo.svg';
 import SearchBar from './../components/SearchBar'
 import IconButton from '../components/IconButton';
+import logo from './../img/boilerstore_logo.svg';
+import './AppHeader.css';
 
 const SEARCHBAR_MIN_WIDTH = 1152;
 

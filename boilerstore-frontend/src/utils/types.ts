@@ -157,11 +157,6 @@ export interface Asset {
     discount: number,
 }
 
-export interface Result {
-    ok: boolean,
-    value: any,
-}
-
 export interface UserAccount {
     userName: string,
     password: string, // TODO : substitute by hash
@@ -255,8 +250,14 @@ export function isAssetTypeData(obj: any): obj is AssetTypeData {
 
 
 
-export type fetchApiResult = (
-    Asset
+export type FetchApiResponse = (
+    null
+    | Asset
     | AssetType
     | GameGenre
 );
+
+export interface Result <T = any> {
+    ok : boolean,
+    content : T | string, 
+}

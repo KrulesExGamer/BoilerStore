@@ -4,7 +4,7 @@ import './Topics.css';
 import { faCartShopping, faCubes, faMusic, faImage, faPersonRunning, faCode, faEllipsis, } from '@fortawesome/free-solid-svg-icons';
 import CircleIcon from '../components/CircleIcon';
 import { Circle } from '@react-three/drei';
-import { useWindowResize } from '../utils/windowSize';
+import { useWindowResize } from '../utils/customHooks';
 import { Link } from 'react-router-dom';
 
 const ellipsis = { icon: faEllipsis, color1: '#338C26', color2: '#3DA624', assetType: 'more'};
