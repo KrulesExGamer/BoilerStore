@@ -11,7 +11,7 @@ import TotalPrice from '../components/TotalPrice';
 
 const Cart = () => {
     return (
-        <div className='cart'>
+        <div>
             <GameList games={gamesList}/>
             <TotalPrice games={gamesList}/>
         </div>
