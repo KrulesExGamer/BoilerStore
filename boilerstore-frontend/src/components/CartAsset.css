@@ -1,4 +1,4 @@
-.cartGame{
+.cartAsset{
 	margin:20px;
 	display:flex;
 	flex-direction: row;
@@ -7,9 +7,11 @@
 	border-radius: 20px;
 	background: linear-gradient(0deg, #0c6f58, #001e3c);
 	height: 100px;
+	width:600px;
+	padding: 10px;
 }
 
-.cartGame > *{
+.cartAsset > *{
 	align-self: center;
 	margin: 0px 15px;
 	flex-shrink: 0;
@@ -19,14 +21,15 @@
 	text-align: center;
 }
 
-.cartGame > * > *{
+.cartAsset > * > *{
 	margin: 0px 10px;
 	align-self: center;
 }
 
-.game_name{
+.asset_name{
 	font-weight: bold;
 	font-size: 18px;
+	max-width: 300px;
 }
 
 .remove_from_cart{
@@ -35,20 +38,55 @@
 	color: #ccc;
 }
 
-.game_non_discounted{
+.asset_non_discounted{
 	font-size: 14px;
 	text-decoration: line-through;
 	color: #ccc;
 }
 
-.game_discounted, .game_price{
+.asset_discounted, .asset_price{
 	font-size: 16px;
 }
 
-.game_img{
+.asset_img{
 	height:70px;
 	width:120px;
 	border: 1px solid;
 	border-color: #06382c;
 	border-radius: 3px;
+}
+
+@media (max-width:800px){
+    .cartAsset{
+        width: 80%;
+    }
+
+	.cartAsset > *{
+        margin: 0px;
+    }
+
+	.cartAsset > * > *{
+        margin-left: 5px;
+		margin-right:5px;
+    }
+
+	.asset_name{
+		max-width: 200px;
+	}
+}
+
+@media (max-width:700px){
+	.asset_name{
+		max-width: 140px;
+	}
+}
+
+@media (max-width:600px){
+    .cartAsset{
+        width: 90%;
+    }
+
+	.asset_name{
+		max-width: 100px;
+	}
 }

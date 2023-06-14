@@ -5,15 +5,15 @@ import { useEffect } from 'react';
 import "../img/zelda_like.png";
 import "../img/bullet_hell.jpeg" ;
 
-import GameList from '../components/CartList';
-import gamesList from '../gamesForCart/tempGameList';
+import AssetList from '../components/CartList';
+import assetsList from '../assetsForCart/tempAssetList';
 import TotalPrice from '../components/TotalPrice';
 
 const Cart = () => {
     return (
         <div className='cart'>
-            <GameList games={gamesList}/>
-            <TotalPrice games={gamesList}/>
+            <AssetList assets={assetsList}/>
+            <TotalPrice assets={assetsList}/>
         </div>
     );
 }

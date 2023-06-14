@@ -1,39 +1,23 @@
 import React, { useState } from 'react';
-import CartGame from './CartGame';
+import CartAsset from './CartAsset';
 // import './CartList.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import t_asset from "../assetsForCart/t_asset";
 
-type t_game = {
-    colors: [string, string],
-    width : string | null,
-    height : string | null,
-    padding : string | null,
-    price : number | null,
-    discount : number | null,
-    name : string | null,
-    img: string | null,
-    systems: string | null,
-    
-    displayType : boolean | null,
-    displayPrice : boolean | null,
-
-    removeFromCart : () => any | null,
-};
-
-const GameList = (props:{
-        games: t_game[],
+const AssetList = (props:{
+        assets: t_asset[],
     }) => {
-    const games = props.games;
-    const listGames = games.map((game) =>
-    <CartGame {...game}/>);
+    const assets = props.assets;
+    const listAssets = assets.map((asset) =>
+    <CartAsset {...asset}/>);
 
     return (
-        <ul className='cart_ul'>{listGames.map((game) =>
-            <li>{game}</li>
+        <ul className='cart_ul'>{listAssets.map((asset) =>
+            <li>{asset}</li>
             )}
         </ul>
     );
 }
 
-export default GameList;
+export default AssetList;
 

@@ -1,19 +1,20 @@
 .buyBox{
 	margin:20px;
-    padding: 0px 15px;
+    padding: 5px 15px;
 	display:flex;
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: center;
 	border-radius: 20px;
 	background: linear-gradient(0deg, #0c6f58, #001e3c);
-	height: 200px;
+	height: 125px;
+	width: 600px;
 }
 
 .upper_buyBox{
     width: 100%;
 	align-self: center;
-	margin: 15px;
+	margin: 0px;
 	flex-shrink: 0;
 	display:flex;
 	flex-direction: row;
@@ -23,17 +24,18 @@
 
 .ubB_text{
 	align-self: center;
-	margin: 15px;
+	margin: 10px;
 	flex-shrink: 0;
 	display:flex;
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: center;
+	font-weight: bold;
 }
 
 .pricing{
 	align-self: center;
-	margin: 15px;
+	margin: 10px;
 	flex-shrink: 0;
 	display:flex;
 	flex-direction: column;
@@ -41,10 +43,11 @@
 	text-align: center;
 }
 
+
 .lower_buyBox{
     width: 100%;
 	align-self: center;
-	margin: 15px;
+	margin: 0px;
 	flex-shrink: 0;
 	display:flex;
 	flex-direction: row;
@@ -57,6 +60,8 @@
     font-size: 18px;
     font-weight: bold;
     background: linear-gradient(0deg, #6f0c58, #3c001e);
+	height:30px;
+	border-radius: 5px;
 }
 
 button.back{
@@ -75,4 +80,16 @@ button.buy{
 .total_non_discounted{
 	font-weight: bold;
 	color: #ccc;
+}
+
+@media (max-width:800px){
+    .buyBox{
+        width: 80%;
+    }
+}
+
+@media (max-width:600px){
+    .buyBox{
+        width: 90%;
+    }
 }

@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type t_game = {
+type t_asset = {
+    key: string,
+    
     colors: [string, string],
-    width : string | null,
-    height : string | null,
-    padding : string | null,
     price : number | null,
     discount : number | null,
     name : string | null,
     img: any,
-    systems: string | null,
-    
-    displayType : boolean | null,
-    displayPrice : boolean | null,
+    systems: string[],
 
     removeFromCart : () => any | null,
 };
 
-export default t_game;
+export default t_asset;

@@ -1,23 +1,23 @@
 import React, { useState, useRef } from 'react';
 import './TotalPrice.css'
-import t_game from "../gamesForCart/t_game";
+import t_asset from "../assetsForCart/t_asset";
 
 const TotalPrice = (props:{
-    games: t_game[],
+    assets: t_asset[],
 }) => {
-    const games = props.games;
-    const len = games.length;
+    const assets = props.assets;
+    const len = assets.length;
     let total_non_discounted = 0;
     let total_discounted = 0;
     let p = 0;
     for(let i=0; i<len; i++){
-        if(null != games[i].price){
-            p = games[i].price ?? 0;
+        if(null != assets[i].price){
+            p = assets[i].price ?? 0;
             total_non_discounted += p;
 
-            if(null != games[i].discount){
-                const discounting:number = games[i].discount ?? 0 ;
-                const pricing:number = games[i].price ?? 0;
+            if(null != assets[i].discount){
+                const discounting:number = assets[i].discount ?? 0 ;
+                const pricing:number = assets[i].price ?? 0;
                 p = (0 >= discounting) ? 0 : discounting;
                 p = (100-p)*(pricing)/100;
                 total_discounted += p;

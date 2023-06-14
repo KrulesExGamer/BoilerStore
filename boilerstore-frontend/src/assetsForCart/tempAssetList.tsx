@@ -2,42 +2,35 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import zelda from "../img/zelda_like.png";
 import hell from "../img/bullet_hell.jpeg" ;
-import t_game from "../gamesForCart/t_game";
+import t_asset from "./t_asset";
 
-const game1:t_game = {
+const asset1:t_asset = {
+    key: "txzelda",
+
     colors: ["#f00", "#0f0"],
-    width : "600px",
-    height : "100px",
-    padding : "10px",
     price : 60,
     discount : 10,
     name : "Power",
     img: zelda,
-    systems: "A",
-
-    displayType : true,
-    displayPrice : true,
+    systems: ["linux"],
 
     removeFromCart : () => {},
 };
 
-const game2:t_game = {
+const asset2:t_asset = {
+    key: "b_hell",
+
     colors: ["#f00" , "#00f"],
-    width : "600px",
-    height : "100px",
-    padding : "10px",
     price : 50,
     discount : 0,
-    name : "Tower",
+    name : "Power Tower Throwser",
     img: hell,
-    systems: "A, B",
-
-    displayType : true,
-    displayPrice : true,
+    systems: ["linux", "windows"],
 
     removeFromCart : () => {},
 };
 
-const gamesList = [game1, game2]
 
-export default gamesList;
+const assetsList = [asset1, asset2];
+
+export default assetsList;
