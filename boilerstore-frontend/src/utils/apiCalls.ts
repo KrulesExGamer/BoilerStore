@@ -1,7 +1,6 @@
 import { BACKEND_URL, ERROR_MSG_400, ERROR_MSG_400_NOT_AN_ASSET, ERROR_MSG_400_NOT_IMPLEMENTED, USING_MOCKUP } from "./appConstants";
 import { fetchMockupData, fetchMockupImg, userAccounts } from "./mockupData";
-import { Asset, DynamicImg, FetchApiResponse, ImageTagData, ImgData, Result, isAsset } from "./types";
-
+import { Asset, DynamicImg, FetchApiResponse, ImageTagData, ImgData, Result, isAsset, UserState } from "./types";
 
 
 // Example of query: 'api/asset/cool-model
@@ -143,20 +142,34 @@ export async function fetchGameGenre(gameGenreKey: string) {
 // }
 
 
+export function validateLogin(name : string, password : string) {
+    const none : UserState = {isLoggedIn: false};
+    
+    for (let account of userAccounts)
+        // More secure algorythm will be used in later implementations
+        if ((account.userName.toLocaleLowerCase() === name.toLocaleLowerCase() 
+            || account.email.toLocaleLowerCase() === name.toLocaleLowerCase()) 
+                && account.password === password)
+        {    
+            const login : UserState = {
+                isLoggedIn: true, 
+                userName: account.userName, 
+                email: account.email, 
+                isAdmin: account.isAdmin
+            }
+
+            return login;
+        }
+
+    return none;
+}
+
 export function validateAccount({ task = "", name = "", email = "", password = "" }) {
-    if (task === "login") {
+    if (task === "signup") {
         for (let account of userAccounts)
             // More secure algorythm will be used in later implementations
-            if ((account.userName === name || account.email === name) && account.password === password)
-                return true
-
-        return false;
-    }
-
-    else if (task === "signup") {
-        for (let account of userAccounts)
-            // More secure algorythm will be used in later implementations
-            if (account.userName === name || account.email === email)
+            if (account.userName.toLocaleLowerCase() === name.toLocaleLowerCase() 
+                || account.email.toLocaleLowerCase() === email.toLocaleLowerCase())
                 return false
 
         return true;

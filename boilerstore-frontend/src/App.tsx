@@ -5,6 +5,7 @@ import Layout from './Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Logoff from './pages/Logoff';
 import Recovery from './pages/Recovery';
 import AssetPage from './pages/AssetPage';
 import Cart from './pages/Cart';
@@ -35,6 +36,7 @@ const App = () => {
 
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/login' element={<Login />}></Route>
+          <Route path='/logoff' element={<Logoff />}></Route>
           <Route path='/recovery' element={<Recovery />}></Route>
         </Routes>
       </UserContext.Provider>
