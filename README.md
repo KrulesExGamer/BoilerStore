@@ -69,7 +69,7 @@ No meaningful comments can be made at this time since we are still in the design
 - Return to home page and go to Sign Off
 - Confirm Sign Off
 
-# Recovery test
+### Recovery test
 - Go to Sign Up
 - Go to Forgot Password
 - Try random email
@@ -96,7 +96,7 @@ No meaningful comments can be made at this time since we are still in the design
 ### Logoff test
 - Successfully logged off
  
-# Recovery test
+### Recovery test
 - Email not found
 - Email recovered
   
