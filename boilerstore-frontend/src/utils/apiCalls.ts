@@ -103,7 +103,9 @@ export function validateLogin(name : string, password : string) {
     
     for (let account of userAccounts)
         // More secure algorythm will be used in later implementations
-        if ((account.userName === name || account.email === name) && account.password === password)
+        if ((account.userName.toLocaleLowerCase() === name.toLocaleLowerCase() 
+            || account.email.toLocaleLowerCase() === name.toLocaleLowerCase()) 
+                && account.password === password)
         {    
             const login : UserState = {
                 isLoggedIn: true, 
@@ -122,7 +124,8 @@ export function validateAccount({ task = "", name = "", email = "", password = "
     if (task === "signup") {
         for (let account of userAccounts)
             // More secure algorythm will be used in later implementations
-            if (account.userName === name || account.email === email)
+            if (account.userName.toLocaleLowerCase() === name.toLocaleLowerCase() 
+                || account.email.toLocaleLowerCase() === email.toLocaleLowerCase())
                 return false
 
         return true;

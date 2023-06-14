@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { validateLogin } from '../utils/apiCalls';
 import { UserContext } from '../Context';
 import SimpleHeader from '../components/SimpleHeader';
-import { UserState, UserAccount } from '../utils/types';
+import { UserState } from '../utils/types';
 import '../shared_styles/alignment.css'
 import '../shared_styles/unselectable.css'
 import './Login.css'
