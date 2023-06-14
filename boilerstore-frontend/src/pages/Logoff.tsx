@@ -16,6 +16,7 @@ const Logoff = () => {
     const searchParams = new URLSearchParams(useLocation().search);
     const username = searchParams.get('username');  
 
+    // Performs the logoff
     const performLogoff = () => {
         if (setUserState !== undefined) {
             let name = userState?.userName;

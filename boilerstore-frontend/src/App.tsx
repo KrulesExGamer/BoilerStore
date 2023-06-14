@@ -20,11 +20,11 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{ // Prove o contexto de usuário para os componentes
+      <UserContext.Provider value={{ // Provides user context to all components
         userState: appUserState,
         setUserState: setAppUserState,
       }}>
-        <Routes> {/* Subdomínios do site */}
+        <Routes> {/* Subpages */}
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path='asset' element={<AssetPage />} />

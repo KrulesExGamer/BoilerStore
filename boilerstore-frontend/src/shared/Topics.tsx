@@ -22,6 +22,7 @@ const WIDTH_TO_RESIZE = 900;
 const Topics = () => {
     const {width} = useWindowResize();
 
+    // Resizes according to the screen resolution
     const iconSize = WIDTH_TO_RESIZE >= width ? (90) : (160);
     const maxIcons = Math.floor(width / iconSize);
     let topics = 

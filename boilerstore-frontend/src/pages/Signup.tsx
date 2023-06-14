@@ -18,7 +18,7 @@ const Signup = () => {
 
     const {userState, setUserState} = useContext(UserContext);
 
-    // Verifica se o email e/ou nome já estão cadastrados
+    // Garantees that both the name and email are not already registered 
     const checkSignup = () => {
         if (name === "" || email === "" || password === "") {
             setError("Erro: Há campos não preenchidos!");
@@ -34,7 +34,8 @@ const Signup = () => {
         }
     }
 
-    const performSignup = () => {
+    // Load the data into memory and starts user session
+    const startSession = () => {
         if (checkSignup()) {
             if (setUserState !== undefined)
                 setUserState({isLoggedIn: true, userName: name, email: email, isAdmin: false})
@@ -80,7 +81,7 @@ const Signup = () => {
                         id="password" />
                 </p>
                 <p>
-                    <button className='login_button unselectable' onClick={performSignup}>Sign Up</button>
+                    <button className='login_button unselectable' onClick={startSession}>Sign Up</button>
                 </p>
             </>
         );

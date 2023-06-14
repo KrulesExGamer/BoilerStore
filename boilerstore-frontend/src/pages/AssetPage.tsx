@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import './AssetPage.css';
 import '../shared_styles/common.css';
 
-import { Asset, ImgData, Result, SlideList } from '../utils/types';
+import { Asset, ImgData, Result } from '../utils/types';
 import { useLocation } from 'react-router-dom';
 import { fetchAsset, fetchAssetImages } from '../utils/apiCalls';
 import { STATUS_MSG_100_YET_TO_SENT } from '../utils/appConstants';
@@ -26,6 +26,7 @@ const useAssetKey = (): string => {
     return assetKey;
 }
 
+// Requires assets' data
 const useAssetData = (assetKey: string) => {
     const [assetData, setAssetData] = useState<Result<Asset>>({
         ok: false,
@@ -46,6 +47,7 @@ const useAssetData = (assetKey: string) => {
     return assetData;
 };
 
+// Requires images from assets
 const useAssetImages = (assetData: Result<Asset>) => {
     const [images, setImages] = useState<any[]>([]);
 

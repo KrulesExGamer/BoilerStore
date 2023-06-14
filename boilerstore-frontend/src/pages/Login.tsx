@@ -18,7 +18,7 @@ const Login = () => {
 
     const {userState, setUserState} = useContext(UserContext)
 
-    // Verifica se a conta existe e se os dados estão corretos
+    // Verifies if the account is valid
     const checkLogin = () => {
         if (name === '' || password === '')
             setError('Erro: Há campos não preenchidos!');
@@ -27,6 +27,7 @@ const Login = () => {
         performLogin(account);
     }
 
+    // Actually performs the login
     const performLogin = (account : UserState) => {
         if (account.isLoggedIn === false) {
             setError('Erro: Usuário e/ou senha inválidos!');
@@ -39,7 +40,6 @@ const Login = () => {
         navigate('/');
     }
     
-
     const welcomeMessage = () => {
         return (
             <p className='welcome'>

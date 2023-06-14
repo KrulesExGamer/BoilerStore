@@ -14,6 +14,7 @@ const Recovery = () => {
 
     const {userState, setUserState} = useContext(UserContext);
 
+    // Checks if the email provided is valid and exists in our database
     const checkRecovery = () => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
         
@@ -25,8 +26,6 @@ const Recovery = () => {
         else 
             setError('');
 
-
-        console.log(email.toLocaleLowerCase() + '!==' + userState?.userName?.toLocaleLowerCase());
         if (email.toLocaleLowerCase() === userState?.userName?.toLocaleLowerCase())
             setSucess(true)
 

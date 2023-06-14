@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import './AppHeader.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faBarsStaggered, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../Context';
 import { useWindowResize } from '../utils/customHooks'
@@ -20,7 +19,6 @@ const AppHeader = () => {
 
     return (
         <header className='AppHeader'>
-
             <nav className='header-navbar'>
                 <div className='navbar-left'>
                     <Link to='/'>

@@ -5,7 +5,7 @@ import { Asset, DynamicImg, FetchApiResponse, ImageTagData, ImgData, Result, isA
 
 // Example of query: 'api/asset/cool-model
 export async function fetchApi(query: string): Promise<Result<FetchApiResponse>> {
-    if (USING_MOCKUP) { //Chama um API da lista de APIs válidas
+    if (USING_MOCKUP) { // Calls an API from the list of valid APIs
         return fetchMockupData(query);
     }
 
@@ -33,7 +33,7 @@ export async function fetchApi(query: string): Promise<Result<FetchApiResponse>>
     // }
 }
 
-// Chama uma imagem
+// Requests an image
 export async function fetchImage(url: string): Promise<Result<any>> {
     if (USING_MOCKUP) {
         return fetchMockupImg(url);
@@ -45,7 +45,7 @@ export async function fetchImage(url: string): Promise<Result<any>> {
     };
 }
 
-// Chama a imagem de um asset
+// Requests an asset's image
 export async function fetchAssetImages(asset: Asset): Promise<any[]> {
     let promises = asset.slides.slides.map(async (item) => {
         if ((item as ImgData)?.url) {
@@ -86,7 +86,7 @@ export async function fetchAssetImages(asset: Asset): Promise<any[]> {
     return results;
 }
 
-// Chama um asset
+// Request an asset
 export async function fetchAsset(assetKey: string): Promise<Result<Asset>> {
     const fetchedData = await fetchApi(`api/asset/${assetKey}`);
     console.log('got to fetchAsset');
