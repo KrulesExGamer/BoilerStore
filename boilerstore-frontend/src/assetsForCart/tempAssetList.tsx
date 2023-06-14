@@ -30,7 +30,19 @@ const asset2:t_asset = {
     removeFromCart : () => {},
 };
 
+const asset3:t_asset = {
+    key: "bullet_h",
 
-const assetsList = [asset1, asset2];
+    colors: ["#f00" , "#00f"],
+    price : 50,
+    discount : 0,
+    name : "Tower Throwser",
+    img: hell,
+    systems: ["linux", "windows"],
+
+    removeFromCart : () => {},
+};
+
+const assetsList = [asset1,asset2,asset3];
 
 export default assetsList;

@@ -10,10 +10,11 @@ import assetsList from '../assetsForCart/tempAssetList';
 import TotalPrice from '../components/TotalPrice';
 
 const Cart = () => {
+    const [cartList,removeFromCartList] = useState(assetsList);
     return (
         <div className='cart'>
-            <AssetList assets={assetsList}/>
-            <TotalPrice assets={assetsList}/>
+            <AssetList assets={cartList} cart={removeFromCartList}/>
+            <TotalPrice assets={cartList}/>
         </div>
     );
 }
