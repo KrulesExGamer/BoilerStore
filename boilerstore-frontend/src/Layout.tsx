@@ -7,7 +7,7 @@ import './index.css';
 import './Layout.css';
 import AppFooter from "./shared/AppFooter";
 
-
+// Layout da Homepage
 const Layout = () => {
     return (
         <div className='Layout'>

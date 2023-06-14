@@ -5,7 +5,7 @@ import { Asset, DynamicImg, FetchApiResponse, ImageTagData, ImgData, Result, isA
 
 // Example of query: 'api/asset/cool-model
 export async function fetchApi(query: string): Promise<Result<FetchApiResponse>> {
-    if (USING_MOCKUP) {
+    if (USING_MOCKUP) { //Chama um API da lista de APIs válidas
         return fetchMockupData(query);
     }
 
@@ -33,8 +33,7 @@ export async function fetchApi(query: string): Promise<Result<FetchApiResponse>>
     // }
 }
 
-
-
+// Chama uma imagem
 export async function fetchImage(url: string): Promise<Result<any>> {
     if (USING_MOCKUP) {
         return fetchMockupImg(url);
@@ -46,6 +45,7 @@ export async function fetchImage(url: string): Promise<Result<any>> {
     };
 }
 
+// Chama a imagem de um asset
 export async function fetchAssetImages(asset: Asset): Promise<any[]> {
     let promises = asset.slides.slides.map(async (item) => {
         if ((item as ImgData)?.url) {
@@ -86,7 +86,7 @@ export async function fetchAssetImages(asset: Asset): Promise<any[]> {
     return results;
 }
 
-
+// Chama um asset
 export async function fetchAsset(assetKey: string): Promise<Result<Asset>> {
     const fetchedData = await fetchApi(`api/asset/${assetKey}`);
     console.log('got to fetchAsset');
@@ -141,7 +141,7 @@ export async function fetchGameGenre(gameGenreKey: string) {
 //     return { status: 'Sucess' };
 // }
 
-
+// Validates a login request
 export function validateLogin(name : string, password : string) {
     const none : UserState = {isLoggedIn: false};
     
@@ -164,6 +164,7 @@ export function validateLogin(name : string, password : string) {
     return none;
 }
 
+// Validates a sign in or recovery request
 export function validateAccount({ task = "", name = "", email = "", password = "" }) {
     if (task === "signup") {
         for (let account of userAccounts)

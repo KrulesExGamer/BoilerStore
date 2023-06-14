@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Layout from './Layout';
@@ -20,11 +20,11 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{
+      <UserContext.Provider value={{ // Prove o contexto de usuário para os componentes
         userState: appUserState,
         setUserState: setAppUserState,
       }}>
-        <Routes>
+        <Routes> {/* Subdomínios do site */}
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path='asset' element={<AssetPage />} />
