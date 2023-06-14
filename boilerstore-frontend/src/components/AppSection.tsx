@@ -4,10 +4,10 @@ import SectionSlider, { Slide, WindowData } from '../components/SectionSlider';
 import SearchBar from '../components/SearchBar';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
-import bulletHell from '../img/bullet_hell.jpeg';
-import bulletHellGif from '../img/enterTheGungeon.gif';
+import bulletHell from '../img/bullet-hell.jpeg';
+import bulletHellGif from '../img/enter-the-gungeon.gif';
 import fps from '../img/fps.jpeg';
-import zeldaLike from '../img/zelda_like.png';
+import zeldaLike from '../img/zelda-like.png';
 import IconButton from '../components/IconButton';
 import { Link } from 'react-router-dom';
 

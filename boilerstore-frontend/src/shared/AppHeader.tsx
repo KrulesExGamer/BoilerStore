@@ -1,5 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import './AppHeader.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faBarsStaggered, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import logo from './../img/boilerstore-logo.svg';
+import SearchBar from './../components/SearchBar'
+import IconButton from '../components/IconButton';
 import { UserContext } from '../Context';
 import { useWindowResize } from '../utils/customHooks'
 import { Link } from 'react-router-dom';
