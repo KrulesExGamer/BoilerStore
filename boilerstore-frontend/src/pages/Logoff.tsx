@@ -49,7 +49,7 @@ const Logoff = () => {
             <div className='conteiner-middle-center conteiner-logoff'>
                 <div className='item-middle-center item-logoff'>
                     <div className='logoff-container'>
-                        {userState?.isLoggedIn && <p className='logoff-message'>Already leaving? <FontAwesomeIcon icon={faSadTear} /> </p>}
+                        {userState?.isLoggedIn && <p className='logoff-message'>Already leaving, {userState.userName}? <FontAwesomeIcon icon={faSadTear} /> </p>}
                         {username !== null && farewellMessage()}
                         
                         {loadButton()}

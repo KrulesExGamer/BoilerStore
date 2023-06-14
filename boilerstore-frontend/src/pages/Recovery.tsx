@@ -1,15 +1,18 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { validateAccount } from '../utils/apiCalls';
 import SimpleHeader from '../components/SimpleHeader';
 import '../shared_styles/alignment.css';
 import '../shared_styles/unselectable.css';
 import './Recovery.css';
+import { UserContext } from '../Context';
 
 const Recovery = () => {
     const [email, setEmail] = useState('');
     const [errorText, setError] = useState('');
     const [success, setSucess] = useState(false);
+
+    const {userState, setUserState} = useContext(UserContext);
 
     const checkRecovery = () => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -23,7 +26,11 @@ const Recovery = () => {
             setError('');
 
 
-        if (validateAccount({task: 'recovery', email: email}))
+        console.log(email.toLocaleLowerCase() + '!==' + userState?.userName?.toLocaleLowerCase());
+        if (email.toLocaleLowerCase() === userState?.userName?.toLocaleLowerCase())
+            setSucess(true)
+
+        else if (validateAccount({task: 'recovery', email: email}))
             setSucess(true);
 
         else
