@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import './ImageSelector.css';
-import { ImgData } from '../utils/types';
+import { ImageTagData, ImgData } from '../utils/types';
 
 
 const ImageSelector = (props : {
-    images : ImgData[],
+    images : ImageTagData[],
 }) => {
     let [imgIndex, setImgIndex] = useState(0);
+
+    console.log('ImageSelector:');
+    console.log(props.images);
 
     return (
         <div className='ImageSelector'>
             <div className='ImageSelector-img-shower'>
                 <img 
-                    alt={props.images[imgIndex].description}
-                    src={props.images[imgIndex].url}
+                    alt={props.images[imgIndex]?.alt ?? ''}
+                    src={props.images[imgIndex]?.src ?? ''}
                 />
             </div>
             <div className='ImageSelector-img-picker'>

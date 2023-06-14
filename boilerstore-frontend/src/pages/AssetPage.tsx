@@ -2,14 +2,14 @@ import { useContext, useEffect, useState } from 'react';
 import './AssetPage.css';
 import '../shared_styles/common.css';
 
-import { Asset, ImgData, Result } from '../utils/types';
+import { Asset, ImageTagData, ImgData, Result, SlideList } from '../utils/types';
 import { useLocation } from 'react-router-dom';
 import { fetchAsset, fetchAssetImages } from '../utils/apiCalls';
 import { STATUS_MSG_100_YET_TO_SENT } from '../utils/appConstants';
 import TwinLayout from './TwinLayout';
 import ImageSelector from '../components/ImageSelector';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faCancel, faCartShopping, faCheck, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../Context';
 
 
@@ -26,8 +26,8 @@ const useAssetKey = (): string => {
     return assetKey;
 }
 
-// Requires assets' data
-const useAssetData = (assetKey: string) => {
+const useAssetData = (args : {assetKey: string, refetch: boolean}) => {
+    const assetKey = args.assetKey;
     const [assetData, setAssetData] = useState<Result<Asset>>({
         ok: false,
         content: STATUS_MSG_100_YET_TO_SENT,
@@ -42,41 +42,46 @@ const useAssetData = (assetKey: string) => {
         };
 
         fetchData();
-    }, [assetKey]);
+    }, [assetKey, args.refetch]);
 
     return assetData;
 };
 
-// Requires images from assets
-const useAssetImages = (assetData: Result<Asset>) => {
-    const [images, setImages] = useState<any[]>([]);
+// const useAssetImages = (assetData: Result<Asset>) : ImageTagData[] => {
+//     const [images, setImages] = useState<ImageTagData[]>([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            if (assetData.ok) {
-                const images = await fetchAssetImages(assetData.content as Asset);
-                setImages(images);
-            } else {
-                setImages([]);
-            }
-        };
+//     useEffect(() => {
+//         const fetchData = async () => {
+//             if (assetData.ok) {
+//                 const images = structuredClone(await fetchAssetImages(assetData.content as Asset));
+//                 setImages(images);
 
-        fetchData();
-    }, [assetData]);
+//                 console.log('Got Some Images');
+//                 console.log(images);
+//             }
+//         };
 
-    return images;
-};
+//         fetchData();
+//     }, [assetData]);
+
+//     return images;
+// };
 
 const AssetPageContents = (props: {
     assetData: Asset,
-    assetImgs: ImgData[] | null,
+    assetImgs: ImageTagData[] | null,
+    refetch : () => void,
 }) => {
-    const {userState, setUserState} = useContext(UserContext)
-    const debbug_is_adming = false;
+    let [editing, setEditing] = useState(false);
 
-    const assetImgs = props.assetImgs ?? [{
-        url: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_521061.png&f=1&nofb=1&ipt=f161d9fa1c208cc5d1126fbaf6be445c4fb82a64a8cbbedad0c422893d2f4200&ipo=images',
-        description: 'A BUG!!! This is just an example Image.',
+    const { userState, setUserState } = useContext(UserContext)
+    const debbug_is_adming = true;
+
+    const assetImgs: ImageTagData[] = props.assetImgs ?? [{
+        ok: true,
+        src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_521061.png&f=1&nofb=1&ipt=f161d9fa1c208cc5d1126fbaf6be445c4fb82a64a8cbbedad0c422893d2f4200&ipo=images',
+        alt: 'A BUG!!! This is just an example Image.',
+        err: '',
     }];
 
     return (
@@ -88,19 +93,41 @@ const AssetPageContents = (props: {
                 <div className='right-side-asset-data'>
                     <h2 className='round-line-div'>{props.assetData.title}</h2>
 
-                    <div style={{display: 'flex'}}>
-                        <button className='assetpage-button'> 
-                            {'--->'} Add to cart  <FontAwesomeIcon icon={faCartShopping} /> {'<---'} 
+                    <div style={{ display: 'flex' }}>
+                        <button className='assetpage-button'>
+                            {'--->'} Add to cart  <FontAwesomeIcon icon={faCartShopping} /> {'<---'}
                         </button>
-                        { (userState?.isAdmin || debbug_is_adming) && (
-                            <button className='assetpage-button'>  
-                                Edit  <FontAwesomeIcon icon={faCartShopping} /> 
+                        {((userState?.isAdmin || debbug_is_adming) && !editing) && (
+                            <button
+                                className='assetpage-button'
+                                onClick={() => { setEditing(true) }}
+                            >
+                                Edit  <FontAwesomeIcon icon={faPenToSquare} />
                             </button>
+                        )}
+                        {((userState?.isAdmin || debbug_is_adming) && (editing)) && (
+                            <>
+                                <button
+                                    className='assetpage-button'
+                                    onClick={() => { setEditing(false); props.refetch(); }}
+                                >
+                                    Cancel Changes
+                                    <FontAwesomeIcon icon={faCancel} />
+                                </button>
+
+                                <button
+                                    className='assetpage-button'
+                                    onClick={() => { setEditing(false) }}
+                                >
+                                    Confirm Changes  
+                                    <FontAwesomeIcon icon={faCheck} />
+                                </button>
+                            </>
                         )}
                     </div>
 
                     <div className='asset-description round-line-div'>
-                        <p>{props.assetData.description}</p>
+                        <p contentEditable={editing}>{props.assetData.description}</p>
                     </div>
 
                     <div className='asset-tags-div'>
@@ -113,9 +140,9 @@ const AssetPageContents = (props: {
                     </div>
 
                     <br></br>
-                        
-                    <div style={{display: 'flex'}}>
-                        <p className='round-line-div' style={{marginRight: '20px'}}>
+
+                    <div style={{ display: 'flex' }}>
+                        <p className='round-line-div' style={{ marginRight: '20px' }}>
                             Seller:
                         </p>
                         <p className='round-line-div'>
@@ -145,29 +172,56 @@ const Loading = () => {
     );
 }
 
-const useAssetPageBody = (assetData: Result<Asset>) => {
+const useAssetPageBody = (args: {
+    assetData: Result<Asset>,
+    assetImages: ImageTagData[],
+    refetch : () => void,
+}) => {
     let [assetPageBody, setAssetPageBody] = useState(<Loading />);
 
     useEffect(() => {
-        if (assetData.ok) {
+        if (args.assetData.ok) {
             setAssetPageBody(<AssetPageContents
-                assetData={assetData.content as Asset}
-                assetImgs={null}
+                assetData={args.assetData.content as Asset}
+                assetImgs={args.assetImages}
+                refetch={args.refetch}
             />);
-        } else if (assetData.content !== STATUS_MSG_100_YET_TO_SENT) {
+        } else if (args.assetData.content !== STATUS_MSG_100_YET_TO_SENT) {
             setAssetPageBody(<AssetNotFound />);
         }
-    }, [assetData]);
+    }, [args.assetData, args.assetImages]);
 
     return assetPageBody;
 };
 
 
 const AssetPage = () => {
+    let [update, setUpdate] = useState(false);
+    let refetch = () => {console.log('refetch   '); setUpdate(!update);};
+
     let assetKey = useAssetKey();
-    let assetData = useAssetData(assetKey);
-    let assetImages = useAssetImages(assetData);
-    let assetPageBody = useAssetPageBody(assetData);
+    let assetData = useAssetData({assetKey: assetKey, refetch: update});
+    const [assetImages, setAssetImages] = useState<ImageTagData[]>([]);
+    //let assetImages = useAssetImages(assetData);
+    let assetPageBody = useAssetPageBody({
+        assetData: assetData,
+        assetImages: assetImages,
+        refetch : refetch,
+    });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (assetData.ok) {
+                const images = structuredClone(await fetchAssetImages(assetData.content as Asset));
+                setAssetImages(images);
+
+                console.log('Got Some Images');
+                console.log(images);
+            }
+        };
+
+        fetchData();
+    }, [assetData]);
 
     return (
         <section className='AssetSection'>
