@@ -1,0 +1,29 @@
+.sold{
+    background: linear-gradient(0deg, #3e6f00, #006f3e);
+    
+    padding: 50px calc(50% - 350px);
+    margin:100px 50px;
+    border-radius:80px;
+
+    min-height:160px;
+}
+
+.sold_text{
+    width:600px;
+    min-height:60px;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+@media (max-width:700px){
+    .sold_text{
+        width: 90%;
+    }
+
+    .sold{
+        padding: 50px calc(20% - 20px);
+        margin:50px;
+    }
+}
+
+

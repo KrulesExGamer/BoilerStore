@@ -55,7 +55,7 @@
 	text-align: center;
 }
 
-.lower_buyBox > button{
+button.back, button.buy{
     margin: 10px;
     font-size: 18px;
     font-weight: bold;

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './TotalPrice.css'
 import t_asset from "../assetsForCart/t_asset";
+import { Link } from 'react-router-dom';
 
 const TotalPrice = (props:{
     assets: t_asset[],
@@ -42,8 +43,8 @@ const TotalPrice = (props:{
                 }
             </div>
             <div className="lower_buyBox">
-                <button className="back">Voltar a comprar</button>
-                <button className="buy">Comprar</button>
+                <Link to='/'><button className="back">Voltar a comprar</button></Link>
+                <Link to='/sold'><button className="buy">Comprar</button></Link>
             </div>
         </div>);
 };

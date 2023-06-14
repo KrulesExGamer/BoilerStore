@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Recovery from './pages/Recovery';
 import AssetPage from './pages/AssetPage';
 import Cart from './pages/Cart';
+import Sold from './pages/Sold';
 import SearchQuery from './components/SearchQuery';
 import { STD_USER_STATE, UserContext } from './Context';
 
@@ -26,6 +27,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path='asset' element={<AssetPage />} />
             <Route path='cart' element={<Cart />} />
+            <Route path='sold' element={<Sold />} />
             <Route path='/results' element={<SearchQuery />}></Route>
           </Route>
 
