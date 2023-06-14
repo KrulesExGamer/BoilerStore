@@ -1,7 +1,3 @@
-// DO NOT REVIEW
-// IT IS A BACKUP IN CASE OF NEED
-
-
 import React, { useState, useRef } from 'react';
 import './Asset.css'
 import { useLocation } from 'react-router-dom';

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserState } from "./utils/types";
 
-// User context configuration
+
 export const STD_USER_STATE: UserState = { isLoggedIn: false, };
 
 export interface UserContextState {

@@ -9,10 +9,9 @@ import GameList from '../components/CartList';
 import gamesList from '../gamesForCart/tempGameList';
 import TotalPrice from '../components/TotalPrice';
 
-// Cart page layout
 const Cart = () => {
     return (
-        <div className='cart'>
+        <div>
             <GameList games={gamesList}/>
             <TotalPrice games={gamesList}/>
         </div>

@@ -28,6 +28,7 @@ const useAssetKey = (): string => {
 
 const useAssetData = (args : {assetKey: string, refetch: boolean}) => {
     const assetKey = args.assetKey;
+
     const [assetData, setAssetData] = useState<Result<Asset>>({
         ok: false,
         content: STATUS_MSG_100_YET_TO_SENT,
@@ -91,6 +92,7 @@ const AssetPageContents = (props: {
             </>)}
             right={(
                 <div className='right-side-asset-data'>
+                    {/*<p>{editing ? 't' : 'f'}</p>*/}
                     <h2 className='round-line-div'>{props.assetData.title}</h2>
 
                     <div style={{ display: 'flex' }}>

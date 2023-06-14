@@ -117,7 +117,7 @@ export const LISTS_OF_CONTENTS: {
 
 export const userAccounts: UserAccount[] = [
     { userName: "Jorge", email: "jorge@mail.com", password: "123", isAdmin: false, },
-    { userName: "Admin", email: "admin@mail.com", password: "admin", isAdmin: true, },
+    { userName: "Ademir", email: "admin@mail.com", password: "admin", isAdmin: true, },
 ];
 
 export async function fetchMockupData(query: string): Promise<Result<FetchApiResponse>> {
