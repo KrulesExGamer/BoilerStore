@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useContext } from 'react';
 import './AppHeader.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faBarsStaggered, faUser } from '@fortawesome/free-solid-svg-icons';
-import logo from './../img/boilerstore-logo.svg';
-import SearchBar from './../components/SearchBar'
-import IconButton from '../components/IconButton';
+import { faCartShopping, faBarsStaggered, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { UserContext } from '../Context';
 import { useWindowResize } from '../utils/customHooks'
 import { Link } from 'react-router-dom';
+import SearchBar from '../components/SearchBar';
+import IconButton from '../components/IconButton';
+import logo from '../img/boilerstore-logo.svg';
+import './AppHeader.css';
 
 const SEARCHBAR_MIN_WIDTH = 1152;
 
@@ -14,9 +15,10 @@ const AppHeader = () => {
     const { width } = useWindowResize();
     const breakSearchBar = SEARCHBAR_MIN_WIDTH > width;
 
+    const {userState, setUserState} = useContext(UserContext)
+
     return (
         <header className='AppHeader'>
-
             <nav className='header-navbar'>
                 <div className='navbar-left'>
                     <Link to='/'>
@@ -32,7 +34,9 @@ const AppHeader = () => {
                     </div>
                 </div>
                 <div className='navbar-right'>
-                    <Link to='/login'><IconButton icon={faUser} label='Sign In' /></Link>
+                    {!userState?.isLoggedIn && <Link to='/login'><IconButton icon={faUser} label='Sign In' /></Link>}
+                    {userState?.isLoggedIn && <Link to='/logoff'><IconButton icon={faSignOutAlt} label='Sign Out' /></Link>}
+                    
                     <Link to='/cart'><IconButton icon={faCartShopping} label='Your Cart' /></Link>
                     <Link to='/more'><IconButton icon={faBarsStaggered} label='More' /></Link>
                 </div>

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
 import './AppSection.css'
-import SectionSlider, { Slide, WindowData } from '../components/SectionSlider';
+import SectionSlider, { WindowData } from '../components/SectionSlider';
 import SearchBar from '../components/SearchBar';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 

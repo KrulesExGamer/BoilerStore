@@ -1,4 +1,3 @@
-import React from 'react';
 import './EyeCatcher.css';
 import bottle from './../img/bottle-removebg-preview.png';
 
