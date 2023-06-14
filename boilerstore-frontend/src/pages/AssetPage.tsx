@@ -69,10 +69,8 @@ const AssetPageContents = (props: {
     assetData: Asset,
     assetImgs: ImgData[] | null,
 }) => {
-    let [editing, setEditing] = useState(false);
-
     const {userState, setUserState} = useContext(UserContext)
-    const debbug_is_adming = true;
+    const debbug_is_adming = false;
 
     const assetImgs = props.assetImgs ?? [{
         url: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_521061.png&f=1&nofb=1&ipt=f161d9fa1c208cc5d1126fbaf6be445c4fb82a64a8cbbedad0c422893d2f4200&ipo=images',
@@ -86,7 +84,6 @@ const AssetPageContents = (props: {
             </>)}
             right={(
                 <div className='right-side-asset-data'>
-                    <p>{editing ? 't' : 'f'}</p>
                     <h2 className='round-line-div'>{props.assetData.title}</h2>
 
                     <div style={{display: 'flex'}}>
@@ -94,10 +91,7 @@ const AssetPageContents = (props: {
                             {'--->'} Add to cart  <FontAwesomeIcon icon={faCartShopping} /> {'<---'} 
                         </button>
                         { (userState?.isAdmin || debbug_is_adming) && (
-                            <button 
-                                className='assetpage-button'
-                                onClick={() => {setEditing(true)}}
-                            >  
+                            <button className='assetpage-button'>  
                                 Edit  <FontAwesomeIcon icon={faCartShopping} /> 
                             </button>
                         )}

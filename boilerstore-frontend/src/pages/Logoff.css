@@ -1,4 +1,4 @@
-.login-background {
+.logoff-background {
     background-image: url('../img/smooth_background.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -6,7 +6,7 @@
     height: 100vh;
 }
 
-.login_input {
+.logoff_input {
     border: 3px black solid;
     text-align: left;
     height: 2.5em;
@@ -16,26 +16,26 @@
     border-radius: 40px;
 }
 
-.login_button {
+.logoff_button {
     border: 3px black solid;
     border-radius: 40px;
-    background-color: blue;
+    background-color: red;
     color: white;
-    font-size: 2em;
-    width: 60%;
+    font-size: 1em;
+    width: 30%;
     padding: 5px 0px 5px 0px;
     text-align: center;
 }
 
-.login_button:hover {
-    background-color: aqua;
+.logoff_button:hover {
+    background-color: lightcoral;
 }
 
-.login_button:active {
-    background-color: blue;
+.logoff_button:active {
+    background-color: darkred;
 }
 
-.item-login {
+.item-logoff {
     margin-top: 5%;
     width: 35%;
     border: 10px black solid;
@@ -43,29 +43,20 @@
     background-color: white;
 }
 
-.login-container {
+.logoff-container {
     margin-top: 5%;
     margin-bottom : 5%;
     text-align: center;
     width: 100%;
 }
 
-.login-container p {
+.logoff-container p {
     padding: 3px;
 }
 
-.login-message {
+.logoff-message {
     font-weight: bolder;
     font-size: 1.2em;
-}
-
-.error {
-    color: red;
-    font-weight: bolder;
-    font-size: 1.2em;
-    margin-left: 20%;
-    margin-right: 20%;
-    background-color: #FBB;
 }
 
 .link {
@@ -74,7 +65,7 @@
     font-size: 1.2em;
 }
 
-.welcome {
+.farewell {
     text-align: left;
     margin-left: 10%;
     font-size: 1.1em;
