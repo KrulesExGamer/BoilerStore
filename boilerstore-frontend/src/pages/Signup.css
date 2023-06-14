@@ -1,4 +1,4 @@
-.login-background {
+.signup-background {
     background-image: url('../img/smooth_background.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -6,7 +6,7 @@
     height: 100vh;
 }
 
-.login_input {
+.signup_input {
     border: 3px black solid;
     text-align: left;
     height: 2.5em;
@@ -16,7 +16,7 @@
     border-radius: 40px;
 }
 
-.login_button {
+.signup_button {
     border: 3px black solid;
     border-radius: 40px;
     background-color: blue;
@@ -27,15 +27,15 @@
     text-align: center;
 }
 
-.login_button:hover {
+.signup_button:hover {
     background-color: aqua;
 }
 
-.login_button:active {
+.signup_button:active {
     background-color: blue;
 }
 
-.item-login {
+.item-signup {
     margin-top: 5%;
     width: 35%;
     border: 10px black solid;
@@ -43,18 +43,18 @@
     background-color: white;
 }
 
-.login-container {
+.signup-container {
     margin-top: 5%;
     margin-bottom : 5%;
     text-align: center;
     width: 100%;
 }
 
-.login-container p {
+.signup-container p {
     padding: 3px;
 }
 
-.login-message {
+.signup-message {
     font-weight: bolder;
     font-size: 1.2em;
 }
