@@ -96,7 +96,7 @@ No meaningful comments can be made at this time since we are still in the design
 ### Logoff test
 - Successfully logged off
  
-# Recovery test
+### Recovery test
 - Email not found
 - Email recovered
   
