@@ -49,14 +49,17 @@ No meaningful comments can be made at this time since we are still in the design
 - Try "Jorge" (valid user) and random password
 - Try random user and "123" (valid password)
 - Try "Jorge" and "123"
+- Hard reload page and try Try "jorge" and "123"
 - Hard reload page and try "Admin" and "admin"
-- Hard reload page and try "Admin@mail.com" and "admin"
+- Hard reload page and try "admin@mail.com" and "admin"
 
 ### Signup test
 - Go to Sign Up
 - Go to Sign In
 - Try "Jorge" and random email and random password
+- Try "jorge" and random email and random password
 - Try random name and "jorge@mail.com" and random password
+- Try random name and "JORGE@mail.com" and random password
 - Try random name except "Jorge" and "Admin" with invalid email sintax and random password
 - Try random name except "Jorge" and "Admin" with random valid email except "jorge@mail.com" and "admin@mail.com" and with random password
 
