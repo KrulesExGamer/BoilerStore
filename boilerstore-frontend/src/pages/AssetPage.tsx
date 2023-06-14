@@ -9,7 +9,7 @@ import { STATUS_MSG_100_YET_TO_SENT } from '../utils/appConstants';
 import TwinLayout from './TwinLayout';
 import ImageSelector from '../components/ImageSelector';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faCancel, faCartShopping, faCheck, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../Context';
 
 
@@ -26,7 +26,9 @@ const useAssetKey = (): string => {
     return assetKey;
 }
 
-const useAssetData = (assetKey: string) => {
+const useAssetData = (args : {assetKey: string, refetch: boolean}) => {
+    const assetKey = args.assetKey;
+
     const [assetData, setAssetData] = useState<Result<Asset>>({
         ok: false,
         content: STATUS_MSG_100_YET_TO_SENT,
@@ -41,7 +43,7 @@ const useAssetData = (assetKey: string) => {
         };
 
         fetchData();
-    }, [assetKey]);
+    }, [assetKey, args.refetch]);
 
     return assetData;
 };
@@ -69,13 +71,14 @@ const useAssetData = (assetKey: string) => {
 const AssetPageContents = (props: {
     assetData: Asset,
     assetImgs: ImageTagData[] | null,
+    refetch : () => void,
 }) => {
     let [editing, setEditing] = useState(false);
 
-    const {userState, setUserState} = useContext(UserContext)
+    const { userState, setUserState } = useContext(UserContext)
     const debbug_is_adming = true;
 
-    const assetImgs : ImageTagData[] = props.assetImgs ?? [{
+    const assetImgs: ImageTagData[] = props.assetImgs ?? [{
         ok: true,
         src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_521061.png&f=1&nofb=1&ipt=f161d9fa1c208cc5d1126fbaf6be445c4fb82a64a8cbbedad0c422893d2f4200&ipo=images',
         alt: 'A BUG!!! This is just an example Image.',
@@ -92,22 +95,41 @@ const AssetPageContents = (props: {
                     {/*<p>{editing ? 't' : 'f'}</p>*/}
                     <h2 className='round-line-div'>{props.assetData.title}</h2>
 
-                    <div style={{display: 'flex'}}>
-                        <button className='assetpage-button'> 
-                            {'--->'} Add to cart  <FontAwesomeIcon icon={faCartShopping} /> {'<---'} 
+                    <div style={{ display: 'flex' }}>
+                        <button className='assetpage-button'>
+                            {'--->'} Add to cart  <FontAwesomeIcon icon={faCartShopping} /> {'<---'}
                         </button>
-                        { (userState?.isAdmin || debbug_is_adming) && (
-                            <button 
+                        {((userState?.isAdmin || debbug_is_adming) && !editing) && (
+                            <button
                                 className='assetpage-button'
-                                onClick={() => {setEditing(true)}}
-                            >  
-                                Edit  <FontAwesomeIcon icon={faCartShopping} /> 
+                                onClick={() => { setEditing(true) }}
+                            >
+                                Edit  <FontAwesomeIcon icon={faPenToSquare} />
                             </button>
+                        )}
+                        {((userState?.isAdmin || debbug_is_adming) && (editing)) && (
+                            <>
+                                <button
+                                    className='assetpage-button'
+                                    onClick={() => { setEditing(false); props.refetch(); }}
+                                >
+                                    Cancel Changes
+                                    <FontAwesomeIcon icon={faCancel} />
+                                </button>
+
+                                <button
+                                    className='assetpage-button'
+                                    onClick={() => { setEditing(false) }}
+                                >
+                                    Confirm Changes  
+                                    <FontAwesomeIcon icon={faCheck} />
+                                </button>
+                            </>
                         )}
                     </div>
 
                     <div className='asset-description round-line-div'>
-                        <p>{props.assetData.description}</p>
+                        <p contentEditable={editing}>{props.assetData.description}</p>
                     </div>
 
                     <div className='asset-tags-div'>
@@ -120,9 +142,9 @@ const AssetPageContents = (props: {
                     </div>
 
                     <br></br>
-                        
-                    <div style={{display: 'flex'}}>
-                        <p className='round-line-div' style={{marginRight: '20px'}}>
+
+                    <div style={{ display: 'flex' }}>
+                        <p className='round-line-div' style={{ marginRight: '20px' }}>
                             Seller:
                         </p>
                         <p className='round-line-div'>
@@ -152,9 +174,10 @@ const Loading = () => {
     );
 }
 
-const useAssetPageBody = (args : {
+const useAssetPageBody = (args: {
     assetData: Result<Asset>,
-    assetImages : ImageTagData[],
+    assetImages: ImageTagData[],
+    refetch : () => void,
 }) => {
     let [assetPageBody, setAssetPageBody] = useState(<Loading />);
 
@@ -163,6 +186,7 @@ const useAssetPageBody = (args : {
             setAssetPageBody(<AssetPageContents
                 assetData={args.assetData.content as Asset}
                 assetImgs={args.assetImages}
+                refetch={args.refetch}
             />);
         } else if (args.assetData.content !== STATUS_MSG_100_YET_TO_SENT) {
             setAssetPageBody(<AssetNotFound />);
@@ -174,16 +198,18 @@ const useAssetPageBody = (args : {
 
 
 const AssetPage = () => {
+    let [update, setUpdate] = useState(false);
+    let refetch = () => {console.log('refetch'); setUpdate(!update);};
+
     let assetKey = useAssetKey();
-    let assetData = useAssetData(assetKey);
+    let assetData = useAssetData({assetKey: assetKey, refetch: update});
     const [assetImages, setAssetImages] = useState<ImageTagData[]>([]);
     //let assetImages = useAssetImages(assetData);
     let assetPageBody = useAssetPageBody({
         assetData: assetData,
-        assetImages : assetImages,
+        assetImages: assetImages,
+        refetch : refetch,
     });
-
-    
 
     useEffect(() => {
         const fetchData = async () => {
