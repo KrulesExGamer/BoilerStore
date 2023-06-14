@@ -107,6 +107,14 @@ No meaningful comments can be made at this time since we are still in the design
 ### Recovery test
 - Email not found
 - Email recovered
+ 
+### Cart test
+- Empty cart message displayed correctly
+- Asset price correctly displayed
+- Assets prices correctly displayed
+- Total prices correctly displayed
+- Correct asset removed and total price adjusted
+- Empty cart message displayed correctly
   
 ## Build Procedures
 Install nvm:
