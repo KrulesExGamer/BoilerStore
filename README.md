@@ -43,7 +43,39 @@ The following requirements must be met:
 No meaningful comments can be made at this time since we are still in the design phase.
 
 ## Test Plan
-To be created.
+### Login test
+- Go to Sign Up
+- Try random username and password
+- Try "Jorge" (valid user) and random password
+- Try random user and "123" (valid password)
+- Try "Jorge" and "123"
+- Hard reload page and try "Admin" and "admin"
+- Hard reload page and try "Admin@mail.com" and "admin"
+
+### Signup test
+- Go to Sign Up
+- Go to Sign In
+- Try "Jorge" and random email and random password
+- Try random name and "jorge@mail.com" and random password
+- Try random name except "Jorge" and "Admin" with invalid email sintax and random password
+- Try random name except "Jorge" and "Admin" with random valid email except "jorge@mail.com" and "admin@mail.com" and with random password
+
+### Logoff 
+- Go to Sign Up
+- Log in as "Jorge" with password "123"
+- Return to home page and go to Sign Off
+- Confirm Sign Off
+
+# Recovery
+- Go to Sign Up
+- Go to Forgot Password
+- Try random email
+- Try jorge@mail.com
+
+# Page consistency
+- Logged off, go to "localhost:3000/logoff"
+- Logged in as "Jorge" with password "123", go to "localhost:3000/login"
+- Logged in as "Jorge" with password "123", go to "localhost:3000/signup"
 
 ## Test Results
 To be determined. At this point, we have little knowledge about testing frameworks. So when it comes to testing, we can only assume that we are going to pass it.
@@ -77,8 +109,9 @@ npm start
 ```
 
 ## Problems
-We encountered issues when trying to centralize a div... several times :( . 
-Actually, we still did not solve them all... But you know what they say: adapt, improvise, overcome!
+We had problems generalizing the code and learning how to use React + Typescript in a non-wacky way. We coordinated through Discord and Github to avoid code conflicts.
+
+We also spent lots of time preparing the mockup APIs that could be easily upgraded to real APIs for the next milestone.
 
 ## Comments
 Hello there!
