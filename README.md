@@ -51,12 +51,12 @@ To be determined. At this point, we have little knowledge about testing framewor
 ## Build Procedures
 Install nvm:
 Linux and MacOS
-`wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash`
+```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash```
 Windows
-`https://github.com/coreybutler/nvm-windows/releases`
+```https://github.com/coreybutler/nvm-windows/releases```
 
 Then install node using nvm:
-`nvm install node`
+```nvm install node```
 
 Now clone our repository and install node modules
 ```
@@ -66,9 +66,7 @@ npm i
 ```
 
 Now you only need to start the server and it should be up and running:
-`npm start`
-
-
+```npm start```
 
 ## Problems
 We encountered issues when trying to centralize a div... several times :( . 
