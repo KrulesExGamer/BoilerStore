@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './SimpleHeader.css'
 import '../shared_styles/alignment.css'
-import logo from './../img/boilerstore_logo.svg';
+import logo from '../img/boilerstore-logo.svg';
 
 const SimpleHeader = () => {
     return (
