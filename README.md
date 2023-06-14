@@ -1,4 +1,4 @@
-# BoilerStore (DO NOT REVIEW)
+# BoilerStore
 
 In this project, we aim to build BoilerStore: an asset store for indie games, designed by game devs for game devs. The store will offer a wide range of assets, from 3D models to music and more.
 
@@ -74,6 +74,14 @@ No meaningful comments can be made at this time since we are still in the design
 - Go to Forgot Password
 - Try random email
 - Try jorge@mail.com
+  
+### Cart test
+- Empty Cart
+- Asset without discount
+- Assets with discount
+- Multiple assets, with and without discount
+- Remove asset
+- Remove all assets
 
 ## Test Results
 ### Login test
@@ -99,6 +107,14 @@ No meaningful comments can be made at this time since we are still in the design
 ### Recovery test
 - Email not found
 - Email recovered
+ 
+### Cart test
+- Empty cart message displayed correctly
+- Asset price correctly displayed
+- Assets prices correctly displayed
+- Total prices correctly displayed
+- Correct asset removed and total price adjusted
+- Empty cart message displayed correctly
   
 ## Build Procedures
 Install nvm:
@@ -134,4 +150,4 @@ We had problems generalizing the code and learning how to use React + Typescript
 We also spent lots of time preparing the mockup APIs that could be easily upgraded to real APIs for the next milestone.
 
 ## Comments
-Hello there!
+Code may be a little to extensive due to lack of prior planning.
