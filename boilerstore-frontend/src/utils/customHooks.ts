@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export const useWindowResize: () => { width: number, height: number } = () => {
     const [dimensions, setDimensions] = useState({
@@ -24,4 +25,16 @@ export const useWindowResize: () => { width: number, height: number } = () => {
     }, []);
 
     return dimensions;
+};
+
+// Returns the URL parameters of the current page
+export const useSearchParams = () : URLSearchParams => {
+    const location = useLocation();
+    let [args, setArgs] = useState <URLSearchParams> (new URLSearchParams(location.search));
+
+    useEffect(() => {
+        setArgs(new URLSearchParams(location.search));
+    }, [location]);
+
+    return args;
 };

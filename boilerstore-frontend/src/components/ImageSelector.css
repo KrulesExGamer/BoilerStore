@@ -1,0 +1,19 @@
+.ImageSelector-img-shower,
+.ImageSelector-img-picker {
+    overflow: scroll;
+
+}
+
+.ImageSelector-img-shower {
+    background-color: blue;
+}
+
+.ImageSelector-img-picker {
+    background-color: yellow    ;
+}
+
+.ImageSelector-img-shower img {
+    max-height: 100%;
+    border-radius: calc(20px + 2vmin);
+    max-width: 100%;
+}

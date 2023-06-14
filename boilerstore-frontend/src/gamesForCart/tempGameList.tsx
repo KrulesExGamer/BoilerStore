@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import zelda from "../img/zelda_like.png";
-import hell from "../img/bullet_hell.jpeg" ;
+import zelda from "../img/zelda-like.png";
+import hell from "../img/bullet-hell.jpeg" ;
 import t_game from "../gamesForCart/t_game";
 
 const game1:t_game = {

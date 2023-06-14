@@ -5,7 +5,7 @@ import { Circle } from '@react-three/drei';
 import CircleIcon from '../components/CircleIcon';
 import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 import IconButton from '../components/IconButton';
-import { useWindowResize } from '../utils/windowSize';
+import { useWindowResize } from '../utils/customHooks';
 import { Link } from 'react-router-dom';
 
 

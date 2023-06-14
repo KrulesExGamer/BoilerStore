@@ -1,0 +1,73 @@
+.logoff-background {
+    background-image: url('../img/smooth_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+}
+
+.logoff_input {
+    border: 3px black solid;
+    text-align: left;
+    height: 2.5em;
+    font-size: 1.5em;
+    width: 60%;
+    padding-left: 10px;
+    border-radius: 40px;
+}
+
+.logoff_button {
+    border: 3px black solid;
+    border-radius: 40px;
+    background-color: red;
+    color: white;
+    font-size: 1em;
+    width: 30%;
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+}
+
+.logoff_button:hover {
+    background-color: lightcoral;
+}
+
+.logoff_button:active {
+    background-color: darkred;
+}
+
+.item-logoff {
+    margin-top: 5%;
+    width: 35%;
+    border: 10px black solid;
+    border-radius: 70px;
+    background-color: white;
+}
+
+.logoff-container {
+    margin-top: 5%;
+    margin-bottom : 5%;
+    text-align: center;
+    width: 100%;
+}
+
+.logoff-container p {
+    padding: 3px;
+}
+
+.logoff-message {
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+
+.link {
+    text-decoration: underline;
+    color: blue;
+    font-size: 1.2em;
+}
+
+.farewell {
+    text-align: left;
+    margin-left: 10%;
+    font-size: 1.1em;
+    color: blue;
+}

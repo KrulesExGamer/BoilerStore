@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState } from 'react';
 import './Home.css'
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';

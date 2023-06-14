@@ -1,0 +1,103 @@
+.AssetSection {
+    color: black;
+
+    background: linear-gradient(45deg, lightblue, cyan);
+
+    min-width: 100vw;
+    min-height: 105vh;
+
+    padding: calc(30px + 3vh) calc(20px + 2vw);
+}
+
+.AssetPage {
+    max-height: 90vh;
+    background-color: red;
+    overflow: hidden;
+}
+
+@media (max-width: 960px) {
+    .AssetPage {
+        max-height: 10000vh;
+    }
+}
+
+
+
+
+.assetpage-button {
+    background: linear-gradient(30deg, red, violet);
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    min-height: 1.5em;
+    margin: 5px;
+    width: 100%;
+}
+
+.assetpage-button:hover {
+    border: 5px solid black;
+    margin: 0px;
+}
+
+
+
+.AssetSection {
+    padding: calc(30px + 3vh) calc(10px + 2vw);
+}
+
+.asset-tags-div {
+    display: block;
+}
+
+
+
+.asset-tags-list {
+    list-style-type: none;
+    /* Removes the default bullet points */
+    padding: 0;
+    /* Removes default padding */
+    margin: 0;
+    /* Removes default margin */
+    display: block;
+}
+
+
+
+.asset-tags-label,
+.asset-tags-list li {
+  
+    /* Makes the list items appear side by side */
+    margin-right: 10px;
+    /* Adds spacing between the items (adjust as needed) */
+    background: linear-gradient(35deg, rgb(255, 255, 255), rgb(219, 219, 233));
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px gray;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    float: left;
+}
+
+.asset-tags-label {
+    padding: 5px 20px;
+    color: black;
+}
+
+.asset-description {
+    min-height: calc(50px + 5vh);
+    padding: auto 10px;
+}
+
+.right-side-asset-data>* {
+    margin: 10px 0;
+}
+
+
+.right-side-asset-data h2 {
+    font-size: 2em;
+}

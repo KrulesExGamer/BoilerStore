@@ -1,0 +1,82 @@
+.signup-background {
+    background-image: url('../img/smooth_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+}
+
+.signup_input {
+    border: 3px black solid;
+    text-align: left;
+    height: 2.5em;
+    font-size: 1.5em;
+    width: 60%;
+    padding-left: 10px;
+    border-radius: 40px;
+}
+
+.signup_button {
+    border: 3px black solid;
+    border-radius: 40px;
+    background-color: blue;
+    color: white;
+    font-size: 2em;
+    width: 60%;
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+}
+
+.signup_button:hover {
+    background-color: aqua;
+}
+
+.signup_button:active {
+    background-color: blue;
+}
+
+.item-signup {
+    margin-top: 5%;
+    width: 35%;
+    border: 10px black solid;
+    border-radius: 70px;
+    background-color: white;
+}
+
+.signup-container {
+    margin-top: 5%;
+    margin-bottom : 5%;
+    text-align: center;
+    width: 100%;
+}
+
+.signup-container p {
+    padding: 3px;
+}
+
+.signup-message {
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+
+.error {
+    color: red;
+    font-weight: bolder;
+    font-size: 1.2em;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #FBB;
+}
+
+.link {
+    text-decoration: underline;
+    color: blue;
+    font-size: 1.2em;
+}
+
+.welcome {
+    text-align: left;
+    margin-left: 10%;
+    font-size: 1.1em;
+    color: blue;
+}

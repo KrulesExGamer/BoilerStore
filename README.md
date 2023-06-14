@@ -1,4 +1,4 @@
-# BoilerStore
+# BoilerStore (DO NOT REVIEW)
 
 In this project, we aim to build BoilerStore: an asset store for indie games, designed by game devs for game devs. The store will offer a wide range of assets, from 3D models to music and more.
 
@@ -43,17 +43,95 @@ The following requirements must be met:
 No meaningful comments can be made at this time since we are still in the design phase.
 
 ## Test Plan
-To be created.
+### Login test
+- Go to Sign Up
+- Try random username and password
+- Try "Jorge" (valid user) and random password
+- Try random user and "123" (valid password)
+- Try "Jorge" and "123"
+- Hard reload page and try Try "jorge" and "123"
+- Hard reload page and try "Admin" and "admin"
+- Hard reload page and try "admin@mail.com" and "admin"
+
+### Signup test
+- Go to Sign Up
+- Go to Sign In
+- Try "Jorge" and random email and random password
+- Try "jorge" and random email and random password
+- Try random name and "jorge@mail.com" and random password
+- Try random name and "JORGE@mail.com" and random password
+- Try random name except "Jorge" and "Admin" with invalid email sintax and random password
+- Try random name except "Jorge" and "Admin" with random valid email except "jorge@mail.com" and "admin@mail.com" and with random password
+
+### Logoff test
+- Go to Sign Up
+- Log in as "Jorge" with password "123"
+- Return to home page and go to Sign Off
+- Confirm Sign Off
+
+### Recovery test
+- Go to Sign Up
+- Go to Forgot Password
+- Try random email
+- Try jorge@mail.com
 
 ## Test Results
-To be determined. At this point, we have little knowledge about testing frameworks. So when it comes to testing, we can only assume that we are going to pass it.
+### Login test
+- User not found
+- User not found
+- User not found
+- Logged in as "Jorge"
+- Logged in as "Jorge"
+- Logged in as "Admin"
+- Logged in as "Admin"
+ 
+### Signup test
+- Name or email already taken
+- Name or email already taken
+- Name or email already taken
+- Name or email already taken
+- Invalid email
+- Signed up
 
+### Logoff test
+- Successfully logged off
+ 
+### Recovery test
+- Email not found
+- Email recovered
+  
 ## Build Procedures
-The mockup is a simple HTML + CSS page. To view it, simply download the files, double-click "index.html", and open it in a web browser.
+Install nvm:
+Linux and MacOS
+```
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+Windows
+```
+https://github.com/coreybutler/nvm-windows/releases
+```
+
+Then install node using nvm:
+```
+nvm install node
+```
+
+Now clone our repository and install node modules
+```
+git clone https://github.com/KrulesExGamer/BoilerStore
+cd BoilerStore/boilerstore-frontend/
+npm i
+```
+
+Now you only need to start the server and it should be up and running:
+```
+npm start
+```
 
 ## Problems
-We encountered issues when trying to centralize a div... several times :( . 
-Actually, we still did not solve them all... But you know what they say: adapt, improvise, overcome!
+We had problems generalizing the code and learning how to use React + Typescript in a non-wacky way. We coordinated through Discord and Github to avoid code conflicts.
+
+We also spent lots of time preparing the mockup APIs that could be easily upgraded to real APIs for the next milestone.
 
 ## Comments
 Hello there!
