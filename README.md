@@ -63,26 +63,43 @@ No meaningful comments can be made at this time since we are still in the design
 - Try random name except "Jorge" and "Admin" with invalid email sintax and random password
 - Try random name except "Jorge" and "Admin" with random valid email except "jorge@mail.com" and "admin@mail.com" and with random password
 
-### Logoff 
+### Logoff test
 - Go to Sign Up
 - Log in as "Jorge" with password "123"
 - Return to home page and go to Sign Off
 - Confirm Sign Off
 
-# Recovery
+# Recovery test
 - Go to Sign Up
 - Go to Forgot Password
 - Try random email
 - Try jorge@mail.com
 
-# Page consistency
-- Logged off, go to "localhost:3000/logoff"
-- Logged in as "Jorge" with password "123", go to "localhost:3000/login"
-- Logged in as "Jorge" with password "123", go to "localhost:3000/signup"
-
 ## Test Results
-To be determined. At this point, we have little knowledge about testing frameworks. So when it comes to testing, we can only assume that we are going to pass it.
+### Login test
+- User not found
+- User not found
+- User not found
+- Logged in as "Jorge"
+- Logged in as "Jorge"
+- Logged in as "Admin"
+- Logged in as "Admin"
+ 
+### Signup test
+- Name or email already taken
+- Name or email already taken
+- Name or email already taken
+- Name or email already taken
+- Invalid email
+- Signed up
 
+### Logoff test
+- Successfully logged off
+ 
+# Recovery test
+- Email not found
+- Email recovered
+  
 ## Build Procedures
 Install nvm:
 Linux and MacOS
