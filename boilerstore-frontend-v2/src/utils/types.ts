@@ -8,3 +8,11 @@ export interface dynImg {
     gif? : string | null,
     alt : string,
 };
+
+export interface asset {
+    title : string, 
+    type : string,
+    description : string,
+    imgs : dynImg[],
+
+};
