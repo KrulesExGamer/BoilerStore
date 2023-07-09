@@ -62,10 +62,12 @@ export const assetSchema = new Schema({
 			static: {
 				img: { type: String, required: true },
 				alt: { type: String, required: true },
+				dark: {type: Boolean, required: false},
 			},
 			dynamic: {
 				img: { type: String, required: false },
 				alt: { type: String, required: false },
+				dark: {type: Boolean, required: false},
 			},
 		},
 	],

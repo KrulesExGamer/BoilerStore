@@ -4,7 +4,7 @@ import { ImageBin } from '../schemas/image_bin';
 const router = Router();
 
 // READ images
-router.get('/image/:slug', async (req, res) => {
+router.get('/images/:slug', async (req, res) => {
 	try {
 		const { slug } = req.params;
 

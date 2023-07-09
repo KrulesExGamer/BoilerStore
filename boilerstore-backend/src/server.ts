@@ -8,6 +8,7 @@ import genericRoutes from './routes/generic';
 import assetRoutes from './routes/assets';
 import devRoutes from './routes/dev';
 import userRoutes from './routes/users';
+import imageRoutes from './routes/images';
 
 // # MAIN
 // ## CREATING APP
@@ -32,6 +33,7 @@ app.use('/', async (req, res, next) => {
 app.use('/api', genericRoutes);
 app.use('/api', assetRoutes);
 app.use('/api', userRoutes);
+app.use('/api', imageRoutes);
 app.use('/api/dev', devRoutes);
 
 // # EXPORTING DEFAULT

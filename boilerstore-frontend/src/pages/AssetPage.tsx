@@ -247,9 +247,8 @@ const AssetPage = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			if (assetData.ok) {
-				const images = structuredClone(
-					await fetchAssetImages(assetData.content as Asset),
-				);
+				const images = await fetchAssetImages(assetData.content as Asset);
+			
 				setAssetImages(images);
 
 				console.log('Got Some Images');
