@@ -132,13 +132,13 @@ export async function validateLogin(username: string, password: string) {
 	if (USING_MOCKUP) {
 		for (const account of userAccounts) {
 			if (
-				(account.userName.toLowerCase() === username.toLowerCase() ||
+				(account.username.toLowerCase() === username.toLowerCase() ||
 					account.email.toLowerCase() === username.toLowerCase()) &&
 				account.password === password
 			) {
 				const login: UserState = {
 					isLoggedIn: true,
-					userName: account.userName,
+					userName: account.username,
 					email: account.email,
 					isAdmin: account.role === 'admin',
 				};
@@ -152,12 +152,35 @@ export async function validateLogin(username: string, password: string) {
 
 	try {
 		username = username.trim().toLowerCase();
-		const res = await fetchApi(`${BACKEND_URL}/api/users/${username}`);
-		const user = res.content as UserAccount;
-		const result = (
-			(res.ok) 
-			&& (res.content)
-		);
+		const res = await fetchApi(`api/users/${username}`);
+		// console.log("TESTE: ",res)
+		// const user = res.content as UserAccount;
+
+		if (res.ok) {
+			if (res.content === undefined)
+				return none;
+
+			const content = res.content as any as UserAccount;
+
+			let adm = false;
+			if (content.role === 'admin')
+				adm = true;
+
+			const login : UserState = {
+				isLoggedIn: true, 
+				userName: content.username, 
+				email: content.email, 
+				isAdmin: adm
+			};
+			
+			return login;
+		}
+
+		else {
+			const login : UserState = {isLoggedIn: false};
+			return login;
+		}
+
 	} catch (err : any) {
 		return none;
 	}
@@ -174,7 +197,7 @@ export function validateAccount({
 		if (task === 'signup') {
 			for (const account of userAccounts) {
 				if (
-					account.userName.toLowerCase() === name.toLowerCase() ||
+					account.username.toLowerCase() === name.toLowerCase() ||
 					account.email.toLowerCase() === email.toLowerCase()
 				) {
 					return false;
