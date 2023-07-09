@@ -10,7 +10,7 @@ import { User } from '../schemas/user';
 
 const router = Router();
 
-const publicPath = path.join(__dirname, '../../public');
+const publicPath = path.join(__dirname, '../../public/img');
 
 function populateDatabase(): void {
 	fs.readdir(publicPath, async (err, files) => {

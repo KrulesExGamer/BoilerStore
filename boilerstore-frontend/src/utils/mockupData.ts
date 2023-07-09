@@ -120,21 +120,21 @@ export const LISTS_OF_CONTENTS: {
 
 export const userAccounts: UserAccount[] = [
 	{
-		userName: 'john_doe',
+		username: 'john_doe',
 		password: 'password123',
 		email: 'john.doe@example.com',
 		role: 'user',
-		firstname: 'John',
-		lastname: 'Doe',
+		firstName: 'John',
+		lastName: 'Doe',
 		createdAt: '2022-01-01',
 	},
 	{
-		userName: 'jane_smith',
+		username: 'jane_smith',
 		password: 'secret456',
 		email: 'jane.smith@example.com',
 		role: 'admin',
-		firstname: 'Jane',
-		lastname: 'Smith',
+		firstName: 'Jane',
+		lastName: 'Smith',
 		createdAt: '2022-02-15',
 	},
 	// Add more user accounts here

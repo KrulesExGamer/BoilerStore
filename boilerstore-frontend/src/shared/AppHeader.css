@@ -1,7 +1,7 @@
 .AppHeader {
     box-sizing: border-box;
 
-    background: linear-gradient(45deg, #0b3e5c, #2c788f);
+    background: linear-gradient(45deg, #0b3e5c, #2c788f); 
     padding: 5px 20px;
 
     min-width: 200px;

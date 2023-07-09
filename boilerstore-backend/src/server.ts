@@ -9,6 +9,7 @@ import assetRoutes from './routes/assets';
 import devRoutes from './routes/dev';
 import userRoutes from './routes/users';
 import imageRoutes from './routes/images';
+import populateAllRoutes from './routes/populate_all';
 
 // # MAIN
 // ## CREATING APP
@@ -35,6 +36,7 @@ app.use('/api', assetRoutes);
 app.use('/api', userRoutes);
 app.use('/api', imageRoutes);
 app.use('/api/dev', devRoutes);
+app.use('/api/dev', populateAllRoutes);
 
 // # EXPORTING DEFAULT
 export default app;

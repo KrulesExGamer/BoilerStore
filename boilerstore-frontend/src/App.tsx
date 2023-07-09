@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Layout from './Layout';
@@ -13,6 +13,7 @@ import SearchQuery from './components/SearchQuery';
 import { STD_USER_STATE, UserContext } from './Context';
 import TestPage from './pages/TestPage';
 import NotFound from './pages/NotFound';
+
 
 const App = () => {
 	let [appUserState, setAppUserState] = useState(STD_USER_STATE);

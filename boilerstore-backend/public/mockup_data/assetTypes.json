@@ -1,0 +1,37 @@
+[
+	{
+		"title": "Music",
+		"slug": "music",
+		"description": "Music assets for games",
+		"icon": "music_icon.png",
+		"examples": ["example1.mp3", "example2.mp3"]
+	},
+	{
+		"title": "Sprites",
+		"slug": "sprites",
+		"description": "2D sprite assets for games",
+		"icon": "sprites_icon.png",
+		"examples": ["example1.png", "example2.png"]
+	},
+	{
+		"title": "Models",
+		"slug": "models",
+		"description": "3D model assets for games",
+		"icon": "models_icon.png",
+		"examples": ["example1.obj", "example2.obj"]
+	},
+	{
+		"title": "Animation",
+		"slug": "animation",
+		"description": "Animation assets for games",
+		"icon": "animation_icon.png",
+		"examples": ["example1.gif", "example2.gif"]
+	},
+	{
+		"title": "Textures",
+		"slug": "textures",
+		"description": "Texture assets for games",
+		"icon": "textures_icon.png",
+		"examples": ["example1.jpg", "example2.jpg"]
+	}
+]

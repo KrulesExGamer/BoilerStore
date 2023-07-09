@@ -13,6 +13,7 @@ import {
 	FetchApiResponse,
 	ImageTagData,
 	Result,
+	UserAccount,
 	UserState,
 } from './types';
 
@@ -76,16 +77,16 @@ export async function fetchImage(url: string): Promise<Result<string>> {
 
 export async function fetchAssetImages(asset: Asset): Promise<CoolImage[]> {
 	const promises = asset.images.map(async (item: CoolImage) => {
-        let fetched = await fetchImage(item.static.img);
-        let fetchedContent = fetched.ok ? fetched.content : '';
+		let fetched = await fetchImage(item.static.img);
+		let fetchedContent = fetched.ok ? fetched.content : '';
 
 		let result: CoolImage = {
 			static: { img: fetchedContent, alt: item.static.alt },
 		};
 
 		if (item.dynamic) {
-            let fetched = await fetchImage(item.dynamic.img);
-            let fetchedContent = fetched.ok ? fetched.content : '';
+			let fetched = await fetchImage(item.dynamic.img);
+			let fetchedContent = fetched.ok ? fetched.content : '';
 
 			result.dynamic = {
 				img: fetchedContent,
@@ -125,27 +126,65 @@ export async function fetchGameGenre(gameGenreKey: string) {
 	}
 }
 
-export function validateLogin(name: string, password: string) {
+export async function validateLogin(username: string, password: string) {
 	const none: UserState = { isLoggedIn: false };
 
-	for (const account of userAccounts) {
-		if (
-			(account.userName.toLowerCase() === name.toLowerCase() ||
-				account.email.toLowerCase() === name.toLowerCase()) &&
-			account.password === password
-		) {
-			const login: UserState = {
-				isLoggedIn: true,
-				userName: account.userName,
-				email: account.email,
-				isAdmin: account.role === 'admin',
-			};
+	if (USING_MOCKUP) {
+		for (const account of userAccounts) {
+			if (
+				(account.username.toLowerCase() === username.toLowerCase() ||
+					account.email.toLowerCase() === username.toLowerCase()) &&
+				account.password === password
+			) {
+				const login: UserState = {
+					isLoggedIn: true,
+					userName: account.username,
+					email: account.email,
+					isAdmin: account.role === 'admin',
+				};
 
-			return login;
+				return login;
+			}
 		}
+
+		return none;
 	}
 
-	return none;
+	try {
+		username = username.trim().toLowerCase();
+		const res = await fetchApi(`api/users/${username}`);
+		// console.log("TESTE: ",res)
+		// const user = res.content as UserAccount;
+
+		if (res.ok) {
+			if (res.content === undefined)
+				return none;
+
+			const content = res.content as any as UserAccount;
+
+			let adm = false;
+			if (content.role === 'admin')
+				adm = true;
+
+			const login : UserState = {
+				isLoggedIn: true, 
+				userName: content.username, 
+				email: content.email, 
+				isAdmin: adm
+			};
+			
+			return login;
+		}
+
+		else {
+			const login : UserState = {isLoggedIn: false};
+			return login;
+		}
+
+	} catch (err : any) {
+		return none;
+	}
+	
 }
 
 export function validateAccount({
@@ -154,25 +193,26 @@ export function validateAccount({
 	email = '',
 	password = '',
 }) {
-	if (task === 'signup') {
-		for (const account of userAccounts) {
-			if (
-				account.userName.toLowerCase() === name.toLowerCase() ||
-				account.email.toLowerCase() === email.toLowerCase()
-			) {
-				return false;
+	if (USING_MOCKUP) {
+		if (task === 'signup') {
+			for (const account of userAccounts) {
+				if (
+					account.username.toLowerCase() === name.toLowerCase() ||
+					account.email.toLowerCase() === email.toLowerCase()
+				) {
+					return false;
+				}
 			}
-		}
-		return true;
-	} else if (task === 'recovery') {
-		for (const account of userAccounts) {
-			if (account.email === email) {
-				return true;
+			return true;
+		} else if (task === 'recovery') {
+			for (const account of userAccounts) {
+				if (account.email === email) {
+					return true;
+				}
 			}
+			return false;
+		} else {
+			return false;
 		}
-		return false;
-	} else {
-		return false;
 	}
 }
-
