@@ -14,34 +14,40 @@ import { STD_USER_STATE, UserContext } from './Context';
 import TestPage from './pages/TestPage';
 import NotFound from './pages/NotFound';
 
-
 const App = () => {
-  let [appUserState, setAppUserState] = useState(STD_USER_STATE);
+	let [appUserState, setAppUserState] = useState(STD_USER_STATE);
 
-  return (
-    <BrowserRouter>
-      <UserContext.Provider value={{ // Provides user context to all components
-        userState: appUserState,
-        setUserState: setAppUserState,
-      }}>
-        <Routes> {/* Subpages */}
-          <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path='asset' element={<AssetPage />} />
-            <Route path='cart' element={<Cart />} />
-            <Route path='/results' element={<SearchQuery />}></Route>
-            <Route path='/not-found' element={<NotFound />}></Route>
-            <Route path='/test' element={<TestPage />}></Route>
-          </Route>
-
-          <Route path='/signup' element={<Signup />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/logoff' element={<Logoff />}></Route>
-          <Route path='/recovery' element={<Recovery />}></Route>
-        </Routes>
-      </UserContext.Provider>
-    </BrowserRouter>
-  );
+	return (
+		<BrowserRouter>
+			<UserContext.Provider
+				value={{
+					// Provides user context to all components
+					userState: appUserState,
+					setUserState: setAppUserState,
+				}}
+			>
+				<Routes>
+					{' '}
+					{/* Subpages */}
+					<Route path="/" element={<Layout />}>
+						<Route index element={<Home />} />
+						<Route path="asset" element={<AssetPage />} />
+						<Route path="cart" element={<Cart />} />
+						<Route
+							path="/results"
+							element={<SearchQuery />}
+						></Route>
+						<Route path="/not-found" element={<NotFound />}></Route>
+						<Route path="/test" element={<TestPage />}></Route>
+					</Route>
+					<Route path="/signup" element={<Signup />}></Route>
+					<Route path="/login" element={<Login />}></Route>
+					<Route path="/logoff" element={<Logoff />}></Route>
+					<Route path="/recovery" element={<Recovery />}></Route>
+				</Routes>
+			</UserContext.Provider>
+		</BrowserRouter>
+	);
 };
 
 export default App;

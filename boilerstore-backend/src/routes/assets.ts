@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { Asset } from '../schemas/assets';
+import { Asset } from '../schemas/asset';
 
 const router = Router();
 

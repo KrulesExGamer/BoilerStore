@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 import server from "./src/server";
 
-const PORT = 3000;
+const PORT = 3001;
 const DB = "mongodb://localhost:27017/BoilerStore";
 
 const serverStartUpProcedure = () => {

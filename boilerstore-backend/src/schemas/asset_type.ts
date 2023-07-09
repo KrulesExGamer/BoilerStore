@@ -14,23 +14,21 @@ export const assetTypeSchema = new Schema({
 		index: true, 
 		unique: true,
 	},
+
 	description: {
 		type: String,
 		required: true,
 	},
 
-	images: [
-		{
-			static: {
-				img: { type: String, required: true },
-				alt: { type: String, required: true },
-			},
-			dynamic: {
-				img: { type: String, required: false },
-				alt: { type: String, required: false },
-			},
-		},
-	],
+	icon: {
+		type: String,
+		required: true,
+	},
+
+	examples: [{
+		type: String,
+		required: false,
+	}],
 });
 
 export const AssetType = model('AssetType', assetTypeSchema);

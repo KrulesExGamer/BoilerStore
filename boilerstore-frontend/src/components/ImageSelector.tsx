@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './ImageSelector.css';
-import { ImageTagData, ImgData } from '../utils/types';
+import { CoolImage } from '../utils/types';
 
 
 const ImageSelector = (props : {
-    images : ImageTagData[],
+    images : CoolImage[],
 }) => {
     let [imgIndex, setImgIndex] = useState(0);
 
@@ -15,8 +15,8 @@ const ImageSelector = (props : {
         <div className='ImageSelector'>
             <div className='ImageSelector-img-shower'>
                 <img 
-                    alt={props.images[imgIndex]?.alt ?? ''}
-                    src={props.images[imgIndex]?.src ?? ''}
+                    alt={props.images[imgIndex]?.static.alt ?? ''}
+                    src={props.images[imgIndex]?.static.img ?? ''}
                 />
             </div>
             <div className='ImageSelector-img-picker'>

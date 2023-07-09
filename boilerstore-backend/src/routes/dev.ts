@@ -1,11 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import express, { Request, Response } from 'express';
-import { ImageBin, imageBinSchema } from '../schemas/image';
+import { ImageBin, imageBinSchema } from '../schemas/image_bin';
 import { Router } from 'express';
-import { Asset } from '../schemas/assets';
+import { Asset } from '../schemas/asset';
 import { AssetType } from '../schemas/asset_type';
 import { GameGenre } from '../schemas/game_genre';
+import { User } from '../schemas/user';
 
 const router = Router();
 
@@ -28,6 +29,7 @@ function populateDatabase(): void {
 				const newImage = new ImageBin({
 					data: image,
 					contentType: contentType,
+					slug: file,
 				});
 
 				await newImage.save();
@@ -81,7 +83,7 @@ router.post('/populate/assets', async (req, res) => {
 					price,
 					amount,
 					active,
-          assetType,
+					assetType,
 					tags,
 					images,
 				} = assetData;
@@ -129,13 +131,15 @@ router.post('/populate/assettypes', async (req: Request, res: Response) => {
 
 		const createdAssetTypes = await Promise.all(
 			assetTypesData.map(async (assetTypeData: any) => {
-				const { title, slug, description, images } = assetTypeData;
+				const { title, slug, description, icon, examples } =
+					assetTypeData;
 
 				const assetType = new AssetType({
 					title,
 					slug,
 					description,
-					images,
+					icon,
+					examples,
 				});
 
 				await assetType.save();
@@ -157,35 +161,57 @@ router.post('/populate/assettypes', async (req: Request, res: Response) => {
 });
 
 router.post('/populate/gamegenres', async (req: Request, res: Response) => {
-  try {
-    const gameGenresData = req.body; // Array of game genres data
+	try {
+		const gameGenresData = req.body; // Array of game genres data
 
-    const createdGameGenres = await Promise.all(
-      gameGenresData.map(async (gameGenreData: any) => {
-        const { title, slug, description, images } = gameGenreData;
+		const createdGameGenres = await Promise.all(
+			gameGenresData.map(async (gameGenreData: any) => {
+				const { title, slug, description, icon, examples } =
+					gameGenreData;
 
-        const gameGenre = new GameGenre({
-          title,
-          slug,
-          description,
-          images,
-        });
+				const gameGenre = new GameGenre({
+					title,
+					slug,
+					description,
+					icon,
+					examples,
+				});
 
-        await gameGenre.save();
-        return gameGenre;
-      })
-    );
+				await gameGenre.save();
+				return gameGenre;
+			}),
+		);
 
-    res.status(201).json(createdGameGenres);
-    console.log('[CREATED] </> SUCCESS! Created new game genres on the database.');
-  } catch (err: any) {
-    res.status(400).json({ errorMessage: err.message });
-    console.log(
-      '[POST ERROR 400] </> OPS! Could not create new game genres due to an error.'
-    );
-    console.log(err);
-  }
+		res.status(201).json(createdGameGenres);
+		console.log(
+			'[CREATED] </> SUCCESS! Created new game genres on the database.',
+		);
+	} catch (err: any) {
+		res.status(400).json({ errorMessage: err.message });
+		console.log(
+			'[POST ERROR 400] </> OPS! Could not create new game genres due to an error.',
+		);
+		console.log(err);
+	}
 });
 
+router.post('/populate/users', async (req, res) => {
+	try {
+		const usersData = req.body; // Array of user data
+
+		const createdUsers = await User.create(usersData);
+
+		res.status(201).json(createdUsers);
+		console.log(
+			'[CREATED] </> SUCCESS! Created new users on the database.',
+		);
+	} catch (err: any) {
+		res.status(400).json({ errorMessage: err.message });
+		console.log(
+			'[POST ERROR 400] </> OPS! Could not create new users due to an error.',
+		);
+		console.log(err);
+	}
+});
 
 export default router;

@@ -29,6 +29,10 @@ export const assetSchema = new Schema({
 		type: Number,
 		required: true,
 	},
+	discount: {
+		type: Number,
+		required: false,
+	},
 	amount: {
 		type: Number,
 		required: false,

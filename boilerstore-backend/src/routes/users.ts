@@ -31,20 +31,20 @@ router.post('/users', async (req, res) => {
 });
 
 // GET ALL USERS
-router.get('/users', async (req, res) => {
-	try {
-		const users = await User.find();
-		res.status(200).json(users);
-	} catch (err: any) {
-		res.status(500).json({ error: 'Failed to fetch users' });
-	}
-});
+// router.get('/users', async (req, res) => {
+// 	try {
+// 		const users = await User.find();
+// 		res.status(200).json(users);
+// 	} catch (err: any) {
+// 		res.status(500).json({ error: 'Failed to fetch users' });
+// 	}
+// });
 
 // GET USER BY ID
-router.get('/users/:id', async (req, res) => {
+router.get('/users/:username', async (req, res) => {
 	try {
-		const { id } = req.params;
-		const user = await User.findById(id);
+		const { username } = req.params;
+		const user = await User.findOne({username});
 		if (!user) {
 			throw new Error('User not found');
 		} else {
@@ -93,7 +93,7 @@ router.delete('/users/:id', async (req, res) => {
 	try {
 		const { id } = req.params;
 
-		const user = await User.deleteOne({id});
+		const user = await User.deleteOne({ id });
 		if (!user) {
 			throw new Error('User not found');
 		}
