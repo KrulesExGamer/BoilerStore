@@ -27,7 +27,6 @@ const AppHeader = () => {
 		? { background: 'linear-gradient(45deg, #86122f, #b63b66)' }
 		: {};
 
-<<<<<<< Updated upstream
 	return (
 		<header className="AppHeader" style={style}>
 			<nav className="header-navbar">
@@ -59,33 +58,6 @@ const AppHeader = () => {
 							<IconButton icon={faSignOutAlt} label="Sign Out" />
 						</Link>
 					)}
-=======
-    return (
-        <header className='AppHeader'>
-            <nav className='header-navbar'>
-                <div className='navbar-left'>
-                    <Link to='/'>
-                        <img className='boilerstore-logo' alt='BoilerStore Logo' src={logo} />
-                    </Link>
-                    <Link to='/'>
-                        <h1 className='boilerstore-main-title'>BoilerStore</h1>
-                    </Link>
-                </div>
-                <div className='navbar-center'>
-                    <div className='logo-container'>
-                        {!breakSearchBar && (<SearchBar />)}
-                    </div>
-                </div>
-                <div className='navbar-right'>
-                    {!userState?.isLoggedIn && <Link to='/login'><IconButton icon={faUser} label='Sign In' /></Link>}
-                    {userState?.isLoggedIn && <Link to='/logoff'><IconButton icon={faSignOutAlt} label='Sign Out' /></Link>}
-                    
-                    <Link to='/cart'><IconButton icon={faCartShopping} label='Your Cart' /></Link>
-                    {userState?.isAdmin && (<Link to='/more'><IconButton icon={faBarsStaggered} label='More' /></Link>)}
-                </div>
-            </nav>
-            
->>>>>>> Stashed changes
 
 					<Link to="/cart">
 						<IconButton icon={faCartShopping} label="Your Cart" />
