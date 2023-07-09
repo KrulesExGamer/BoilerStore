@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import './AssetPage.css';
 import '../shared_styles/common.css';
 
-import { Asset, CoolImage, Result } from '../utils/types';
-import { useLocation } from 'react-router-dom';
+import { Asset, CoolImage, Result, UserState } from '../utils/types';
+import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import { fetchAsset, fetchAssetImages } from '../utils/apiCalls';
 import { STATUS_MSG_100_YET_TO_SENT } from '../utils/appConstants';
 import TwinLayout from './TwinLayout';
@@ -16,6 +16,7 @@ import {
 	faPenToSquare,
 } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../Context';
+import { ensure } from '../utils/funcs';
 
 // Custom hook to manage the asset key passed by the url
 const useAssetKey = (): string => {
@@ -78,6 +79,16 @@ const useAssetData = (args: { assetKey: string; refetch: boolean }) => {
 //     return images;
 // };
 
+const addToCart = (
+	userState: UserState | undefined,
+	navigate: NavigateFunction,
+) => {
+	if (userState?.isLoggedIn) {
+	} else {
+		navigate('/login');
+	}
+};
+
 const AssetPageContents = (props: {
 	assetData: Asset;
 	assetImgs: CoolImage[] | null;
@@ -86,6 +97,7 @@ const AssetPageContents = (props: {
 	let [editing, setEditing] = useState(false);
 
 	const { userState, setUserState } = useContext(UserContext);
+	const navigate = useNavigate();
 	const debbug_is_adming = false;
 
 	const assetImgs: CoolImage[] = props.assetImgs ?? [
@@ -109,7 +121,10 @@ const AssetPageContents = (props: {
 					<h2 className="round-line-div">{props.assetData.title}</h2>
 
 					<div style={{ display: 'flex' }}>
-						<button className="assetpage-button">
+						<button
+							className="assetpage-button"
+							onClick={() => addToCart(userState, navigate)}
+						>
 							{'--->'} Add to cart{' '}
 							<FontAwesomeIcon icon={faCartShopping} /> {'<---'}
 						</button>
@@ -158,14 +173,16 @@ const AssetPageContents = (props: {
 						</p>
 					</div>
 
-					<div className="asset-tags-div">
-						<p className="asset-tags-label ">Tags:</p>
-						<ul className="asset-tags-list">
-							{props.assetData.tags.map((tag) => (
-								<li> {`#${tag} `} </li>
-							))}
-						</ul>
-					</div>
+					{ensure(props.assetData.tags) && (
+						<div className="asset-tags-div">
+							<p className="asset-tags-label ">Tags:</p>
+							<ul className="asset-tags-list">
+								{props.assetData.tags.map((tag) => (
+									<li> {`#${tag} `} </li>
+								))}
+							</ul>
+						</div>
+					)}
 
 					<br></br>
 
@@ -177,9 +194,23 @@ const AssetPageContents = (props: {
 							Seller:
 						</p>
 						<p className="round-line-div">
-							{props.assetData.seller}
+							{props.assetData.seller ?? 'BoilerStore Official'}
 						</p>
 					</div>
+
+					{ensure(props.assetData.amount) && (
+						<div style={{ display: 'flex' }}>
+							<p
+								className="round-line-div"
+								style={{ marginRight: '20px' }}
+							>
+								Amount in stock:
+							</p>
+							<p className="round-line-div">
+								{props.assetData.amount}
+							</p>
+						</div>
+					)}
 				</div>
 			}
 		/>
@@ -247,8 +278,10 @@ const AssetPage = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			if (assetData.ok) {
-				const images = await fetchAssetImages(assetData.content as Asset);
-			
+				const images = await fetchAssetImages(
+					assetData.content as Asset,
+				);
+
 				setAssetImages(images);
 
 				console.log('Got Some Images');
