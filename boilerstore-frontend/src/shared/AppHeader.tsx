@@ -63,7 +63,7 @@ const AppHeader = () => {
 						<IconButton icon={faCartShopping} label="Your Cart" />
 					</Link>
 					{userState?.isAdmin && (
-						<Link to="/more">
+						<Link to="/admin/more">
 							<IconButton icon={faBarsStaggered} label="More" />
 						</Link>
 					)}

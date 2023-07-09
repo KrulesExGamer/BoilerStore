@@ -8,7 +8,7 @@
 	font-weight: bold;
 }
 
-.More a {
+.More a, .More link {
 	background: linear-gradient(45deg, rgb(138, 39, 51), rgb(188, 72, 109));
 	margin: 10px 20px;
 	border-radius: 50px;

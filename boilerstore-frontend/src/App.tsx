@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, redirect } from 'react-router-dom';
 
 import Layout from './Layout';
 import Home from './pages/Home';
@@ -14,6 +14,7 @@ import { STD_USER_STATE, UserContext } from './Context';
 import TestPage from './pages/TestPage';
 import NotFound from './pages/NotFound';
 import MorePage from './pages/More';
+import UsersPage from './pages/Users';
 
 
 const App = () => {
@@ -39,9 +40,11 @@ const App = () => {
 							path="/results"
 							element={<SearchQuery />}
 						></Route>
-						<Route path="/not-found" element={<NotFound />}></Route>
-						<Route path="/test" element={<TestPage />}></Route>
-						<Route path="more" element={<MorePage />} />
+						<Route path="not-found" element={<NotFound />}></Route>
+						<Route path="test" element={<TestPage />}></Route>
+						<Route path="admin/more" element={<MorePage />} />
+						<Route path="admin/users" element={<UsersPage />} />
+						<Route path='*' element={<NotFound />} />
 					</Route>
 					<Route path="/signup" element={<Signup />}></Route>
 					<Route path="/login" element={<Login />}></Route>

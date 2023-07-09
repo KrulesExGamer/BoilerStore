@@ -132,13 +132,13 @@ export async function validateLogin(username: string, password: string) {
 	if (USING_MOCKUP) {
 		for (const account of userAccounts) {
 			if (
-				(account.userName.toLowerCase() === username.toLowerCase() ||
+				(account.username.toLowerCase() === username.toLowerCase() ||
 					account.email.toLowerCase() === username.toLowerCase()) &&
 				account.password === password
 			) {
 				const login: UserState = {
 					isLoggedIn: true,
-					userName: account.userName,
+					username: account.username,
 					email: account.email,
 					isAdmin: account.role === 'admin',
 				};
@@ -174,7 +174,7 @@ export function validateAccount({
 		if (task === 'signup') {
 			for (const account of userAccounts) {
 				if (
-					account.userName.toLowerCase() === name.toLowerCase() ||
+					account.username.toLowerCase() === name.toLowerCase() ||
 					account.email.toLowerCase() === email.toLowerCase()
 				) {
 					return false;
