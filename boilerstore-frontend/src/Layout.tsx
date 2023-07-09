@@ -9,12 +9,12 @@ import AppFooter from "./shared/AppFooter";
 // Homepage's Layout
 const Layout = () => {
     return (
-        <div className='Layout'>
-            <AppHeader />
-
-            <Outlet />
-
-            <AppFooter />
+        <div>
+            <div className='Layout'>
+                <AppHeader />
+                <Outlet />
+                <AppFooter />
+            </div>
         </div>
     )
 };

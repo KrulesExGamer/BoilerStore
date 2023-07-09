@@ -51,8 +51,8 @@ export interface UserAccount {
 	password: string;
 	email: string;
 	role: string;
-	firstname: string;
-	lastname: string;
+	firstName: string;
+	lastName: string;
 	createdAt: string;
 }
 
