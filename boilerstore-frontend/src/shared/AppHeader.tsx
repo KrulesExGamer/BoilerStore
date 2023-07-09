@@ -24,7 +24,7 @@ const AppHeader = () => {
 
 	const { userState, setUserState } = useContext(UserContext);
 	const style = userState?.isAdmin
-		? { background: 'linear-gradient(45deg, #86122f, #b63b66)' }
+		? { background: 'linear-gradient(45deg, rgb(138, 39, 51), rgb(188, 72, 109))' }
 		: {};
 
 	return (
@@ -63,8 +63,8 @@ const AppHeader = () => {
 						<IconButton icon={faCartShopping} label="Your Cart" />
 					</Link>
 					{userState?.isAdmin && (
-						<Link to="/add">
-							<IconButton icon={faAdd} label="Add" />
+						<Link to="/more">
+							<IconButton icon={faBarsStaggered} label="More" />
 						</Link>
 					)}
 				</div>

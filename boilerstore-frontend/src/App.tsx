@@ -13,6 +13,7 @@ import SearchQuery from './components/SearchQuery';
 import { STD_USER_STATE, UserContext } from './Context';
 import TestPage from './pages/TestPage';
 import NotFound from './pages/NotFound';
+import MorePage from './pages/More';
 
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
 						></Route>
 						<Route path="/not-found" element={<NotFound />}></Route>
 						<Route path="/test" element={<TestPage />}></Route>
+						<Route path="more" element={<MorePage />} />
 					</Route>
 					<Route path="/signup" element={<Signup />}></Route>
 					<Route path="/login" element={<Login />}></Route>
