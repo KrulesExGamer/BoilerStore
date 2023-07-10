@@ -15,6 +15,7 @@ import TestPage from './pages/TestPage';
 import NotFound from './pages/NotFound';
 import MorePage from './pages/More';
 import UsersPage from './pages/Users';
+import AddUser from './pages/AddUser';
 
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
 						<Route path="test" element={<TestPage />}></Route>
 						<Route path="admin/more" element={<MorePage />} />
 						<Route path="admin/users" element={<UsersPage />} />
+						<Route path="admin/adduser" element={<AddUser />} />
 						<Route path='*' element={<NotFound />} />
 					</Route>
 					<Route path="/signup" element={<Signup />}></Route>
