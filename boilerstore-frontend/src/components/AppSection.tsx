@@ -13,10 +13,10 @@ import { Link } from 'react-router-dom';
 
 let Data: WindowData[] = [
     {
-        title: 'Firts Person Shoter',
-        description: 'A fi',
+        title: 'Firts Person Shoter Pack',
+        description: 'A pack full of models for fps games.',
         icon: undefined,
-        key: 'fps',
+        key: 'first-person-shooter',
         slides: [
             { staticImage: fps, dynamicImage: undefined, description: 'A porsche.', darkImage: false, },
         ],
@@ -24,8 +24,8 @@ let Data: WindowData[] = [
         discount: 0.05,
     },
     {
-        title: 'Bullet Hell',
-        description: 'A fi',
+        title: 'Bullet Hell Pack',
+        description: 'A pack full of models for bullet hell games.',
         icon: undefined,
         key: 'bullet-hell',
         slides: [
@@ -35,10 +35,10 @@ let Data: WindowData[] = [
         discount: 0.05,
     },
     {
-        title: 'Zelda Likeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-        description: 'A fi',
+        title: 'Zelda Like',
+        description: 'A zelda like texture pack and game pack.',
         icon: undefined,
-        key: 'zelda-like',
+        key: 'zelda-like-game',
         slides: [
             { staticImage: zeldaLike, dynamicImage: undefined, description: 'A porsche.', darkImage: false, },
         ],
