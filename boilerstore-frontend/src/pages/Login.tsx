@@ -1,5 +1,5 @@
-import { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useContext, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { validateLogin } from '../utils/apiCalls';
 import { UserContext } from '../Context';
@@ -17,15 +17,37 @@ const Login = () => {
     const navigate = useNavigate();
 
     const {userState, setUserState} = useContext(UserContext)
+    const [buttonClicked, setButtonClicked] = useState(0);
 
-    // Verifies if the account is valid
-    const checkLogin = () => {
-        if (name === '' || password === '')
-            setError('Erro: Há campos não preenchidos!');
 
-        const account : UserState = validateLogin(name, password);
-        performLogin(account);
-    }
+    useEffect(() => {
+        // Verifies if the account is valid
+        const checkLogin = async () => {
+            if (buttonClicked === 0)
+                return;
+
+            if (name === '' || password === '') {
+                setError('Erro: Há campos não preenchidos!');
+                return;
+            }
+
+            const account : UserState | undefined = await validateLogin(name, password);
+
+            if (account === undefined) {
+                setError('Erro: Houve um problema de conexão com o banco de dados!');
+                return;
+            }
+
+            else if (!account.isLoggedIn) {
+                setError('Erro: Usuário ou senha não encontrados!');
+                return;
+            }
+
+            performLogin(account);
+        }
+
+        checkLogin();
+    }, [buttonClicked])
 
     // Actually performs the login
     const performLogin = (account : UserState) => {
@@ -69,7 +91,7 @@ const Login = () => {
                         id='password' />
                 </p>
 
-                <p><button className='login_button unselectable' onClick={checkLogin}>Login</button></p>
+                <p><button className='login_button unselectable' onClick={()  => setButtonClicked(buttonClicked + 1)}>Login</button></p>
             </>
         );
     }

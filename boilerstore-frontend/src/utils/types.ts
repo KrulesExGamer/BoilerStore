@@ -51,17 +51,18 @@ export interface UserAccount {
 	username: string;
 	password: string;
 	email: string;
-	role: string;
+	role?: string;
 	firstName: string;
 	lastName: string;
-	createdAt: string;
+	createdAt?: string;
 }
 
 export interface UserState {
 	isLoggedIn: boolean;
-
 	userName?: string;
 	email?: string;
+	firstName?: string;
+	lastName?: string;
 	isAdmin?: boolean;
 }
 

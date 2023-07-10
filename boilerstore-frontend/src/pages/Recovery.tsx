@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { validateAccount } from '../utils/apiCalls';
 import SimpleHeader from '../components/SimpleHeader';
@@ -11,30 +11,39 @@ const Recovery = () => {
     const [email, setEmail] = useState('');
     const [errorText, setError] = useState('');
     const [success, setSucess] = useState(false);
+    const [buttonClicked, setButtonClicked] = useState(0);
 
     const {userState, setUserState} = useContext(UserContext);
 
     // Checks if the email provided is valid and exists in our database
-    const checkRecovery = () => {
-        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-        
-        if (email === '' || !emailRegex.test(email)) {
-            setError('Erro: Email inválido!');
-            return;
+    useEffect(() => {
+        const checkRecovery = async () => {
+            if (buttonClicked === 0)
+                return;
+
+            const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            
+            if (email === '' || !emailRegex.test(email)) {
+                setError('Erro: Email inválido!');
+                return;
+            }
+    
+            else 
+                setError('');
+    
+            if (email.toLocaleLowerCase() === userState?.userName?.toLocaleLowerCase())
+                setSucess(true)
+    
+    
+            else if (await validateAccount({email: email}))
+                setSucess(true);
+    
+            else
+                setError('Erro: Email não encontrado!');
         }
 
-        else 
-            setError('');
-
-        if (email.toLocaleLowerCase() === userState?.userName?.toLocaleLowerCase())
-            setSucess(true)
-
-        else if (validateAccount({task: 'recovery', email: email}))
-            setSucess(true);
-
-        else
-            setError('Erro: Email não encontrado!');
-    }
+        checkRecovery();
+    }, [buttonClicked])
 
     const recoveryForm = () => {
         return (
@@ -50,7 +59,7 @@ const Recovery = () => {
                         id='email' />
                 </p>
                 <p>
-                    <button className='recovery_button unselectable' onClick={checkRecovery}>Recovery</button>
+                    <button className='recovery_button unselectable' onClick={() => setButtonClicked(buttonClicked + 1)}>Recovery</button>
                 </p>
             </>
         )

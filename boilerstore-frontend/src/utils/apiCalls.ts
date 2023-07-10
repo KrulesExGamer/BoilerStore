@@ -152,26 +152,78 @@ export async function validateLogin(username: string, password: string) {
 
 	try {
 		username = username.trim().toLowerCase();
-		const res = await fetchApi(`${BACKEND_URL}/api/users/${username}`);
-		const user = res.content as UserAccount;
-		const result = (
-			(res.ok) 
-			&& (res.content)
-		);
+		const res = await fetchApi(`api/users/${username}`);
+		console.log("TESTE: ", res)
+
+		if (res.ok) {
+			if (res.content === undefined)
+				return undefined;
+
+			const content = res.content as any as UserAccount;
+
+			let adm = false;
+			if (content.role === 'admin')
+				adm = true;
+
+			const login : UserState = {
+				isLoggedIn: true, 
+				userName: content.username, 
+				email: content.email,
+				firstName: content.firstName,
+				lastName: content.lastName,
+				isAdmin: adm
+			};
+			
+			return login;
+		}
+
+		else 
+			return none;
+
 	} catch (err : any) {
-		return none;
+		return undefined;
 	}
 	
 }
 
-export function validateAccount({
-	task = '',
+export async function validateSignup(conta : UserAccount) {
+	try {
+		const json = {
+			username: conta.username,
+			password: conta.password,
+			email: conta.email,
+			role: conta.role,
+			firstName: conta.firstName,
+			lastName: conta.lastName
+		}
+
+		const res = await axios.post(`${BACKEND_URL}/api/users`, json);
+
+		console.log(res);
+
+		const login : UserState = {
+			isLoggedIn: true, 
+			userName: conta.username, 
+			email: conta.email,
+			firstName: conta.firstName,
+			lastName: conta.lastName,
+			isAdmin: false
+		}
+
+		return login;
+	}
+
+	catch (err : any) {
+		return undefined;
+	}
+}
+
+// Return true if account exists
+export async function validateAccount({
 	name = '',
 	email = '',
-	password = '',
 }) {
 	if (USING_MOCKUP) {
-		if (task === 'signup') {
 			for (const account of userAccounts) {
 				if (
 					account.username.toLowerCase() === name.toLowerCase() ||
@@ -181,15 +233,30 @@ export function validateAccount({
 				}
 			}
 			return true;
-		} else if (task === 'recovery') {
-			for (const account of userAccounts) {
-				if (account.email === email) {
-					return true;
-				}
+	}
+
+	else {
+		try {
+			name = name.trim().toLowerCase();
+			const res = await fetchApi(`api/users/${name}`);
+	
+			console.log("So far good!")
+			console.log(res)
+
+			if (res.ok) {
+				if (res.content === undefined)
+					return undefined;
+	
+				console.log("Very cool indeed!")
+	
+				return true;
 			}
-			return false;
-		} else {
-			return false;
+	
+			else 
+				return false;
+	
+		} catch (err : any) {
+			return undefined;
 		}
 	}
 }
