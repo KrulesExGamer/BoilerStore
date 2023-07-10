@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import './Users.css';
 import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../Context';
-import { UserAccount } from '../utils/types';
-import { delApi, fetchApi } from '../utils/apiCalls';
+import { UserContext } from '../../Context';
+import { UserAccount } from '../../utils/types';
+import { delApi, fetchApi } from '../../utils/apiCalls';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import IconButton from '../components/IconButton';
+import IconButton from '../../components/IconButton';
 
 const EditUserForm = (props: { username: string }) => {
 	const [user, setUser] = useState<UserAccount>({
@@ -44,7 +44,7 @@ const EditUserForm = (props: { username: string }) => {
 			<h2 className="edituser-title">Edit User</h2>
 			<form onSubmit={handleSubmit} className="edituser-form">
 				<label htmlFor="username" className="edituser-label">
-					Username
+					username
 				</label>
 				<input
 					type="text"
@@ -120,6 +120,8 @@ const UserSquare = (props: {
 		await delApi(`api/users/${props.user.username}`);
 	};
 
+	const navigate = useNavigate();
+
 	return (
 		<div className="user-square">
 			<h2>{props.user.username}</h2>
@@ -138,9 +140,7 @@ const UserSquare = (props: {
 				</button>
 				<button
 					className="UserSquare-but"
-					onClick={() => {
-						props.setUserToEdit(props.user.username);
-					}}
+					onClick={() => navigate(`/admin/edit-user?user=${props.user.username}`)}
 				>
 					<IconButton icon={faEdit} label="Edit" />
 				</button>

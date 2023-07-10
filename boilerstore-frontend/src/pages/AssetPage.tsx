@@ -65,7 +65,7 @@ const addToCart = (
 	navigate: NavigateFunction,
 ) => {
 	if (userState?.isLoggedIn) {
-		saveToCart([assetKey], userState.userName || '')
+		saveToCart([assetKey], userState.username || '')
 	} else {
 		navigate('/login');
 	}

@@ -1,12 +1,12 @@
 import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { validateAccount, validateSignup } from '../utils/apiCalls';
-import { UserContext } from '../Context';
-import SimpleHeader from '../components/SimpleHeader';
-import { UserAccount, UserState } from '../utils/types';
-import '../shared_styles/alignment.css';
-import '../shared_styles/unselectable.css';
+import { validateAccount, validateSignup } from '../../utils/apiCalls';
+import { UserContext } from '../../Context';
+import SimpleHeader from '../../components/SimpleHeader';
+import { UserAccount, UserState } from '../../utils/types';
+import '../../shared_styles/alignment.css';
+import '../../shared_styles/unselectable.css';
 import './AddUser.css';
 
 const AddUser = () => {
@@ -69,7 +69,7 @@ const AddUser = () => {
                         style={{marginRight: "15%"}}
                         onChange={(event)=>setName(event.target.value)} 
                         type="text"
-                        placeholder='Username...'
+                        placeholder='username...'
                         id="name" />
                 </p>
                 <p>

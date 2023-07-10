@@ -56,7 +56,6 @@
 }
 
 .edituser-container {
-
 	max-width: max(calc(25% + 200px));
 	margin: 0 auto;
 	padding: 20px;
@@ -107,4 +106,39 @@
 
 .edituser-button:hover {
 	background-color: #0056b3;
+}
+
+.isadmin-checkbox-label {
+	display: inline-block;
+	position: relative;
+	padding-left: 25px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.isadmin-checkbox-custom {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+}
+
+.isadmin-checkbox-custom::after {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 10px;
+	height: 10px;
+	background-color: #555;
+	border-radius: 2px;
+	display: none;
+}
+
+.isadmin-checkbox-label input:checked + .isadmin-checkbox-custom::after {
+	display: block;
 }

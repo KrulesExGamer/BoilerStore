@@ -139,6 +139,10 @@ export async function fetchCartAsset(assetKey : string) {
 	return assetItem as any as Asset;
 }
 
+export async function updateApi (url : string, content : any) {
+	await axios.put(`${BACKEND_URL}/${url}`, content);
+}
+
 export async function saveToCart(assetKeys : string[], username : string) {
 	if (assetKeys.length === 0) throw Error('Empty list');
 	if (username === '') throw Error('User name is necessary');
@@ -172,7 +176,7 @@ export async function validateLogin(username: string, password: string) {
 			) {
 				const login: UserState = {
 					isLoggedIn: true,
-					userName: account.username,
+					username: account.username,
 					email: account.email,
 					isAdmin: account.role === 'admin',
 				};

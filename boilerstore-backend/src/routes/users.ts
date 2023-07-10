@@ -44,7 +44,7 @@ router.get('/all/users', async (req, res) => {
 router.get('/users/:username', async (req, res) => {
 	try {
 		const { username } = req.params;
-		const user = await User.findOne({username});
+		const user = await User.findOne({ username });
 		if (!user) {
 			throw new Error('User not found');
 		} else {
@@ -60,15 +60,21 @@ router.get('/users/:username', async (req, res) => {
 router.put('/users/:username', async (req, res) => {
 	try {
 		const { username } = req.params;
-		const { email, password, firstName, lastName, role } =
+		const { newUsername, email, password, firstName, lastName, role } =
 			req.body;
 
-		const user = await User.findById(username);
+		const user = await User.findOne({ username });
 		if (!user) {
 			throw new Error('User not found');
 		}
 
-		user.username = username;
+		user.username =
+			undefined === newUsername ||
+			null === newUsername ||
+			'' === newUsername
+				? username
+				: newUsername;
+
 		user.email = email;
 		user.password = password;
 		user.firstName = firstName;
@@ -94,7 +100,7 @@ router.put('/users/cart/:username', async (req, res) => {
 		const { username } = req.params;
 		const { cart } = req.body;
 
-		const user = await User.findOne({username});
+		const user = await User.findOne({ username });
 		if (!user) {
 			throw new Error('User not found');
 		}
@@ -117,8 +123,6 @@ router.put('/users/cart/:username', async (req, res) => {
 	}
 });
 
-
-
 // DELETE USER
 router.delete('/users/:username', async (req, res) => {
 	try {
@@ -129,7 +133,10 @@ router.delete('/users/:username', async (req, res) => {
 			throw new Error('User not found');
 		}
 
-		res.status(200).json({ message: 'User deleted successfully', item: user});
+		res.status(200).json({
+			message: 'User deleted successfully',
+			item: user,
+		});
 		console.log('[DELETED] </> SUCCESS! Deleted user from the database.');
 	} catch (err: any) {
 		const status = 'User not found' === err.message ? 404 : 400;
@@ -146,7 +153,7 @@ router.delete('/users/cart/:username', async (req, res) => {
 	try {
 		const { username } = req.params;
 
-		const user = await User.findOne({username});
+		const user = await User.findOne({ username });
 		if (!user) {
 			throw new Error('User not found');
 		}

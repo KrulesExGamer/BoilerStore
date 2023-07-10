@@ -13,9 +13,10 @@ import SearchQuery from './components/SearchQuery';
 import { STD_USER_STATE, UserContext } from './Context';
 import TestPage from './pages/TestPage';
 import NotFound from './pages/NotFound';
-import MorePage from './pages/More';
-import UsersPage from './pages/Users';
-import AddUser from './pages/AddUser';
+import MorePage from './pages/admin/More';
+import UsersPage from './pages/admin/Users';
+import AddUser from './pages/admin/AddUser';
+import EditUser from './pages/admin/EditUser';
 
 
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
 						<Route path="test" element={<TestPage />}></Route>
 						<Route path="admin/more" element={<MorePage />} />
 						<Route path="admin/users" element={<UsersPage />} />
+						<Route path="admin/edit-user" element={<EditUser />} />
 						<Route path="admin/adduser" element={<AddUser />} />
 						<Route path='*' element={<NotFound />} />
 					</Route>
