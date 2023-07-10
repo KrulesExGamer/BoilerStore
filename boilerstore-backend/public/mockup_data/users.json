@@ -1,20 +1,112 @@
 [
 	{
+		"username": "ademiro",
+		"email": "ademiro@example.com",
+		"password": "admin123",
+		"firstName": "Ademir",
+		"lastName": "Ademiro",
+		"role": "admin",
+		"createdAt": "2022-01-01T00:00:00Z",
+		"cart": []
+	},
+	{
 		"username": "john_doe",
+		"email": "john@example.com",
 		"password": "password123",
-		"email": "john.doe@example.com",
-		"role": "user",
 		"firstName": "John",
 		"lastName": "Doe",
-		"createdAt": "2022-01-01"
+		"role": "user",
+		"createdAt": "2022-01-01T00:00:00Z",
+		"cart": []
 	},
 	{
 		"username": "jane_smith",
-		"password": "secret456",
-		"email": "jane.smith@example.com",
-		"role": "admin",
+		"email": "jane@example.com",
+		"password": "password456",
 		"firstName": "Jane",
 		"lastName": "Smith",
-		"createdAt": "2022-02-15"
+		"role": "user",
+		"createdAt": "2022-02-01T00:00:00Z",
+		"cart": []
+	},
+	{
+		"username": "mike_jackson",
+		"email": "mike@example.com",
+		"password": "password789",
+		"firstName": "Mike",
+		"lastName": "Jackson",
+		"role": "user",
+		"createdAt": "2022-03-01T00:00:00Z",
+		"cart": []
+	},
+	{
+		"username": "amy_wilson",
+		"email": "amy@example.com",
+		"password": "password321",
+		"firstName": "Amy",
+		"lastName": "Wilson",
+		"role": "user",
+		"createdAt": "2022-04-01T00:00:00Z",
+		"cart": []
+	},
+	{
+		"username": "david_thompson",
+		"email": "david@example.com",
+		"password": "password654",
+		"firstName": "David",
+		"lastName": "Thompson",
+		"role": "user",
+		"createdAt": "2022-05-01T00:00:00Z",
+		"cart": []
+	},
+	{
+		"username": "sarah_anderson",
+		"email": "sarah@example.com",
+		"password": "password987",
+		"firstName": "Sarah",
+		"lastName": "Anderson",
+		"role": "user",
+		"createdAt": "2022-06-01T00:00:00Z",
+		"cart": []
+	},
+	{
+		"username": "chris_johnson",
+		"email": "chris@example.com",
+		"password": "password135",
+		"firstName": "Chris",
+		"lastName": "Johnson",
+		"role": "user",
+		"createdAt": "2022-07-01T00:00:00Z",
+		"cart": []
+	},
+	{
+		"username": "emily_brown",
+		"email": "emily@example.com",
+		"password": "password246",
+		"firstName": "Emily",
+		"lastName": "Brown",
+		"role": "user",
+		"createdAt": "2022-08-01T00:00:00Z",
+		"cart": []
+	},
+	{
+		"username": "alex_walker",
+		"email": "alex@example.com",
+		"password": "password579",
+		"firstName": "Alex",
+		"lastName": "Walker",
+		"role": "user",
+		"createdAt": "2022-09-01T00:00:00Z",
+		"cart": []
+	},
+	{
+		"username": "lisa_green",
+		"email": "lisa@example.com",
+		"password": "password864",
+		"firstName": "Lisa",
+		"lastName": "Green",
+		"role": "user",
+		"createdAt": "2022-10-01T00:00:00Z",
+		"cart": []
 	}
 ]
