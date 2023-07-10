@@ -13,12 +13,12 @@
 		"images": [
 			{
 				"static": {
-					"img": "https://example.com/3d-red-ford-car.jpg",
+					"img": "5143537.jpg",
 					"alt": "3D Red Ford Car",
 					"dark": false
 				},
 				"dynamic": {
-					"img": "https://example.com/3d-red-ford-car-gif.gif",
+					"img": "8221775.jpg",
 					"alt": "3D Red Ford Car Animation",
 					"dark": false
 				}
@@ -39,7 +39,7 @@
 		"images": [
 			{
 				"static": {
-					"img": "https://example.com/cat-sprite.png",
+					"img": "bottle.png",
 					"alt": "Cat Sprite",
 					"dark": false
 				},
@@ -61,7 +61,7 @@
 		"images": [
 			{
 				"static": {
-					"img": "https://example.com/fantasy-game-music-pack.jpg",
+					"img": "notfound.jpg",
 					"alt": "Fantasy Game Music Pack",
 					"dark": true
 				},
@@ -83,7 +83,7 @@
 		"images": [
 			{
 				"static": {
-					"img": "https://example.com/space-vfx-pack.jpg",
+					"img": "porsche.png",
 					"alt": "Space VFX Pack",
 					"dark": false
 				},
@@ -105,7 +105,7 @@
 		"images": [
 			{
 				"static": {
-					"img": "https://example.com/racing-game-textures.jpg",
+					"img": "smooth_background.png",
 					"alt": "Racing Game Textures",
 					"dark": true
 				},
@@ -114,57 +114,73 @@
 		]
 	},
 	{
-		"title": "Firts Person Shoter",
-		"description": "A fi",
-		"type": ["image"],
-		"tags": ["a", "b"],
-		"slug": "fps",
-		"seller": "Aaa",
+		"title": "First Person Shooter",
+		"slug": "first-person-shooter",
+		"description": "A first-person shooter game with intense action.",
+		"seller": "GameDevStudios",
+		"price": 29.99,
+		"discount": 10,
+		"amount": 25,
+		"active": true,
+		"assetType": ["Game"],
+		"tags": ["FPS", "Shooter", "Action", "Game"],
 		"images": [
 			{
-				"static": { "img": "fps.jpeg", "alt": "aa" }
+				"static": {
+					"img": "fps.jpeg",
+					"alt": "First Person Shooter",
+					"dark": false
+				},
+				"dynamic": null
 			}
-		],
-		"price": 1.87,
-		"discount": 0.05
+		]
 	},
 	{
 		"title": "Bullet Hell",
-		"description": "A fi",
-		"type": ["image"],
-		"tags": ["a", "b"],
 		"slug": "bullet-hell",
-		"seller": "Aaa",
+		"description": "An intense bullet hell shooter game.",
+		"seller": "GameDevStudios",
+		"price": 19.99,
+		"discount": 5,
+		"amount": 20,
+		"active": true,
+		"assetType": ["Game"],
+		"tags": ["Bullet Hell", "Shooter", "Action", "Game"],
 		"images": [
 			{
 				"static": {
 					"img": "bullet-hell.jpeg",
-					"dark": true,
-					"alt": "aaa"
+					"alt": "Bullet Hell",
+					"dark": true
 				},
 				"dynamic": {
 					"img": "enter-the-gungeon.gif",
-					"alt": "aaaa",
+					"alt": "Bullet Hell Animation",
 					"dark": true
 				}
 			}
-		],
-		"price": 12.87,
-		"discount": 0.05
+		]
 	},
 	{
-		"title": "Zelda Like",
-		"description": "A fi",
-		"seller": "Aaa",
-		"type": ["image"],
-		"tags": ["a", "b"],
-		"slug": "zelda-like",
+		"title": "Zelda-like Game",
+		"slug": "zelda-like-game",
+		"description": "An adventure game inspired by The Legend of Zelda.",
+		"seller": "GameDevStudios",
+		"price": 24.99,
+		"discount": 0,
+		"amount": 15,
+		"active": true,
+		"assetType": ["Game"],
+		"tags": ["Zelda", "Adventure", "Game", "RPG"],
 		"images": [
 			{
-				"static": { "img": "zelda-like.png", "alt": "aaa" }
+				"static": {
+					"img": "zelda-like.png",
+					"alt": "Zelda-like Game",
+					"dark": false
+				},
+				"dynamic": null
 			}
-		],
-		"price": 1.87,
-		"discount": 0.05
+		]
 	}
 ]

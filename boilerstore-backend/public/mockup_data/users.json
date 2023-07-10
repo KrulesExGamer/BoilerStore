@@ -17,7 +17,7 @@
 		"lastName": "Doe",
 		"role": "user",
 		"createdAt": "2022-01-01T00:00:00Z",
-		"cart": []
+		"cart": ["3d-red-ford-car", "cat-sprite"]
 	},
 	{
 		"username": "jane_smith",
@@ -27,7 +27,7 @@
 		"lastName": "Smith",
 		"role": "user",
 		"createdAt": "2022-02-01T00:00:00Z",
-		"cart": []
+		"cart": ["fantasy-game-music-pack", "racing-game-textures"]
 	},
 	{
 		"username": "mike_jackson",
@@ -37,7 +37,7 @@
 		"lastName": "Jackson",
 		"role": "user",
 		"createdAt": "2022-03-01T00:00:00Z",
-		"cart": []
+		"cart": ["space-vfx-pack"]
 	},
 	{
 		"username": "amy_wilson",
@@ -47,7 +47,7 @@
 		"lastName": "Wilson",
 		"role": "user",
 		"createdAt": "2022-04-01T00:00:00Z",
-		"cart": []
+		"cart": ["racing-game-textures", "bullet-hell"]
 	},
 	{
 		"username": "david_thompson",
@@ -57,7 +57,7 @@
 		"lastName": "Thompson",
 		"role": "user",
 		"createdAt": "2022-05-01T00:00:00Z",
-		"cart": []
+		"cart": ["3d-red-ford-car", "zelda-like-game"]
 	},
 	{
 		"username": "sarah_anderson",
@@ -67,7 +67,11 @@
 		"lastName": "Anderson",
 		"role": "user",
 		"createdAt": "2022-06-01T00:00:00Z",
-		"cart": []
+		"cart": [
+			"fantasy-game-music-pack",
+			"bullet-hell",
+			"racing-game-textures"
+		]
 	},
 	{
 		"username": "chris_johnson",
@@ -77,7 +81,7 @@
 		"lastName": "Johnson",
 		"role": "user",
 		"createdAt": "2022-07-01T00:00:00Z",
-		"cart": []
+		"cart": ["3d-red-ford-car", "cat-sprite", "zelda-like-game"]
 	},
 	{
 		"username": "emily_brown",
@@ -87,7 +91,7 @@
 		"lastName": "Brown",
 		"role": "user",
 		"createdAt": "2022-08-01T00:00:00Z",
-		"cart": []
+		"cart": ["fantasy-game-music-pack", "space-vfx-pack"]
 	},
 	{
 		"username": "alex_walker",
@@ -97,7 +101,7 @@
 		"lastName": "Walker",
 		"role": "user",
 		"createdAt": "2022-09-01T00:00:00Z",
-		"cart": []
+		"cart": ["racing-game-textures"]
 	},
 	{
 		"username": "lisa_green",
@@ -107,6 +111,6 @@
 		"lastName": "Green",
 		"role": "user",
 		"createdAt": "2022-10-01T00:00:00Z",
-		"cart": []
+		"cart": ["cat-sprite", "zelda-like-game"]
 	}
 ]
