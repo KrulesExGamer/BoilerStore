@@ -195,6 +195,9 @@ export async function validateLogin(username: string, password: string) {
 
 			const content = res.content as any as UserAccount;
 
+			if (content.password !== password)
+				return none;
+
 			let adm = false;
 			if (content.role === 'admin')
 				adm = true;
