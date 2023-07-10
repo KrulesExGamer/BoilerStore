@@ -104,6 +104,8 @@
 	border-radius: 20px;
 	background: linear-gradient(0deg, #0c6f58, #001e3c);
 	height: 100px;
+    width:600px;
+    padding: 10px;
 }
 
 .cartGame > *{
@@ -128,6 +130,7 @@
 .game_name{
 	font-weight: bold;
 	font-size: 18px;
+    max-width: 300px;
 }
 
 .remove_from_cart{
@@ -173,10 +176,33 @@
         margin-left:10%;
         margin-right:10%;
     }
+    .cartGame{
+        width: 80%;
+    }
+
+    .cartGame > *{
+        margin: 0px;
+    }
+
+    .cartGame > * > *{
+        margin-left: 5px;
+        margin-right:5px;
+    }
+
+    .game_name{
+        max-width: 200px;
+    }
 }
 @media (max-width:560px){
     .cart{
         margin-left:0%;
         margin-right:0%;
+    }
+    .cartGame{
+        width: 90%;
+    }
+
+    .game_name{
+        max-width: 100px;
     }
 }
