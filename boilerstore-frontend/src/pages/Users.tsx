@@ -7,86 +7,117 @@ import { delApi, fetchApi } from '../utils/apiCalls';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import IconButton from '../components/IconButton';
 
+const EditUserForm = (props: { username: string }) => {
+	const [user, setUser] = useState<UserAccount>({
+		username: '',
+		password: '',
+		email: '',
+		role: '',
+		firstName: '',
+		lastName: '',
+		createdAt: '',
+	});
 
-const EditUserForm = (props : { user: UserAccount }) => {
-  const [formData, setFormData] = useState(structuredClone(props.user));
+	useEffect(() => {
+		fetchApi(`api/users/${props.username}`)
+			.then((res) => res.content as any as UserAccount)
+			.then((data) => setUser(data))
+			.catch((err) =>
+				console.log('[ERROR] Could not fetch user data.', user),
+			);
+	}, [props.username]);
 
-  const handleChange = (e : any) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+	const [formData, setFormData] = useState(structuredClone(user));
 
-  const handleSubmit = (e : any) => {
-    e.preventDefault();
-    // TODO: Perform form submission or API request to update user data
-    console.log(formData);
-  };
+	const handleChange = (e: any) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
 
-  return (
-    <div>
-      <h2>Edit User</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Save</button>
-      </form>
-    </div>
-  );
+	const handleSubmit = (e: any) => {
+		e.preventDefault();
+		// TODO: Perform form submission or API request to update user data
+		console.log(formData);
+	};
+
+	return (
+		<div className={'edituser-container'}>
+			<h2 className="edituser-title">Edit User</h2>
+			<form onSubmit={handleSubmit} className="edituser-form">
+				<label htmlFor="username" className="edituser-label">
+					Username
+				</label>
+				<input
+					type="text"
+					id="username"
+					name="username"
+					value={formData.username}
+					onChange={handleChange}
+					className="edituser-input"
+				/>
+
+				<label htmlFor="email" className="edituser-label">
+					Email
+				</label>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					value={formData.email}
+					onChange={handleChange}
+					className="edituser-input"
+				/>
+
+				<label htmlFor="password" className="edituser-label">
+					Password
+				</label>
+				<input
+					type="password"
+					id="password"
+					name="password"
+					value={formData.password}
+					onChange={handleChange}
+					className="edituser-input"
+				/>
+
+				<label htmlFor="firstName" className="edituser-label">
+					First Name
+				</label>
+				<input
+					type="text"
+					id="firstName"
+					name="firstName"
+					value={formData.firstName}
+					onChange={handleChange}
+					className="edituser-input"
+				/>
+
+				<label htmlFor="lastName" className="edituser-label">
+					Last Name
+				</label>
+				<input
+					type="text"
+					id="lastName"
+					name="lastName"
+					value={formData.lastName}
+					onChange={handleChange}
+					className="edituser-input"
+				/>
+
+				<button type="submit" className="edituser-button">
+					Save
+				</button>
+			</form>
+		</div>
+	);
 };
 
-
-
-
-const UserSquare = (props: { user: UserAccount; forceReload: () => void }) => {
+const UserSquare = (props: {
+	user: UserAccount;
+	forceReload: () => void;
+	setUserToEdit: (username: string) => void;
+}) => {
 	const del = async () => {
-		await delApi(`api/users/${props.user.username}`)
+		await delApi(`api/users/${props.user.username}`);
 	};
 
 	return (
@@ -97,15 +128,20 @@ const UserSquare = (props: { user: UserAccount; forceReload: () => void }) => {
 			{/* Add more user data as needed */}
 			<div className="UserSquare-but-row">
 				<button
+					className="UserSquare-but"
 					onClick={async () => {
 						await del();
 						props.forceReload();
 					}}
-					className="UserSquare-but"
 				>
 					<IconButton icon={faTrash} label="Delete" />
 				</button>
-				<button className="UserSquare-but">
+				<button
+					className="UserSquare-but"
+					onClick={() => {
+						props.setUserToEdit(props.user.username);
+					}}
+				>
 					<IconButton icon={faEdit} label="Edit" />
 				</button>
 			</div>
@@ -117,6 +153,7 @@ const UsersPage = () => {
 	const [users, setUsers] = useState<UserAccount[]>([]);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [forceReloadFlag, setForceReloadFlag] = useState(0);
+	const [userToEdit, setUserToEdit] = useState('');
 
 	const forceReload = () => {
 		setForceReloadFlag(forceReloadFlag + 1);
@@ -137,23 +174,33 @@ const UsersPage = () => {
 
 	return (
 		<div className="users-page">
-			<div className="search-bar">
-				<input
-					type="text"
-					placeholder="Search users..."
-					value={searchTerm}
-					onChange={(e) => setSearchTerm(e.target.value)}
-				/>
-			</div>
-			<div className="users-grid">
-				{filteredUsers.map((user) => (
-					<UserSquare
-						key={user._id}
-						user={user}
-						forceReload={forceReload}
-					/>
-				))}
-			</div>
+			{'' === userToEdit && (
+				<>
+					<div className="search-bar">
+						<input
+							type="text"
+							placeholder="Search users..."
+							value={searchTerm}
+							onChange={(e) => setSearchTerm(e.target.value)}
+						/>
+					</div>
+					<div className="users-grid">
+						{filteredUsers.map((user) => (
+							<UserSquare
+								key={user._id}
+								user={user}
+								forceReload={forceReload}
+								setUserToEdit={setUserToEdit}
+							/>
+						))}
+					</div>
+				</>
+			)}
+			{'' !== userToEdit && (
+				<>
+					<EditUserForm username={userToEdit} />
+				</>
+			)}
 		</div>
 	);
 };
