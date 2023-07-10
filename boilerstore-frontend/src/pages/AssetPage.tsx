@@ -120,6 +120,7 @@ const AssetPageContents = (props: {
 		<button
 			className="assetpage-button"
 			onClick={() => {
+				navigate(`/admin/edit-asset?asset=${props.assetData.slug}`);
 				setEditing(true);
 			}}
 		>

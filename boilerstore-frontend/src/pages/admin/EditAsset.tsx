@@ -11,6 +11,8 @@ const EditAssetPage = () => {
 	const navigate = useNavigate();
 
 	const slug = useParam('asset');
+	const isNew = useParam('isNew');
+
 	const [asset, setAsset] = useState<Asset>({
 		title: '',
 		description: '',
@@ -42,6 +44,10 @@ const EditAssetPage = () => {
 
 	useEffect(() => {
 		if (!update) return;
+		if (0 > formData.price ) throw Error('[ERROR] Ops! Price is invalid!');
+		if (0 > (formData.amount ?? -1)) formData.amount = undefined;
+		formData.tags = formData.tags.join(',').split(',').map((el) => el.toLocaleLowerCase().trim()); 
+		formData.assetType = formData.assetType.join(',').split(',').map((el) => el.toLocaleLowerCase().trim()); 
 		updateApi(`api/assets/${slug}`, formData).catch((err) =>
 			console.log('[ERROR] Could not update asset data.', err),
 		);
@@ -75,6 +81,17 @@ const EditAssetPage = () => {
 		<div className='EditAssetPage'>
 			<h2>Edit Asset</h2>
 			<form onSubmit={handleSubmit}>
+				<div className='EditAssetPage-formgroup'>
+					<label htmlFor="slug">Slug:</label>
+					<input
+						type="text"
+						id="slug"
+						name="slug"
+						value={formData.slug}
+						onChange={handleInputChange}
+						required
+					/>
+				</div>
 				<div className='EditAssetPage-formgroup'>
 					<label htmlFor="title">Title:</label>
 					<input

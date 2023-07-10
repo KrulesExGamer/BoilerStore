@@ -6,8 +6,7 @@ const NotFound = () => {
 		<div className="More">
 			<Link to='/admin/adduser'> Add User Account </Link>
             <Link to='/admin/users'> Edit Users Account </Link>
-            <a> Add Asset </a>
-            <a> Edit Asset </a>
+            <Link to={`/admin/edit-asset?asset=new-asset&isNew=true`}> Add Asset </Link>
 		</div>
 	);
 };
