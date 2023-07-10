@@ -84,8 +84,8 @@ const addToCart = (
 	navigate: NavigateFunction,
 ) => {
 	if (userState?.isLoggedIn) {
-	} else {
 		
+	} else {
 		navigate('/login');
 	}
 };

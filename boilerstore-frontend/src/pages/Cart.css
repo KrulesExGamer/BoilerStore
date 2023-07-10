@@ -117,6 +117,7 @@
 .cart_ul {
     color: black;
     size: 25px;
+    list-style: none;
 }
 
 .cartGame > * > *{

@@ -58,7 +58,9 @@ const Cart = () => {
 	return (
 		<div className="cart">
 			{/* Por alguma razão, não consigo fazer os produtos aparecerem sem quebrar o resto do código */}
-
+            <ul className='cart_ul'>
+                <li>kjashkjshkjashksahshkj</li>
+            </ul>
 			<div className="buyBox">
 				<div className="upper_buyBox">
 					<div className="ubB_text">

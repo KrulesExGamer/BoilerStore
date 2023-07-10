@@ -57,6 +57,7 @@ export interface UserAccount {
 }
 
 export interface UserState {
+	id?: string,
 	isLoggedIn: boolean;
 	userName?: string;
 	email?: string;
