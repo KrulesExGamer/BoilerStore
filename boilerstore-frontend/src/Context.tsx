@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { UserState } from './utils/types';
 
 // User context configuration
-const DEBUG_IS_ADMIN = true; // set to true to easily test adim functions.
+const DEBUG_IS_ADMIN = false; // set to true to easily test adim functions.
 export const STD_USER_STATE: UserState = DEBUG_IS_ADMIN
 	? { isLoggedIn: true, isAdmin: true }
 	: { isLoggedIn: false };

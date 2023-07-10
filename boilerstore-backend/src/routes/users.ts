@@ -91,16 +91,16 @@ router.put('/users/:id', async (req, res) => {
 });
 
 // DELETE USER
-router.delete('/users/:id', async (req, res) => {
+router.delete('/users/:username', async (req, res) => {
 	try {
-		const { id } = req.params;
+		const { username } = req.params;
 
-		const user = await User.deleteOne({ id });
+		const user = await User.deleteOne({ username });
 		if (!user) {
 			throw new Error('User not found');
 		}
 
-		res.status(200).json({ message: 'User deleted successfully' });
+		res.status(200).json({ message: 'User deleted successfully', item: user});
 		console.log('[DELETED] </> SUCCESS! Deleted user from the database.');
 	} catch (err: any) {
 		const status = 'User not found' === err.message ? 404 : 400;

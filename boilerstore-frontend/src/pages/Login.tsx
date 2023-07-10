@@ -101,7 +101,7 @@ const Login = () => {
             return loginForm();
 
         else 
-            return (<p className='login-message'>You're already logged in, {userState.userName}!</p>)
+            return (<p className='login-message'>You're already logged in, {userState.username}!</p>)
     }
 
     return (

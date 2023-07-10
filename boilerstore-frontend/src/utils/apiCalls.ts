@@ -194,7 +194,7 @@ export async function validateLogin(username: string, password: string) {
 
 			const login : UserState = {
 				isLoggedIn: true, 
-				userName: content.username, 
+				username: content.username, 
 				email: content.email,
 				firstName: content.firstName,
 				lastName: content.lastName,
@@ -230,7 +230,7 @@ export async function validateSignup(conta : UserAccount) {
 
 		const login : UserState = {
 			isLoggedIn: true, 
-			userName: conta.username, 
+			username: conta.username, 
 			email: conta.email,
 			firstName: conta.firstName,
 			lastName: conta.lastName,
@@ -286,4 +286,10 @@ export async function validateAccount({
 			return undefined;
 		}
 	}
+}
+
+
+
+export async function delApi ( url : string ) {
+	await fetch(`${BACKEND_URL}/${url}`, {method: 'DELETE'});
 }

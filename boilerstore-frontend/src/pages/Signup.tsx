@@ -88,7 +88,7 @@ const Signup = () => {
                         style={{marginRight: "15%"}}
                         onChange={(event)=>setName(event.target.value)} 
                         type="text"
-                        placeholder='Username...'
+                        placeholder='username...'
                         id="name" />
                 </p>
                 <p>
@@ -135,7 +135,7 @@ const Signup = () => {
             return signupForm();
 
         else 
-            return (<p className='signup-message'>You're already logged in, {userState.userName}!</p>)
+            return (<p className='signup-message'>You're already logged in, {userState.username}!</p>)
     }
 
     return (

@@ -31,7 +31,7 @@ const Recovery = () => {
             else 
                 setError('');
     
-            if (email.toLocaleLowerCase() === userState?.userName?.toLocaleLowerCase())
+            if (email.toLocaleLowerCase() === userState?.username?.toLocaleLowerCase())
                 setSucess(true)
     
     

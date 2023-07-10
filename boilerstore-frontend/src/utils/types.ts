@@ -60,7 +60,7 @@ export interface UserAccount {
 export interface UserState {
 	id?: string,
 	isLoggedIn: boolean;
-	userName?: string;
+	username?: string;
 	email?: string;
 	firstName?: string;
 	lastName?: string;
