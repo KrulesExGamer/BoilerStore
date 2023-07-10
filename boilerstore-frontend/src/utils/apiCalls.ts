@@ -102,6 +102,13 @@ export async function fetchAssetImages(asset: Asset): Promise<CoolImage[]> {
 	return results;
 }
 
+export async function fetchAssetExpensive(assetKey: string): Promise<Result<Asset>> {
+	const res = await fetchAsset(assetKey);
+	const content = res.content as Asset;
+	content.images = await fetchAssetImages(content);
+	return res;
+}
+
 // Request an asset
 export async function fetchAsset(assetKey: string): Promise<Result<Asset>> {
 	if ('' === assetKey) throw Error('Asset must have an id');

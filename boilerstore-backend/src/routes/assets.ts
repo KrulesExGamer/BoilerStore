@@ -116,6 +116,30 @@ router.put('/assets/:slug', async (req, res) => {
 	}
 });
 
+router.get('/buy/assets/:slug', async (req, res) => {
+	try {
+		const { slug } = req.params;
+		const asset = await Asset.findOne({ slug });
+
+		if (!asset) {
+			throw new Error('Asset not found');
+		}
+
+		if (asset.amount) asset.amount = asset.amount - 1;
+
+		await asset.save();
+		res.status(200).json(asset);
+		console.log('[UPDATED] </> SUCCESS! Updated asset in the database.');
+	} catch (err: any) {
+		const status = 'Asset not found' === err.message ? 404 : 400;
+		res.status(status).json({ errorMessage: err.message });
+		console.log(
+			`[PUT ERROR ${status}] </> OPS! Could not update asset due to an error.`,
+		);
+		console.log(err);
+	}
+});
+
 // ## [DELETE] ASSET
 router.delete('/assets/:slug', async (req, res) => {
 	try {

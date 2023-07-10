@@ -47,7 +47,7 @@ export interface CartItem {
 }
 
 export interface UserAccount {
-	_id?: string,
+	_id?: string;
 	username: string;
 	password: string;
 	email: string;
@@ -55,10 +55,11 @@ export interface UserAccount {
 	firstName: string;
 	lastName: string;
 	createdAt?: string;
+	cart?: string[];
 }
 
 export interface UserState {
-	id?: string,
+	id?: string;
 	isLoggedIn: boolean;
 	username?: string;
 	email?: string;
