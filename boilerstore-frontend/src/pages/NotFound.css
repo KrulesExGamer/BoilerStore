@@ -1,0 +1,8 @@
+.NotFound {
+	max-height: calc(100% / 2);
+	max-width: calc(100% / 3);
+	min-height: calc(10% + 50px);
+	padding: 25px 10px;
+	color: rgb(21, 21, 21);
+	margin: 20px 0 50px calc(100% / 3);
+}

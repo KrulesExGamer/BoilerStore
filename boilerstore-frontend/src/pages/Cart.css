@@ -1,8 +1,197 @@
-.cart_ul{
-    margin: 10px;
+.cart_ul {
+	margin: 10px;
+	color: white;
 }
 
-.cart{
-    margin-left:calc(50% - 350px);
-    margin-right:calc(50% - 350px);
+.cart {
+	margin-left: calc(50% - 350px);
+	margin-right: calc(50% - 350px);
+	color: white;
+}
+
+.buyBox {
+	margin: 20px;
+	padding: 0px 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	border-radius: 20px;
+	background: linear-gradient(0deg, #0c6f58, #001e3c);
+	height: 200px;
+}
+
+.upper_buyBox {
+	width: 100%;
+	align-self: center;
+	margin: 15px;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.ubB_text {
+	align-self: center;
+	margin: 15px;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.pricing {
+	align-self: center;
+	margin: 15px;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.lower_buyBox {
+	width: 100%;
+	align-self: center;
+	margin: 15px;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	text-align: center;
+}
+
+.cart button {
+	margin: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	background: linear-gradient(0deg, #6f0c58, #3c001e);
+	cursor: pointer;
+}
+
+.cart button:hover {
+	background-color: white;
+}
+
+.cart button.back {
+	width: 160px;
+	color: white;
+}
+.cart button.buy {
+	width: 100px;
+}
+
+.total_non_discounted {
+	font-size: 14px;
+	text-decoration: line-through;
+	color: #ccc;
+}
+
+.total_non_discounted {
+	font-weight: bold;
+	color: #ccc;
+}
+
+.cartGame {
+	margin: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-align: center;
+	border-radius: 20px;
+	background: linear-gradient(0deg, #0c6f58, #001e3c);
+	height: 100px;
+}
+
+.cartGame > * {
+	align-self: center;
+	margin: 0px 15px;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.cart_ul {
+	color: black;
+	size: 25px;
+	list-style: none;
+}
+
+.cartGame > * > * {
+	margin: 0px 10px;
+	align-self: center;
+}
+
+.game_name {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.remove_from_cart {
+	font-size: 12px;
+	text-decoration: underline;
+	color: #ccc;
+}
+
+.game_non_discounted {
+	font-size: 14px;
+	text-decoration: line-through;
+	color: #ccc;
+}
+
+.game_discounted,
+.game_price {
+	font-size: 16px;
+}
+
+.game_img {
+	height: 70px;
+	width: 120px;
+	border: 1px solid;
+	border-color: #06382c;
+	border-radius: 3px;
+}
+
+/* .cart button {
+    border: 3px black solid;
+    border-radius: 40px;
+    background-color: blue;
+    color: white;
+    font-size: 2em;
+    width: 60%;
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+}
+.cart button:hover {
+    background-color: aqua;
+} */
+
+.cart-li > * {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-content: center; /* Center horizontally */
+	align-items: center; /* Center vertically */
+}
+
+.cart-li img {
+	width: 100%; /* Occupy the full width of the container */
+	height: 100%; /* Occupy the full height of the container */
+	object-fit: cover;
+	max-height: 100px;
+	max-width: 100px;
+	margin: 5px 5px 5px 10px;
+	border-radius: 10px;
+}
+
+.cart-li {
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 40px;
+	background: linear-gradient(0deg, #0c6f58, #001e3c);
+	color: white;
+	overflow: hidden;
 }

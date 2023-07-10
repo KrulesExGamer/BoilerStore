@@ -1,40 +1,59 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-export const useWindowResize: () => { width: number, height: number } = () => {
-    const [dimensions, setDimensions] = useState({
-        width: window.innerWidth,
-        height: window.innerHeight
-    });
+export const useWindowResize: () => { width: number; height: number } = () => {
+	const [dimensions, setDimensions] = useState({
+		width: window.innerWidth,
+		height: window.innerHeight,
+	});
 
-    useEffect(() => {
-        const handleResize = () => {
-            setDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight
-            });
-        };
+	useEffect(() => {
+		const handleResize = () => {
+			setDimensions({
+				width: window.innerWidth,
+				height: window.innerHeight,
+			});
+		};
 
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Call the resize handler initially
+		window.addEventListener('resize', handleResize);
+		handleResize(); // Call the resize handler initially
 
-        // Cleanup the event listener on unmount
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+		// Cleanup the event listener on unmount
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
 
-    return dimensions;
+	return dimensions;
 };
 
 // Returns the URL parameters of the current page
-export const useSearchParams = () : URLSearchParams => {
-    const location = useLocation();
-    let [args, setArgs] = useState <URLSearchParams> (new URLSearchParams(location.search));
+export const useSearchParams = (): URLSearchParams => {
+	const location = useLocation();
+	let [args, setArgs] = useState<URLSearchParams>(
+		new URLSearchParams(location.search),
+	);
 
-    useEffect(() => {
-        setArgs(new URLSearchParams(location.search));
-    }, [location]);
+	useEffect(() => {
+		setArgs(new URLSearchParams(location.search));
+	}, [location]);
 
-    return args;
+	return args;
 };
+
+export const useParam = (paramKey: string): string | null => {
+	const location = useLocation();
+
+	const [value, setValue] = useState(
+		new URLSearchParams(location.search).get(paramKey),
+	);
+
+	useEffect(() => {
+		const searchParams = new URLSearchParams(location.search);
+		setValue(searchParams.get(paramKey));
+	}, [location]);
+
+	return value;
+};
+
+

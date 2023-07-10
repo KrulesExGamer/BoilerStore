@@ -101,3 +101,14 @@
 .right-side-asset-data h2 {
     font-size: 2em;
 }
+
+
+.del-tag-button {
+    cursor: pointer;
+    color: #222;
+    margin: 0 5px 0 5px;
+}
+
+.del-tag-button:hover {
+    color: #555;
+}

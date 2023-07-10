@@ -1,9 +1,10 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { validateAccount } from '../utils/apiCalls';
+import { validateAccount, validateSignup } from '../utils/apiCalls';
 import { UserContext } from '../Context';
 import SimpleHeader from '../components/SimpleHeader';
+import { UserAccount, UserState } from '../utils/types';
 import '../shared_styles/alignment.css';
 import '../shared_styles/unselectable.css';
 import './Signup.css';
@@ -12,36 +13,62 @@ const Signup = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [errorText, setError] = useState("");
+
+    const [buttonClicked, setButtonClicked] = useState(0);
 
     const navigate = useNavigate();
 
     const {userState, setUserState} = useContext(UserContext);
 
     // Garantees that both the name and email are not already registered 
-    const checkSignup = () => {
-        if (name === "" || email === "" || password === "") {
-            setError("Erro: Há campos não preenchidos!");
-            return false;
-        }
-        
-        if (validateAccount({task: "signup", name: name, email: email}))
-            return true;
+    useEffect(() => {
+        const checkSignup = async () => {
+            if (buttonClicked === 0)
+                return;
 
-        else {
-            setError("Erro: Usuário e/ou email já foram cadastrados!");
-            return false;
+            if (name === "" || email === "" || password === "" || firstName === "" || lastName === "") {
+                setError("Erro: Há campos não preenchidos!");
+                return;
+            }
+            
+            const accountExists = await validateAccount({name: name, email: email})
+            if (!accountExists) {
+                const conta : UserAccount = {
+                    username: name.trim().toLocaleLowerCase(),
+                    email: email.trim().toLocaleLowerCase(),
+                    password: password,
+                    role: 'user',
+                    firstName: firstName,
+                    lastName: lastName
+                }
+
+                const login : UserState | undefined = await validateSignup(conta);
+
+                if (login === undefined) {
+                    setError("Erro: Houve um problema de conexão com o banco de dados!");
+                    return;
+                }
+
+                startSession(login)
+            }
+
+            else 
+                setError("Erro: Nome de usuário e/ou email já foram cadastrados!");
         }
-    }
+
+        checkSignup()
+    }, [buttonClicked])
+
 
     // Load the data into memory and starts user session
-    const startSession = () => {
-        if (checkSignup()) {
-            if (setUserState !== undefined)
-                setUserState({isLoggedIn: true, userName: name, email: email, isAdmin: false})
-                
-            navigate('/');
-        }
+    const startSession = (login : UserState) => {
+        if (setUserState !== undefined)
+            setUserState(login);
+            
+        navigate('/');
     }
 
     const welcomeMessage = () => {
@@ -61,7 +88,7 @@ const Signup = () => {
                         style={{marginRight: "15%"}}
                         onChange={(event)=>setName(event.target.value)} 
                         type="text"
-                        placeholder='Username...'
+                        placeholder='username...'
                         id="name" />
                 </p>
                 <p>
@@ -81,7 +108,23 @@ const Signup = () => {
                         id="password" />
                 </p>
                 <p>
-                    <button className='login_button unselectable' onClick={startSession}>Sign Up</button>
+                    <input className='login_input'
+                        style={{marginLeft: "15%"}}
+                        onChange={(event)=>setFirstName(event.target.value)} 
+                        type="text"
+                        placeholder='First name...'
+                        id="firstName" />
+                </p>
+                <p>
+                    <input className='login_input'
+                        style={{marginRight: "15%"}}
+                        onChange={(event)=>setLastName(event.target.value)} 
+                        type="text"
+                        placeholder='Last name...'
+                        id="lastName" />
+                </p>
+                <p>
+                    <button className='login_button unselectable' onClick={() => setButtonClicked(buttonClicked + 1)}>Sign Up</button>
                 </p>
             </>
         );
@@ -92,7 +135,7 @@ const Signup = () => {
             return signupForm();
 
         else 
-            return (<p className='signup-message'>You're already logged in, {userState.userName}!</p>)
+            return (<p className='signup-message'>You're already logged in, {userState.username}!</p>)
     }
 
     return (

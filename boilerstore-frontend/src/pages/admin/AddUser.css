@@ -1,0 +1,120 @@
+.signup-background {
+    background-image: url('../../img/smooth_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+}
+
+.signup_input {
+    border: 3px black solid;
+    color: black;
+    text-align: left;
+    height: 2.5em;
+    font-size: 1.5em;
+    width: 60%;
+    padding-left: 10px;
+    border-radius: 40px;
+}
+
+.signup_checkbox {
+    display: inline-block;
+    color: #000;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+}
+
+.signup_checkbox:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a90e2;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+  
+  /* Style the checkmark */
+  .signup_checkbox:after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+.signup_button {
+    border: 3px black solid;
+    color: black;
+    border-radius: 40px;
+    background-color: blue;
+    font-size: 2em;
+    width: 60%;
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+}
+
+.signup_button:hover {
+    background-color: aqua;
+}
+
+.signup_button:active {
+    background-color: blue;
+}
+
+.item-signup {
+    margin-top: 5%;
+    width: 35%;
+    border: 10px black solid;
+    border-radius: 70px;
+    background-color: white;
+}
+
+.signup-container {
+    margin-top: 5%;
+    margin-bottom : 5%;
+    text-align: center;
+    width: 100%;
+}
+
+.signup-container p {
+    padding: 3px;
+}
+
+.signup-message {
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+
+.error {
+    color: red;
+    font-weight: bolder;
+    font-size: 1.2em;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #FBB;
+}
+
+.link {
+    text-decoration: underline;
+    color: blue;
+    font-size: 1.2em;
+}
+
+.welcome {
+    text-align: left;
+    margin-left: 10%;
+    font-size: 1.1em;
+    color: blue;
+}

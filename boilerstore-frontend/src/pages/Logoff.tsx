@@ -19,7 +19,7 @@ const Logoff = () => {
     // Performs the logoff
     const performLogoff = () => {
         if (setUserState !== undefined) {
-            let name = userState?.userName;
+            let name = userState?.firstName;
             
             setUserState({isLoggedIn: false});
 
@@ -50,7 +50,7 @@ const Logoff = () => {
             <div className='conteiner-middle-center conteiner-logoff'>
                 <div className='item-middle-center item-logoff'>
                     <div className='logoff-container'>
-                        {userState?.isLoggedIn && <p className='logoff-message'>Already leaving, {userState.userName}? <FontAwesomeIcon icon={faSadTear} /> </p>}
+                        {userState?.isLoggedIn && <p className='logoff-message'>Already leaving, {userState.firstName}? <FontAwesomeIcon icon={faSadTear} /> </p>}
                         {username !== null && farewellMessage()}
                         
                         {loadButton()}

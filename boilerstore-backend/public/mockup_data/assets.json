@@ -1,0 +1,170 @@
+[
+	{
+		"title": "3D Red Ford Car",
+		"slug": "3d-red-ford-car",
+		"description": "High-quality 3D model of a red Ford car.",
+		"seller": "CarModelsInc",
+		"price": 99.99,
+		"discount": 10,
+		"amount": 5,
+		"active": true,
+		"assetType": ["Model", "Texture"],
+		"tags": ["3D", "Car", "Vehicle", "Red", "Ford"],
+		"images": [
+			{
+				"static": {
+					"img": "https://example.com/3d-red-ford-car.jpg",
+					"alt": "3D Red Ford Car",
+					"dark": false
+				},
+				"dynamic": {
+					"img": "https://example.com/3d-red-ford-car-gif.gif",
+					"alt": "3D Red Ford Car Animation",
+					"dark": false
+				}
+			}
+		]
+	},
+	{
+		"title": "Cat Sprite",
+		"slug": "cat-sprite",
+		"description": "Collection of animated cat sprites for 2D games.",
+		"seller": "PixelArtDesigns",
+		"price": 19.99,
+		"discount": 5,
+		"amount": 10,
+		"active": true,
+		"assetType": ["Sprite"],
+		"tags": ["2D", "Sprite", "Cat", "Animals", "Game"],
+		"images": [
+			{
+				"static": {
+					"img": "https://example.com/cat-sprite.png",
+					"alt": "Cat Sprite",
+					"dark": false
+				},
+				"dynamic": null
+			}
+		]
+	},
+	{
+		"title": "Fantasy Game Music Pack",
+		"slug": "fantasy-game-music-pack",
+		"description": "A collection of fantasy-themed music tracks for game soundtracks.",
+		"seller": "AudioTracks",
+		"price": 29.99,
+		"discount": 0,
+		"amount": 20,
+		"active": true,
+		"assetType": ["Music"],
+		"tags": ["Music", "Fantasy", "Game", "Soundtrack"],
+		"images": [
+			{
+				"static": {
+					"img": "https://example.com/fantasy-game-music-pack.jpg",
+					"alt": "Fantasy Game Music Pack",
+					"dark": true
+				},
+				"dynamic": null
+			}
+		]
+	},
+	{
+		"title": "Space VFX Pack",
+		"slug": "space-vfx-pack",
+		"description": "Collection of high-quality visual effects for space-themed games.",
+		"seller": "VFXStudios",
+		"price": 49.99,
+		"discount": 15,
+		"amount": 8,
+		"active": true,
+		"assetType": ["VFX"],
+		"tags": ["VFX", "Space", "Game", "Visual Effects"],
+		"images": [
+			{
+				"static": {
+					"img": "https://example.com/space-vfx-pack.jpg",
+					"alt": "Space VFX Pack",
+					"dark": false
+				},
+				"dynamic": null
+			}
+		]
+	},
+	{
+		"title": "Racing Game Textures",
+		"slug": "racing-game-textures",
+		"description": "Set of high-resolution textures for racing game environments.",
+		"seller": "TextureDesigns",
+		"price": 39.99,
+		"discount": 0,
+		"amount": 15,
+		"active": true,
+		"assetType": ["Texture"],
+		"tags": ["Texture", "Racing", "Game", "Environment"],
+		"images": [
+			{
+				"static": {
+					"img": "https://example.com/racing-game-textures.jpg",
+					"alt": "Racing Game Textures",
+					"dark": true
+				},
+				"dynamic": null
+			}
+		]
+	},
+	{
+		"title": "Firts Person Shoter",
+		"description": "A fi",
+		"type": ["image"],
+		"tags": ["a", "b"],
+		"slug": "fps",
+		"seller": "Aaa",
+		"images": [
+			{
+				"static": { "img": "fps.jpeg", "alt": "aa" }
+			}
+		],
+		"price": 1.87,
+		"discount": 0.05
+	},
+	{
+		"title": "Bullet Hell",
+		"description": "A fi",
+		"type": ["image"],
+		"tags": ["a", "b"],
+		"slug": "bullet-hell",
+		"seller": "Aaa",
+		"images": [
+			{
+				"static": {
+					"img": "bullet-hell.jpeg",
+					"dark": true,
+					"alt": "aaa"
+				},
+				"dynamic": {
+					"img": "enter-the-gungeon.gif",
+					"alt": "aaaa",
+					"dark": true
+				}
+			}
+		],
+		"price": 12.87,
+		"discount": 0.05
+	},
+	{
+		"title": "Zelda Like",
+		"description": "A fi",
+		"seller": "Aaa",
+		"type": ["image"],
+		"tags": ["a", "b"],
+		"slug": "zelda-like",
+		"images": [
+			{
+				"static": { "img": "zelda-like.png", "alt": "aaa" }
+			}
+		],
+		"price": 1.87,
+		"discount": 0.05
+	}
+]

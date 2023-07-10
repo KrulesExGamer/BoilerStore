@@ -1,0 +1,49 @@
+[
+	{
+		"title": "Action-Adventure",
+		"slug": "action-adventure",
+		"description": "Combines elements of both action games and adventure games.",
+		"icon": "https://example.com/action-adventure-icon.png",
+		"examples": [
+			"action-adventure-game-1",
+			"action-adventure-game-2",
+			"action-adventure-game-3"
+		]
+	},
+	{
+		"title": "Role-Playing",
+		"slug": "role-playing",
+		"description": "Allows players to assume the roles of characters in a fictional setting.",
+		"icon": "https://example.com/role-playing-icon.png",
+		"examples": [
+			"role-playing-game-1",
+			"role-playing-game-2",
+			"role-playing-game-3"
+		]
+	},
+	{
+		"title": "Strategy",
+		"slug": "strategy",
+		"description": "Focuses on strategic thinking and planning.",
+		"icon": "https://example.com/strategy-icon.png",
+		"examples": ["strategy-game-1", "strategy-game-2", "strategy-game-3"]
+	},
+	{
+		"title": "Simulation",
+		"slug": "simulation",
+		"description": "Attempts to simulate real-world activities or systems.",
+		"icon": "https://example.com/simulation-icon.png",
+		"examples": [
+			"simulation-game-1",
+			"simulation-game-2",
+			"simulation-game-3"
+		]
+	},
+	{
+		"title": "Sports",
+		"slug": "sports",
+		"description": "Focuses on sports-themed gameplay.",
+		"icon": "https://example.com/sports-icon.png",
+		"examples": ["sports-game-1", "sports-game-2", "sports-game-3"]
+	}
+]
