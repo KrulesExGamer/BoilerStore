@@ -43,6 +43,13 @@ The following requirements must be met:
 No meaningful comments can be made at this time since we are still in the design phase.
 
 ## Test Plan
+### Adim Test
+- Go to Sign Up
+- Try user 'ademiro' and password 'admin123'
+- now click on 'More' on the top right
+- now click on Edit Users
+- now try to delete any user
+
 ### Login test
 - Go to Sign Up
 - Try random username and password
@@ -68,12 +75,6 @@ No meaningful comments can be made at this time since we are still in the design
 - Log in as "Jorge" with password "123"
 - Return to home page and go to Sign Off
 - Confirm Sign Off
-
-### Recovery test
-- Go to Sign Up
-- Go to Forgot Password
-- Try random email
-- Try jorge@mail.com
   
 ### Cart test
 - Empty Cart
@@ -104,9 +105,6 @@ No meaningful comments can be made at this time since we are still in the design
 ### Logoff test
 - Successfully logged off
  
-### Recovery test
-- Email not found
-- Email recovered
  
 ### Cart test
 - Empty cart message displayed correctly
@@ -132,17 +130,35 @@ Then install node using nvm:
 nvm install node
 ```
 
-Now clone our repository and install node modules
+Now, lets setup the database. Go to the 
+[MongoDB website](https://www.mongodb.com/docs/manual/installation/)
+and follow their instructions. After that, you should be able to verify that MongoDB is running at the port 27017. We recoment using MongoDB compass to verify that the database is working as expected.
+
+Now clone our repository
 ```
 git clone https://github.com/KrulesExGamer/BoilerStore
-cd BoilerStore/boilerstore-frontend/
-npm i
 ```
 
-Now you only need to start the server and it should be up and running:
+Now, to start the backend, go back to the repository directory and them type:
 ```
+cd ./boilerstore-backend/
+npm install
 npm start
 ```
+
+Now you only need to start the frontendt serce and it should be up and running:
+```
+cd ./boilerstore-frontend/
+npm install
+npm start
+```
+
+All done! Assuming the ports 3000 and 3001 are avaiable, the frontend and the backend should have started without issues.
+
+Now, to quickly populate the database, you can simply run the http get request: [GET] `localhost:3001/api/dev/populate/all`. We recoment insomnia to work and debug the backend.
+
+Now, you should have a frontend, a backend and a database working, enjoy :). 
+
 
 ## Problems
 We had problems generalizing the code and learning how to use React + Typescript in a non-wacky way. We coordinated through Discord and Github to avoid code conflicts.
@@ -151,3 +167,5 @@ We also spent lots of time preparing the mockup APIs that could be easily upgrad
 
 ## Comments
 Code may be a little to extensive due to lack of prior planning.
+
+Obs: the command `npm run build` is not working peferctly for some reason. The index.html will not be correctly connected to styles and scripts. That can easily be solved by manualy combining those files into one file. This is an oddity of `create-react-app` and we could not figure out exactly what is causing it. Howerver, `npm start` is working as expected.
