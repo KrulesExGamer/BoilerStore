@@ -5,25 +5,25 @@
 .cart {
     margin-left:calc(50% - 350px);
     margin-right:calc(50% - 350px);
-    color: black;
+    color: #FFF;
 }
 
 .buyBox{
 	margin:20px;
-    padding: 0px 15px;
+    padding: 5px 15px;
 	display:flex;
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: center;
 	border-radius: 20px;
 	background: linear-gradient(0deg, #0c6f58, #001e3c);
-	height: 200px;
+	height: 125px;
 }
 
 .upper_buyBox{
     width: 100%;
 	align-self: center;
-	margin: 15px;
+	margin: 0px;
 	flex-shrink: 0;
 	display:flex;
 	flex-direction: row;
@@ -33,17 +33,18 @@
 
 .ubB_text{
 	align-self: center;
-	margin: 15px;
+	margin: 10px;
 	flex-shrink: 0;
 	display:flex;
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: center;
+    font-weight: bold;
 }
 
 .pricing{
 	align-self: center;
-	margin: 15px;
+	margin: 10px;
 	flex-shrink: 0;
 	display:flex;
 	flex-direction: column;
@@ -54,7 +55,7 @@
 .lower_buyBox{
     width: 100%;
 	align-self: center;
-	margin: 15px;
+	margin: 0px;
 	flex-shrink: 0;
 	display:flex;
 	flex-direction: row;
@@ -67,6 +68,8 @@
     font-size: 18px;
     font-weight: bold;
     background: linear-gradient(0deg, #6f0c58, #3c001e);
+    height:30px;
+	border-radius: 5px;
     cursor: pointer;
 }
 
@@ -76,7 +79,6 @@
 
 .cart button.back{
     width: 160px;
-    color: black;
 }
 .cart button.buy{
     width: 100px;
@@ -115,7 +117,6 @@
 }
 
 .cart_ul {
-    color: black;
     size: 25px;
 }
 
@@ -166,3 +167,16 @@
 .cart button:hover {
     background-color: aqua;
 } */
+
+@media (max-width:800px){
+    .cart{
+        margin-left:10%;
+        margin-right:10%;
+    }
+}
+@media (max-width:560px){
+    .cart{
+        margin-left:0%;
+        margin-right:0%;
+    }
+}
