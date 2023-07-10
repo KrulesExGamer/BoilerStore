@@ -4,7 +4,7 @@ import '../shared_styles/common.css';
 
 import { Asset, CoolImage, Result, UserState } from '../utils/types';
 import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
-import { fetchAsset, fetchAssetImages } from '../utils/apiCalls';
+import { fetchAsset, fetchAssetImages, saveToCart } from '../utils/apiCalls';
 import { STATUS_MSG_100_YET_TO_SENT } from '../utils/appConstants';
 import TwinLayout from './TwinLayout';
 import ImageSelector from '../components/ImageSelector';
@@ -59,32 +59,13 @@ const useAssetData = (args: { assetKey: string; refetch: boolean }) => {
 	return assetData;
 };
 
-// const useAssetImages = (assetData: Result<Asset>) : ImageTagData[] => {
-//     const [images, setImages] = useState<ImageTagData[]>([]);
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             if (assetData.ok) {
-//                 const images = structuredClone(await fetchAssetImages(assetData.content as Asset));
-//                 setImages(images);
-
-//                 console.log('Got Some Images');
-//                 console.log(images);
-//             }
-//         };
-
-//         fetchData();
-//     }, [assetData]);
-
-//     return images;
-// };
-
 const addToCart = (
 	userState: UserState | undefined,
+	assetKey: string,
 	navigate: NavigateFunction,
 ) => {
 	if (userState?.isLoggedIn) {
-		
+		saveToCart([assetKey], userState.userName || '')
 	} else {
 		navigate('/login');
 	}
@@ -124,7 +105,7 @@ const AssetPageContents = (props: {
 					<div style={{ display: 'flex' }}>
 						<button
 							className="assetpage-button"
-							onClick={() => addToCart(userState, navigate)}
+							onClick={() => addToCart(userState, props.assetData.slug, navigate)}
 						>
 							{'--->'} Add to cart{' '}
 							<FontAwesomeIcon icon={faCartShopping} /> {'<---'}

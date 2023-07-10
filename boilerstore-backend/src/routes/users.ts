@@ -56,16 +56,14 @@ router.get('/users/:username', async (req, res) => {
 	}
 });
 
-
-
 // UPDATE USER
-router.put('/users/:id', async (req, res) => {
+router.put('/users/:username', async (req, res) => {
 	try {
-		const { id } = req.params;
-		const { username, email, password, firstName, lastName, role } =
+		const { username } = req.params;
+		const { email, password, firstName, lastName, role } =
 			req.body;
 
-		const user = await User.findById(id);
+		const user = await User.findById(username);
 		if (!user) {
 			throw new Error('User not found');
 		}
@@ -90,6 +88,37 @@ router.put('/users/:id', async (req, res) => {
 	}
 });
 
+// ADD TO CART
+router.put('/users/cart/:username', async (req, res) => {
+	try {
+		const { username } = req.params;
+		const { cart } = req.body;
+
+		const user = await User.findOne({username});
+		if (!user) {
+			throw new Error('User not found');
+		}
+
+		user.username = username;
+
+		const tempCart = user.cart.concat(cart);
+		user.cart = [...new Set(tempCart)];
+
+		await user.save();
+		res.status(200).json(user);
+		console.log('[UPDATED] </> SUCCESS! Updated user in the database.');
+	} catch (err: any) {
+		const status = 'User not found' === err.message ? 404 : 400;
+		res.status(status).json({ errorMessage: err.message });
+		console.log(
+			`[PUT ERROR ${status}] </> OPS! Could not update user due to an error.`,
+		);
+		console.log(err);
+	}
+});
+
+
+
 // DELETE USER
 router.delete('/users/:id', async (req, res) => {
 	try {
@@ -107,6 +136,31 @@ router.delete('/users/:id', async (req, res) => {
 		res.status(status).json({ errorMessage: err.message });
 		console.log(
 			`[DELETE ERROR ${status}] </> OPS! Could not delete user due to an error.`,
+		);
+		console.log(err);
+	}
+});
+
+// CLEAR CART
+router.delete('/users/cart/:username', async (req, res) => {
+	try {
+		const { username } = req.params;
+
+		const user = await User.findOne({username});
+		if (!user) {
+			throw new Error('User not found');
+		}
+
+		user.cart = [];
+
+		await user.save();
+		res.status(200).json(user);
+		console.log('[UPDATED] </> SUCCESS! Updated user in the database.');
+	} catch (err: any) {
+		const status = 'User not found' === err.message ? 404 : 400;
+		res.status(status).json({ errorMessage: err.message });
+		console.log(
+			`[PUT ERROR ${status}] </> OPS! Could not update user due to an error.`,
 		);
 		console.log(err);
 	}

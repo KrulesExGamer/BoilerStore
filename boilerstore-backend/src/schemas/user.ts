@@ -25,7 +25,7 @@ export const userSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	
+
 	role: {
 		type: String,
 		enum: ['user', 'admin'],
@@ -37,20 +37,10 @@ export const userSchema = new Schema({
 		default: Date.now,
 	},
 
-	cart: [
-		{
-			assetId: {
-				type: Schema.Types.ObjectId,
-				ref: 'Asset',
-				required: true,
-			},
-			quantity: {
-				type: Number,
-				required: true,
-				default: 1,
-			},
-		},
-	],
+	cart: [{
+		type: String,
+		required: false,
+	}],
 });
 
 export const User = model('User', userSchema);
