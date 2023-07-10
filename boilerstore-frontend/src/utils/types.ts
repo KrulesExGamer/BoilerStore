@@ -43,7 +43,7 @@ export interface Asset {
 
 export interface CartItem {
 	assetId: string;
-	quantity: number;
+	quantity?: number;
 }
 
 export interface UserAccount {
