@@ -46,11 +46,14 @@ const EditAssetPage = () => {
 		if (!update) return;
 		if (0 > formData.price ) throw Error('[ERROR] Ops! Price is invalid!');
 		if (0 > (formData.amount ?? -1)) formData.amount = undefined;
-		formData.tags = formData.tags.join(',').split(',').map((el) => el.toLocaleLowerCase().trim()); 
-		formData.assetType = formData.assetType.join(',').split(',').map((el) => el.toLocaleLowerCase().trim()); 
+
+		if (!Array.isArray(formData.tags)) formData.tags = (formData.tags as string).split(',');
+		if (!Array.isArray(formData.assetType)) formData.assetType = (formData.assetType as string).split(',');
+		
 		updateApi(`api/assets/${slug}`, formData).catch((err) =>
 			console.log('[ERROR] Could not update asset data.', err),
 		);
+
 		navigate('/admin/more');
 	}, [update]);
 
