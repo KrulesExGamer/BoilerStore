@@ -107,7 +107,7 @@ No meaningful comments can be made at this time since we are still in the design
  
  
 ### Cart test
-- Empty cart message displayed correctly
+- Empty cart displays price 0
 - Asset price correctly displayed
 - Assets prices correctly displayed
 - Total prices correctly displayed
