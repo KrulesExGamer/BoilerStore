@@ -15,7 +15,6 @@ const Login = () => {
     const [errorText, setError] = useState('');
 
     const navigate = useNavigate();
-    const location = useLocation();
 
     const {userState, setUserState} = useContext(UserContext)
     const [buttonClicked, setButtonClicked] = useState(0);
