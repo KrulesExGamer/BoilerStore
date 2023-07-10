@@ -1,0 +1,87 @@
+.EditAssetPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: black;
+	padding: 50px 50px;
+}
+
+.EditAssetPage h2 {
+	margin-bottom: 20px;
+	color: black;
+}
+
+.EditAssetPage-formgroup {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+	color: black;
+}
+
+.EditAssetPage-formgroup label {
+	margin-bottom: 5px;
+	font-weight: bold;
+	color: black;
+}
+
+.EditAssetPage-formgroup input,
+.EditAssetPage-formgroup textarea {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	color: black;
+	min-width: 50vw;
+}
+
+@media (max-width: 768px) {
+	.EditAssetPage-formgroup input,
+.EditAssetPage-formgroup textarea {
+	min-width: 75vw;
+}
+
+}
+
+@media (max-width: 600px) {
+	.EditAssetPage-formgroup input,
+.EditAssetPage-formgroup textarea {
+	min-width: 95vw;
+}
+
+}
+
+.EditAssetPage-buttongroup {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	color: black;
+}
+
+.EditAssetPage-save-button,
+.EditAssetPage-cancelButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 15px;
+	margin: 0 10px;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: bold;
+	color: black;
+	background-color: #007bff;
+	cursor: pointer;
+	color: black;
+}
+
+.EditAssetPage-save-button:hover,
+.EditAssetPage-cancelButton:hover {
+	background-color: #0056b3;
+	color: black;
+}
+
+.EditAssetPage-save-button svg,
+.EditAssetPage-cancelButton svg {
+	margin-right: 5px;
+	color: black;
+}

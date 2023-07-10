@@ -56,7 +56,7 @@ export const assets: Asset[] = [
 	{
 		title: 'Firts Person Shoter',
 		description: 'A fi',
-		type: ['image'],
+		assetType: ['image'],
 		tags: ['a', 'b'],
 		slug: 'fps',
 		seller: 'Aaa',
@@ -71,7 +71,7 @@ export const assets: Asset[] = [
 	{
 		title: 'Bullet Hell',
 		description: 'A fi',
-		type: ['image'],
+		assetType: ['image'],
 		tags: ['a', 'b'],
 		slug: 'bullet-hell',
 		seller: 'Aaa',
@@ -96,7 +96,7 @@ export const assets: Asset[] = [
 		title: 'Zelda Like',
 		description: 'A fi',
 		seller: 'Aaa',
-		type: ['image'],
+		assetType: ['image'],
 		tags: ['a', 'b'],
 		slug: 'zelda-like',
 		images: [

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import './AssetPage.css';
 import '../shared_styles/common.css';
 
@@ -14,6 +14,7 @@ import {
 	faCartShopping,
 	faCheck,
 	faPenToSquare,
+	faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../Context';
 import { ensure } from '../utils/funcs';
@@ -65,7 +66,7 @@ const addToCart = (
 	navigate: NavigateFunction,
 ) => {
 	if (userState?.isLoggedIn) {
-		saveToCart([assetKey], userState.username || '')
+		saveToCart([assetKey], userState.username || '');
 	} else {
 		navigate('/login');
 	}
@@ -77,6 +78,20 @@ const AssetPageContents = (props: {
 	refetch: () => void;
 }) => {
 	let [editing, setEditing] = useState(false);
+
+	const [title, setTitle] = useState(props.assetData.title);
+	const [description, setDescription] = useState(props.assetData.description);
+	const [tags, setTags] = useState(props.assetData.tags);
+	const [seller, setSeller] = useState(props.assetData.seller);
+	const [amout, setAmount] = useState(props.assetData.amount);
+
+	useEffect(() => {
+		setTitle(props.assetData.title);
+		setDescription(props.assetData.description);
+		setTags(props.assetData.tags);
+		setSeller(props.assetData.seller);
+		setAmount(props.assetData.amount);
+	}, [props.assetData])
 
 	const { userState, setUserState } = useContext(UserContext);
 	const navigate = useNavigate();
@@ -91,108 +106,155 @@ const AssetPageContents = (props: {
 		},
 	];
 
+	const _AddToCart = (
+		<button
+			className="assetpage-button"
+			onClick={() => addToCart(userState, props.assetData.slug, navigate)}
+		>
+			{'--->'} Add to cart <FontAwesomeIcon icon={faCartShopping} />{' '}
+			{'<---'}
+		</button>
+	);
+
+	const _AdminEdit_Structure = (
+		<button
+			className="assetpage-button"
+			onClick={() => {
+				setEditing(true);
+			}}
+		>
+			Edit <FontAwesomeIcon icon={faPenToSquare} />
+		</button>
+	);
+
+	const _AdminEdit = (
+		<>
+			{(userState?.isAdmin || debbug_is_adming) &&
+				!editing &&
+				_AdminEdit_Structure}
+		</>
+	);
+
+	const _CancelChanges = (
+		<button
+			className="assetpage-button"
+			onClick={() => {
+				setEditing(false);
+				props.refetch();
+			}}
+		>
+			Cancel Changes
+			<FontAwesomeIcon icon={faCancel} />
+		</button>
+	);
+
+	const _ConfirmChanges = (
+		<button
+			className="assetpage-button"
+			onClick={() => {
+				setEditing(false);
+			}}
+		>
+			Confirm Changes
+			<FontAwesomeIcon icon={faCheck} />
+		</button>
+	);
+
+	const _ConfirmOrCancel = (
+		<>
+			{(userState?.isAdmin || debbug_is_adming) && editing && (
+				<>
+					{_CancelChanges}
+					{_ConfirmChanges}
+				</>
+			)}
+		</>
+	);
+
+	const _Title = <h2 className="round-line-div">{props.assetData.title}</h2>;
+	const _Buttons = (
+		<div style={{ display: 'flex' }}>
+			{_AddToCart}
+			{_AdminEdit}
+			{_ConfirmOrCancel}
+		</div>
+	);
+
+	const _Description = (
+		<div className="asset-description round-line-div">
+			<p contentEditable={editing}>{props.assetData.description}</p>
+		</div>
+	);
+
+	const _One_Tag = (tag: string) => {
+		return (
+			<li contentEditable={editing}>
+				{`#${tag} `}
+				{editing && (
+					<button
+						className='del-tag-button'
+						onClick={() => {
+							const index = props.assetData.tags.indexOf(tag);
+							if (index > -1) {
+								// only splice array when item is found
+								props.assetData.tags.splice(index, 1); // 2nd parameter means remove one item only
+							}
+						}}
+					>
+						<FontAwesomeIcon icon={faTrash} />
+					</button>
+				)}
+			</li>
+		);
+	};
+
+	const _Tags_Structure = (
+		<div className="asset-tags-div">
+			<p className="asset-tags-label ">Tags:</p>
+			<ul className="asset-tags-list">
+				{props.assetData.tags.map((tag) => _One_Tag(tag))}
+			</ul>
+		</div>
+	);
+
+	const _Tags = <>{ensure(props.assetData.tags) && _Tags_Structure}</>;
+
+	const _Seller = (
+		<div style={{ display: 'flex' }}>
+			<p className="round-line-div" style={{ marginRight: '20px' }}>
+				Seller:
+			</p>
+			<p className="round-line-div">
+				{props.assetData.seller ?? 'BoilerStore Official'}
+			</p>
+		</div>
+	);
+
+	const _Amount_Structure = (
+		<div style={{ display: 'flex' }}>
+			<p className="round-line-div" style={{ marginRight: '20px' }}>
+				Amount in stock:
+			</p>
+			<p className="round-line-div">{props.assetData.amount}</p>
+		</div>
+	);
+
+	const _Amount = <>{ensure(props.assetData.amount) && _Amount_Structure}</>;
+
 	return (
 		<TwinLayout
-			left={
-				<>
-					<ImageSelector images={assetImgs} />
-				</>
-			}
+			left={<ImageSelector images={assetImgs} />}
 			right={
 				<div className="right-side-asset-data">
-					<h2 className="round-line-div">{props.assetData.title}</h2>
-
-					<div style={{ display: 'flex' }}>
-						<button
-							className="assetpage-button"
-							onClick={() => addToCart(userState, props.assetData.slug, navigate)}
-						>
-							{'--->'} Add to cart{' '}
-							<FontAwesomeIcon icon={faCartShopping} /> {'<---'}
-						</button>
-						{(userState?.isAdmin || debbug_is_adming) &&
-							!editing && (
-								<button
-									className="assetpage-button"
-									onClick={() => {
-										setEditing(true);
-									}}
-								>
-									Edit{' '}
-									<FontAwesomeIcon icon={faPenToSquare} />
-								</button>
-							)}
-						{(userState?.isAdmin || debbug_is_adming) &&
-							editing && (
-								<>
-									<button
-										className="assetpage-button"
-										onClick={() => {
-											setEditing(false);
-											props.refetch();
-										}}
-									>
-										Cancel Changes
-										<FontAwesomeIcon icon={faCancel} />
-									</button>
-
-									<button
-										className="assetpage-button"
-										onClick={() => {
-											setEditing(false);
-										}}
-									>
-										Confirm Changes
-										<FontAwesomeIcon icon={faCheck} />
-									</button>
-								</>
-							)}
-					</div>
-
-					<div className="asset-description round-line-div">
-						<p contentEditable={editing}>
-							{props.assetData.description}
-						</p>
-					</div>
-
-					{ensure(props.assetData.tags) && (
-						<div className="asset-tags-div">
-							<p className="asset-tags-label ">Tags:</p>
-							<ul className="asset-tags-list">
-								{props.assetData.tags.map((tag) => (
-									<li> {`#${tag} `} </li>
-								))}
-							</ul>
-						</div>
-					)}
+					{_Title}
+					{_Buttons}
+					{_Description}
+					{_Tags}
 
 					<br></br>
 
-					<div style={{ display: 'flex' }}>
-						<p
-							className="round-line-div"
-							style={{ marginRight: '20px' }}
-						>
-							Seller:
-						</p>
-						<p className="round-line-div">
-							{props.assetData.seller ?? 'BoilerStore Official'}
-						</p>
-					</div>
-
-					{ensure(props.assetData.amount) && (
-						<div style={{ display: 'flex' }}>
-							<p
-								className="round-line-div"
-								style={{ marginRight: '20px' }}
-							>
-								Amount in stock:
-							</p>
-							<p className="round-line-div">
-								{props.assetData.amount}
-							</p>
-						</div>
-					)}
+					{_Seller}
+					{_Amount}
 				</div>
 			}
 		/>

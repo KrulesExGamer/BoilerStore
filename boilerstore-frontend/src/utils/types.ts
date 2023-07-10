@@ -28,10 +28,10 @@ export interface AssetType {
 export interface Asset {
 	title: string;
 	description: string;
-	seller: string;
+	seller?: string;
 
 	slug: string;
-	type: string[];
+	assetType: string[];
 	tags: string[];
 
 	images: CoolImage[];

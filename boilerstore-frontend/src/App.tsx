@@ -17,6 +17,7 @@ import MorePage from './pages/admin/More';
 import UsersPage from './pages/admin/Users';
 import AddUser from './pages/admin/AddUser';
 import EditUser from './pages/admin/EditUser';
+import EditAsset from './pages/admin/EditAsset';
 
 
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
 						<Route path="admin/users" element={<UsersPage />} />
 						<Route path="admin/edit-user" element={<EditUser />} />
 						<Route path="admin/adduser" element={<AddUser />} />
+						<Route path="admin/edit-asset" element={<EditAsset />} />
 						<Route path='*' element={<NotFound />} />
 					</Route>
 					<Route path="/signup" element={<Signup />}></Route>
