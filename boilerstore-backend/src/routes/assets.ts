@@ -162,4 +162,15 @@ router.delete('/assets/:slug', async (req, res) => {
 	}
 });
 
+// ## [READ] ALL ASSETS
+router.get('/all/assets', async (req, res) => {
+	try {
+		const assets = await Asset.find({});
+		res.status(200).json(assets);
+	} catch (err: any) {
+		res.status(500).json({ error: 'Internal server error' });
+		console.log('[ERROR] Could not fetch assets:', err);
+	}
+});
+
 export default router;

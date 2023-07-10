@@ -18,6 +18,7 @@ import UsersPage from './pages/admin/Users';
 import AddUser from './pages/admin/AddUser';
 import EditUser from './pages/admin/EditUser';
 import EditAsset from './pages/admin/EditAsset';
+import SearchPage from './pages/SearchPage';
 
 
 const App = () => {
@@ -41,7 +42,7 @@ const App = () => {
 						<Route path="cart" element={<Cart />} />
 						<Route
 							path="/results"
-							element={<SearchQuery />}
+							element={<SearchPage />}
 						></Route>
 						<Route path="not-found" element={<NotFound />}></Route>
 						<Route path="test" element={<TestPage />}></Route>

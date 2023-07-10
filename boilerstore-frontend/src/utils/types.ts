@@ -68,7 +68,7 @@ export interface UserState {
 	isAdmin?: boolean;
 }
 
-export type FetchApiResponse = null | Asset | AssetType | GameGenre;
+export type FetchApiResponse = null | Asset | AssetType | GameGenre | Asset[];
 
 export interface Result<T = any> {
 	ok: boolean;

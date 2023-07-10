@@ -2,9 +2,9 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import './AssetPage.css';
 import '../shared_styles/common.css';
 
-import { Asset, CoolImage, Result, UserState } from '../utils/types';
+import { Asset, CoolImage, Result, UserAccount, UserState } from '../utils/types';
 import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
-import { fetchAsset, fetchAssetImages, saveToCart } from '../utils/apiCalls';
+import { fetchApi, fetchAsset, fetchAssetImages, saveToCart } from '../utils/apiCalls';
 import { STATUS_MSG_100_YET_TO_SENT } from '../utils/appConstants';
 import TwinLayout from './TwinLayout';
 import ImageSelector from '../components/ImageSelector';
@@ -79,11 +79,17 @@ const AssetPageContents = (props: {
 }) => {
 	let [editing, setEditing] = useState(false);
 
+
 	const [title, setTitle] = useState(props.assetData.title);
 	const [description, setDescription] = useState(props.assetData.description);
 	const [tags, setTags] = useState(props.assetData.tags);
 	const [seller, setSeller] = useState(props.assetData.seller);
 	const [amout, setAmount] = useState(props.assetData.amount);
+
+	const [inCart, setInCart] = useState(false);
+	const { userState, setUserState } = useContext(UserContext);
+	const [update, setUpdate] = useState(0);
+	const forceUpdate = () => setUpdate(update+1);
 
 	useEffect(() => {
 		setTitle(props.assetData.title);
@@ -93,7 +99,12 @@ const AssetPageContents = (props: {
 		setAmount(props.assetData.amount);
 	}, [props.assetData])
 
-	const { userState, setUserState } = useContext(UserContext);
+	useEffect(() => {
+		fetchApi(`api/users/${userState?.username}`)
+			.then(res => res.content as any as UserAccount)
+			.then(u => setInCart((u.cart ?? []).includes(props.assetData.slug)))
+	}, [userState]);
+
 	const navigate = useNavigate();
 	const debbug_is_adming = false;
 
@@ -109,9 +120,13 @@ const AssetPageContents = (props: {
 	const _AddToCart = (
 		<button
 			className="assetpage-button"
-			onClick={() => addToCart(userState, props.assetData.slug, navigate)}
+			onClick={() => {
+				addToCart(userState, props.assetData.slug, navigate);
+				setInCart(true);
+			}}
+			disabled={inCart}
 		>
-			{'--->'} Add to cart <FontAwesomeIcon icon={faCartShopping} />{' '}
+			{'--->'} {inCart ? 'Already in cart' : 'Add to cart'} <FontAwesomeIcon icon={faCartShopping} />{' '}
 			{'<---'}
 		</button>
 	);

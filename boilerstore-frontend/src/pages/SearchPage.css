@@ -1,0 +1,16 @@
+.AssetGridPage {
+	background-color: white;
+	padding: 50px;
+	color: black;
+
+}
+.AssetGridPage h1 {
+	margin-bottom: 25px;
+}
+
+.asset-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-gap: 20px;
+}
+
