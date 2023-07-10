@@ -47,6 +47,7 @@ export interface CartItem {
 }
 
 export interface UserAccount {
+	_id?: string,
 	username: string;
 	password: string;
 	email: string;

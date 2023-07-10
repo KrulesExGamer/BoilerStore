@@ -165,7 +165,7 @@ export async function validateLogin(username: string, password: string) {
 			) {
 				const login: UserState = {
 					isLoggedIn: true,
-					userName: account.username,
+					username: account.username,
 					email: account.email,
 					isAdmin: account.role === 'admin',
 				};
