@@ -139,19 +139,26 @@ export async function fetchCartAsset(assetKey : string) {
 	return assetItem as any as Asset;
 }
 
-export async function saveToCart(assetKey : string) {
-	if ('' === assetKey) throw Error('Asset must have an id');
-	const fetchedData = await fetchApi(`api/assets/${assetKey}`);
-	console.log('got to fetchAsset');
+export async function saveToCart(assetKeys : string[], username : string) {
+	if (assetKeys.length === 0) throw Error('Empty list');
+	if (username === '') throw Error('User name is necessary');
 
-	if (!fetchedData.ok || fetchedData.content === undefined)
-		return undefined;
+	const json = {cart: assetKeys}
+	await axios.put(`${BACKEND_URL}/api/users/cart/${username}`, json);
 
-	const assetItem = fetchedData.content;
+	console.log(`${BACKEND_URL}/api/users/cart/${username}`)
 
-
-	return assetItem as any as Asset;
+	console.log('Cart list updated');
 }
+
+export async function clearCart(username : string) {
+	if (username === '') throw Error('User name is necessary');
+
+	await axios.delete(`${BACKEND_URL}/users/cart/${username}`);
+
+	console.log('Cart list cleared');
+}
+
 
 export async function validateLogin(username: string, password: string) {
 	const none: UserState = { isLoggedIn: false };
@@ -165,7 +172,7 @@ export async function validateLogin(username: string, password: string) {
 			) {
 				const login: UserState = {
 					isLoggedIn: true,
-					username: account.username,
+					userName: account.username,
 					email: account.email,
 					isAdmin: account.role === 'admin',
 				};
@@ -187,6 +194,9 @@ export async function validateLogin(username: string, password: string) {
 				return undefined;
 
 			const content = res.content as any as UserAccount;
+
+			if (content.password !== password)
+				return none;
 
 			let adm = false;
 			if (content.role === 'admin')
