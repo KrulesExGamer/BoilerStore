@@ -31,14 +31,14 @@ router.post('/users', async (req, res) => {
 });
 
 // GET ALL USERS
-// router.get('/users', async (req, res) => {
-// 	try {
-// 		const users = await User.find();
-// 		res.status(200).json(users);
-// 	} catch (err: any) {
-// 		res.status(500).json({ error: 'Failed to fetch users' });
-// 	}
-// });
+router.get('/all/users', async (req, res) => {
+	try {
+		const users = await User.find();
+		res.status(200).json(users);
+	} catch (err: any) {
+		res.status(500).json({ error: 'Failed to fetch users' });
+	}
+});
 
 // GET USER BY ID
 router.get('/users/:username', async (req, res) => {
@@ -55,6 +55,8 @@ router.get('/users/:username', async (req, res) => {
 		res.status(status).json({ error: err.message });
 	}
 });
+
+
 
 // UPDATE USER
 router.put('/users/:id', async (req, res) => {

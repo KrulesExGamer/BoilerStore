@@ -1,0 +1,24 @@
+.More {
+	font-size: 2em;
+	text-align: center;
+	display:grid;
+	margin-top: 10px;
+	width: 50%;
+	margin-left: 25%;
+	font-weight: bold;
+}
+
+.More a, .More link {
+	background: linear-gradient(45deg, rgb(138, 39, 51), rgb(188, 72, 109));
+	margin: 10px 20px;
+	border-radius: 50px;
+	padding: 5px;
+	cursor: pointer;
+	transition-duration: 50ms;
+	transition: none;
+}
+
+.More a:hover{
+	border: 5px black solid;
+	margin: 5px 15px;
+}
