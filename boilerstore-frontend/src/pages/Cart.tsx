@@ -56,7 +56,6 @@ const Cart = () => {
 
 	const navigate = useNavigate();
 
-
 	useEffect(() => {
 		if (!ensure(userState?.username)) return;
 		fetchApi(`api/users/${userState?.username}`)
@@ -124,12 +123,6 @@ const Cart = () => {
 
 	const performPurchase = () => {};
 
-    if(0 >= cartList.length){
-        return (<div className='empty'>
-                    <p className='empty_text'>Carrinho Vazio</p>
-                </div>);
-    }
-    
 	return (
 		<div className="cart">
 			{/* Por alguma razão, não consigo fazer os produtos aparecerem sem quebrar o resto do código */}
