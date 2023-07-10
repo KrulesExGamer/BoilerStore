@@ -106,7 +106,6 @@ export async function fetchAssetImages(asset: Asset): Promise<CoolImage[]> {
 export async function fetchAsset(assetKey: string): Promise<Result<Asset>> {
 	if ('' === assetKey) throw Error('Asset must have an id');
 	const fetchedData = await fetchApi(`api/assets/${assetKey}`);
-	console.log('got to fetchAsset');
 
 	if (!fetchedData.ok) {
 		return {
@@ -124,6 +123,34 @@ export async function fetchGameGenre(gameGenreKey: string) {
 	} catch (err) {
 		throw err;
 	}
+}
+
+export async function fetchCartAsset(assetKey : string) {
+	if ('' === assetKey) throw Error('Asset must have an id');
+	const fetchedData = await fetchApi(`api/assets/${assetKey}`);
+	console.log('got to fetchAsset');
+
+	if (!fetchedData.ok || fetchedData.content === undefined)
+		return undefined;
+
+	const assetItem = fetchedData.content;
+
+
+	return assetItem as any as Asset;
+}
+
+export async function saveToCart(assetKey : string) {
+	if ('' === assetKey) throw Error('Asset must have an id');
+	const fetchedData = await fetchApi(`api/assets/${assetKey}`);
+	console.log('got to fetchAsset');
+
+	if (!fetchedData.ok || fetchedData.content === undefined)
+		return undefined;
+
+	const assetItem = fetchedData.content;
+
+
+	return assetItem as any as Asset;
 }
 
 export async function validateLogin(username: string, password: string) {
