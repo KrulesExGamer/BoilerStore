@@ -80,16 +80,14 @@ const EditAssetPage = () => {
 				.post(`${BACKEND_URL}/api/assets`, formData)
 				.catch((err) =>
 					console.log('[ERROR] Could not update asset data.', err),
-				);
+				).then(()=>navigate('/admin/more'));
 		} else {
 			axios
 				.put(`${BACKEND_URL}/api/assets/${slug}`, formData)
 				.catch((err) =>
 					console.log('[ERROR] Could not update asset data.', err),
-				);
+				).then(()=>navigate('/admin/more'));
 		}
-
-		//navigate('/admin/more');
 	}, [update]);
 
 	// const handleInputChange = (e: any) => {
