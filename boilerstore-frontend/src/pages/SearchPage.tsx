@@ -21,7 +21,6 @@ const AssetGridPage = () => {
 	const [assets, setAssets] = useState<Asset[]>([]);
 	const searchQuery = useParam('search_query');
 	const location = useLocation();
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		const s = (searchQuery ?? '').trim().toLowerCase();
