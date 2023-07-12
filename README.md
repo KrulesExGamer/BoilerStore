@@ -1,5 +1,10 @@
 # BoilerStore
+## Students
+- Bernardo Maia Coelho (12542481)
+- Pedro Nascimento (12803492)
+- Gustavo Wadas Lopes (12745640)
 
+## Introduction
 In this project, we aim to build BoilerStore: an asset store for indie games, designed by game devs for game devs. The store will offer a wide range of assets, from 3D models to music and more.
 
 Boilerstore will offer a unique approach to asset searching. Our search engine will provide users with the assets they are looking for based on their inputs. Additionally, it will list assets that might help users finish their game based on the kind of game they are making.
