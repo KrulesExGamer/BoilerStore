@@ -12,13 +12,7 @@
     align-self: flex-start;
 }
 
-.TwinLayout-leftContent {
-    background-color: blue;
-}
 
-.TwinLayout-rightContent {
-    background-color: green;
-}
 
 
 @media (max-width: 960px) {

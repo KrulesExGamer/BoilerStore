@@ -1,7 +1,7 @@
 .AssetSection {
     color: black;
 
-    background: linear-gradient(45deg, lightblue, cyan);
+    background: linear-gradient(45deg, rgb(54, 142, 171), rgb(54, 172, 172));
 
     min-width: 100vw;
     min-height: 105vh;
@@ -11,7 +11,6 @@
 
 .AssetPage {
     max-height: 90vh;
-    background-color: red;
     overflow: hidden;
 }
 
