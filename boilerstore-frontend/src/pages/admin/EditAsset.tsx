@@ -27,10 +27,16 @@ const EditAssetPage = () => {
 		price: 0,
 	});
 
+	const [imageUrl, setImageUrl] = useState('');
+	const [active, setActive] = useState(true);
+
 	useEffect(() => {
 		fetchAsset(slug ?? '')
 			.then((res) => res.content as any as Asset)
-			.then((data) => setAsset(data))
+			.then((data) => {
+				setAsset(data);
+				if (data.images.length) setImageUrl(data.images[0].static.img);
+			})
 			.catch((err) =>
 				console.log('[ERROR] Could not fetch asset data.', err),
 			);
@@ -44,12 +50,20 @@ const EditAssetPage = () => {
 
 	useEffect(() => {
 		if (!update) return;
-		if (0 > formData.price ) throw Error('[ERROR] Ops! Price is invalid!');
+		if (0 > formData.price) throw Error('[ERROR] Ops! Price is invalid!');
 		if (0 > (formData.amount ?? -1)) formData.amount = undefined;
 
-		if (!Array.isArray(formData.tags)) formData.tags = (formData.tags as string).split(',');
-		if (!Array.isArray(formData.assetType)) formData.assetType = (formData.assetType as string).split(',');
-		
+		if (!Array.isArray(formData.tags))
+			formData.tags = (formData.tags as string).split(',');
+		if (!Array.isArray(formData.assetType))
+			formData.assetType = (formData.assetType as string).split(',');
+
+		formData.images = [
+			{
+				static: { img: imageUrl, alt: '' },
+			},
+		];
+
 		updateApi(`api/assets/${slug}`, formData).catch((err) =>
 			console.log('[ERROR] Could not update asset data.', err),
 		);
@@ -81,10 +95,10 @@ const EditAssetPage = () => {
 	};
 
 	return (
-		<div className='EditAssetPage'>
+		<div className="EditAssetPage">
 			<h2>Edit Asset</h2>
 			<form onSubmit={handleSubmit}>
-				<div className='EditAssetPage-formgroup'>
+				<div className="EditAssetPage-formgroup">
 					<label htmlFor="slug">Slug:</label>
 					<input
 						type="text"
@@ -95,7 +109,7 @@ const EditAssetPage = () => {
 						required
 					/>
 				</div>
-				<div className='EditAssetPage-formgroup'>
+				<div className="EditAssetPage-formgroup">
 					<label htmlFor="title">Title:</label>
 					<input
 						type="text"
@@ -106,7 +120,7 @@ const EditAssetPage = () => {
 						required
 					/>
 				</div>
-				<div className='EditAssetPage-formgroup'>
+				<div className="EditAssetPage-formgroup">
 					<label htmlFor="description">Description:</label>
 					<textarea
 						id="description"
@@ -116,7 +130,7 @@ const EditAssetPage = () => {
 						required
 					/>
 				</div>
-				<div className='EditAssetPage-formgroup'>
+				<div className="EditAssetPage-formgroup">
 					<label htmlFor="seller">Seller:</label>
 					<input
 						type="text"
@@ -127,7 +141,7 @@ const EditAssetPage = () => {
 						required
 					/>
 				</div>
-				<div className='EditAssetPage-formgroup'>
+				<div className="EditAssetPage-formgroup">
 					<label htmlFor="price">Price:</label>
 					<input
 						type="number"
@@ -138,7 +152,7 @@ const EditAssetPage = () => {
 						required
 					/>
 				</div>
-				<div className='EditAssetPage-formgroup'>
+				<div className="EditAssetPage-formgroup">
 					<label htmlFor="discount">Discount:</label>
 					<input
 						type="number"
@@ -148,7 +162,7 @@ const EditAssetPage = () => {
 						onChange={handleInputChange}
 					/>
 				</div>
-				<div className='EditAssetPage-formgroup'>
+				<div className="EditAssetPage-formgroup">
 					<label htmlFor="amount">Amount:</label>
 					<input
 						type="number"
@@ -158,6 +172,30 @@ const EditAssetPage = () => {
 						onChange={handleInputChange}
 					/>
 				</div>
+				<div className="EditAssetPage-formgroup">
+					<label htmlFor="imageUrl">Image Url:</label>
+					<input
+						type="text"
+						id="imageUrl"
+						name="imageUrl"
+						value={imageUrl}
+						onChange={(e) => {
+							setImageUrl(e.target.value);
+						}}
+					/>
+				</div>
+				<div>
+					<label className="active-ck-box-label isadmin-checkbox-label">
+						<input
+							type="checkbox"
+							checked={active}
+							onChange={(e) => {setActive(!active);}}
+						/>
+						<span className="active-ck-box-custom isadmin-checkbox-custom"></span>
+						Active:
+					</label>
+				</div>
+
 				{/* <div className='EditAssetPage-formgroup'>
           <label htmlFor="active">Is :</label>
           <input
@@ -168,7 +206,7 @@ const EditAssetPage = () => {
             onChange={handleCheckboxChange}
           />
         </div> */}
-				<div className='EditAssetPage-formgroup'>
+				<div className="EditAssetPage-formgroup">
 					<label htmlFor="assetType">Asset Type:</label>
 					<input
 						type="text"
@@ -179,7 +217,8 @@ const EditAssetPage = () => {
 						required
 					/>
 				</div>
-				<div className='EditAssetPage-formgroup'>
+
+				<div className="EditAssetPage-formgroup">
 					<label htmlFor="tags">Tags:</label>
 					<input
 						type="text"
@@ -190,12 +229,15 @@ const EditAssetPage = () => {
 						required
 					/>
 				</div>
-				<div className='EditAssetPage-buttongroup'>
-					<button type="submit" className='EditAssetPage-save-button'>
+				<div className="EditAssetPage-buttongroup">
+					<button type="submit" className="EditAssetPage-save-button">
 						<FontAwesomeIcon icon={faSave} />
 						Save
 					</button>
-					<button type="button" className='EditAssetPage-cancelButton'>
+					<button
+						type="button"
+						className="EditAssetPage-cancelButton"
+					>
 						<FontAwesomeIcon icon={faTimes} />
 						Cancel
 					</button>
