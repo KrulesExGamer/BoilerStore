@@ -23,8 +23,10 @@ router.get('/assets/:slug', async (req, res) => {
 
 // ## [CREATE] ASSET
 router.post('/assets', async (req, res) => {
-	console.log('[POST] # PROCESSING GET REQUEST ');
+	console.log('[POST] # PROCESSING REQUEST ');
 	console.log('[POST] > RESOURCE: `/assets`');
+	console.log('BODY of req');
+	console.log(req.body);
 	try {
 		const {
 			title,
@@ -34,8 +36,10 @@ router.post('/assets', async (req, res) => {
 			amount,
 			active,
 			assetType,
+			discount,
 			tags,
 			images,
+			seller,
 		} = req.body;
 
 		console.log('- DATA: ');
@@ -47,7 +51,9 @@ router.post('/assets', async (req, res) => {
 			price,
 			amount,
 			active,
+			discount,
 			assetType,
+			seller,
 			tags,
 			images,
 		});
@@ -55,7 +61,7 @@ router.post('/assets', async (req, res) => {
 		console.log(asset);
 
 		// Important error handling
-		if (title.trim().toLowerCase() === 'coffee') {
+		if (title.toString().trim().toLowerCase() === 'coffee') {
 			throw new Error("I'm a teapot");
 		}
 

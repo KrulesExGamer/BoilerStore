@@ -6,6 +6,8 @@ import { useParam } from '../../utils/customHooks';
 import { fetchApi, fetchAsset, updateApi } from '../../utils/apiCalls';
 import { useNavigate } from 'react-router-dom';
 import './EditAsset.css';
+import axios from 'axios';
+import { BACKEND_URL } from '../../utils/appConstants';
 
 const EditAssetPage = () => {
 	const navigate = useNavigate();
@@ -21,7 +23,7 @@ const EditAssetPage = () => {
 		slug: '',
 		images: [
 			{
-				static: { img: '', alt: '' },
+				static: { img: '', alt: 'Text example.' },
 			},
 		],
 		price: 0,
@@ -32,6 +34,8 @@ const EditAssetPage = () => {
 	const [active, setActive] = useState(true);
 
 	useEffect(() => {
+		if (isNew) return;
+
 		fetchAsset(slug ?? '')
 			.then((res) => res.content as any as Asset)
 			.then((data) => {
@@ -61,25 +65,45 @@ const EditAssetPage = () => {
 
 		formData.images = [
 			{
-				static: { img: imageUrl, alt: '' },
-
+				static: { img: imageUrl, alt: 'Text example.' },
 			},
 		];
 
-		updateApi(`api/assets/${slug}`, formData).catch((err) =>
-			console.log('[ERROR] Could not update asset data.', err),
-		);
+		console.log('formdata is', formData);
 
-		navigate('/admin/more');
+		// fetch(`http://localhost:3001/api/assets`, {method: 'POST' , body: JSON.stringify(formData)}).catch((err) =>
+		// 	console.log('[ERROR] Could not update asset data.', err),
+		// );
+
+		if (isNew) {
+			axios
+				.post(`${BACKEND_URL}/api/assets`, formData)
+				.catch((err) =>
+					console.log('[ERROR] Could not update asset data.', err),
+				);
+		} else {
+			axios
+				.put(`${BACKEND_URL}/api/assets/${slug}`, formData)
+				.catch((err) =>
+					console.log('[ERROR] Could not update asset data.', err),
+				);
+		}
+
+		//navigate('/admin/more');
 	}, [update]);
 
-	const handleInputChange = (e: any) => {
-		const { name, value } = e.target;
-		setFormData((prevFormData) => ({
-			...prevFormData,
-			[name]: value,
-		}));
-	};
+	// const handleInputChange = (e: any) => {
+	// 	const name : string = e.target.name;
+	// 	const value : any = e.target.value;
+	// 	let data : Asset = structuredClone(formData);
+
+	// 	data[name as any] as any = value as any;
+
+	// 	setFormData((prevFormData) => ({
+	// 		...prevFormData,
+	// 		[name]: value,
+	// 	}));
+	// };
 
 	const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, checked } = e.target;
@@ -98,7 +122,7 @@ const EditAssetPage = () => {
 
 	return (
 		<div className="EditAssetPage">
-			<h2>Edit Asset</h2>
+			<h2>{isNew ? 'New Asset' : 'Edit Asset'}</h2>
 			<form onSubmit={handleSubmit}>
 				<div className="EditAssetPage-formgroup">
 					<label htmlFor="slug">Slug:</label>
@@ -107,7 +131,11 @@ const EditAssetPage = () => {
 						id="slug"
 						name="slug"
 						value={formData.slug}
-						onChange={handleInputChange}
+						onChange={(e) => {
+							let temp = structuredClone(formData);
+							temp.slug = e.target.value;
+							setFormData(temp);
+						}}
 						required
 					/>
 				</div>
@@ -118,7 +146,11 @@ const EditAssetPage = () => {
 						id="title"
 						name="title"
 						value={formData.title}
-						onChange={handleInputChange}
+						onChange={(e) => {
+							let temp = structuredClone(formData);
+							temp.title = e.target.value;
+							setFormData(temp);
+						}}
 						required
 					/>
 				</div>
@@ -128,7 +160,11 @@ const EditAssetPage = () => {
 						id="description"
 						name="description"
 						value={formData.description}
-						onChange={handleInputChange}
+						onChange={(e) => {
+							let temp = structuredClone(formData);
+							temp.description = e.target.value;
+							setFormData(temp);
+						}}
 						required
 					/>
 				</div>
@@ -139,7 +175,11 @@ const EditAssetPage = () => {
 						id="seller"
 						name="seller"
 						value={formData.seller}
-						onChange={handleInputChange}
+						onChange={(e) => {
+							let temp = structuredClone(formData);
+							temp.seller = e.target.value;
+							setFormData(temp);
+						}}
 						required
 					/>
 				</div>
@@ -150,7 +190,11 @@ const EditAssetPage = () => {
 						id="price"
 						name="price"
 						value={formData.price}
-						onChange={handleInputChange}
+						onChange={(e) => {
+							let temp = structuredClone(formData);
+							temp.price = parseFloat(e.target.value);
+							setFormData(temp);
+						}}
 						required
 					/>
 				</div>
@@ -161,7 +205,11 @@ const EditAssetPage = () => {
 						id="discount"
 						name="discount"
 						value={formData.discount}
-						onChange={handleInputChange}
+						onChange={(e) => {
+							let temp = structuredClone(formData);
+							temp.discount = parseFloat(e.target.value);
+							setFormData(temp);
+						}}
 					/>
 				</div>
 				<div className="EditAssetPage-formgroup">
@@ -171,7 +219,11 @@ const EditAssetPage = () => {
 						id="amount"
 						name="amount"
 						value={formData.amount}
-						onChange={handleInputChange}
+						onChange={(e) => {
+							let temp = structuredClone(formData);
+							temp.amount = parseInt(e.target.value);
+							setFormData(temp);
+						}}
 					/>
 				</div>
 				<div className="EditAssetPage-formgroup">
@@ -203,7 +255,9 @@ const EditAssetPage = () => {
 						<input
 							type="checkbox"
 							checked={active}
-							onChange={(e) => {setActive(!active);}}
+							onChange={(e) => {
+								setActive(!active);
+							}}
 						/>
 						<span className="active-ck-box-custom isadmin-checkbox-custom"></span>
 						Active:
@@ -227,7 +281,13 @@ const EditAssetPage = () => {
 						id="assetType"
 						name="assetType"
 						value={formData.assetType}
-						onChange={handleInputChange}
+						onChange={(e) => {
+							let temp = structuredClone(formData);
+							temp.assetType = e.target.value
+								.split(',')
+								.map((i) => i.trim());
+							setFormData(temp);
+						}}
 						required
 					/>
 				</div>
@@ -239,7 +299,13 @@ const EditAssetPage = () => {
 						id="tags"
 						name="tags"
 						value={formData.tags}
-						onChange={handleInputChange}
+						onChange={(e) => {
+							let temp = structuredClone(formData);
+							temp.tags = e.target.value
+								.split(',')
+								.map((i) => i.trim());
+							setFormData(temp);
+						}}
 						required
 					/>
 				</div>
