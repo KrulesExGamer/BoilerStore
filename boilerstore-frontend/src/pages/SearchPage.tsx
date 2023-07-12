@@ -3,7 +3,7 @@ import { fetchApi, fetchAsset, fetchAssetImages } from '../utils/apiCalls';
 import ItemWindow, { Slide } from '../components/ItemWindow';
 import { useParam } from '../utils/customHooks';
 import { Asset, CoolImage } from '../utils/types';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './SearchPage.css';
 
 function imgToSlides(imgs: CoolImage[]): Slide[] {
@@ -21,6 +21,7 @@ const AssetGridPage = () => {
 	const [assets, setAssets] = useState<Asset[]>([]);
 	const searchQuery = useParam('search_query');
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const s = (searchQuery ?? '').trim().toLowerCase();
@@ -65,22 +66,24 @@ const AssetGridPage = () => {
 			<h1>Search Results:</h1>
 			<div className="asset-grid">
 				{assets.map((asset) => (
-					<ItemWindow
-						key={asset.slug}
-						windowData={{
-							title: asset.title,
-							description: asset.description,
-							slides: imgToSlides(asset.images),
-							key: asset.slug,
-							price: asset.price,
-							icon: null,
-							discount: asset?.discount ?? 0,
-						}}
-						colors={['#ddd', '#999']}
-						displayType={false}
-						displayPrice={true}
-						addToCart={() => null}
-					/>
+					<Link to={`/asset?asset=${asset.slug}`}>
+						<ItemWindow
+							key={asset.slug}
+							windowData={{
+								title: asset.title,
+								description: asset.description,
+								slides: imgToSlides(asset.images),
+								key: asset.slug,
+								price: asset.price,
+								icon: null,
+								discount: asset?.discount ?? 0,
+							}}
+							colors={['#ddd', '#999']}
+							displayType={false}
+							displayPrice={true}
+							addToCart={() => {return null;}}
+						/>
+					</Link>
 				))}
 			</div>
 		</div>

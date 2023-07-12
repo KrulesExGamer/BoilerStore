@@ -17,6 +17,22 @@ import {
 	UserState,
 } from './types';
 
+async function checkImageValidity(imageUrl : string) {
+	return new Promise((resolve, reject) => {
+		const img = new Image();
+
+		img.onload = function () {
+			resolve(imageUrl); // Image is valid and active
+		};
+
+		img.onerror = function () {
+			reject(null); // Image is invalid or not active
+		};
+
+		img.src = imageUrl;
+	});
+}
+
 // Example of query: 'api/asset/cool-model
 export async function fetchApi(
 	query: string,
@@ -102,7 +118,9 @@ export async function fetchAssetImages(asset: Asset): Promise<CoolImage[]> {
 	return results;
 }
 
-export async function fetchAssetExpensive(assetKey: string): Promise<Result<Asset>> {
+export async function fetchAssetExpensive(
+	assetKey: string,
+): Promise<Result<Asset>> {
 	const res = await fetchAsset(assetKey);
 	const content = res.content as Asset;
 	content.images = await fetchAssetImages(content);
@@ -132,44 +150,41 @@ export async function fetchGameGenre(gameGenreKey: string) {
 	}
 }
 
-export async function fetchCartAsset(assetKey : string) {
+export async function fetchCartAsset(assetKey: string) {
 	if ('' === assetKey) throw Error('Asset must have an id');
 	const fetchedData = await fetchApi(`api/assets/${assetKey}`);
 	console.log('got to fetchAsset');
 
-	if (!fetchedData.ok || fetchedData.content === undefined)
-		return undefined;
+	if (!fetchedData.ok || fetchedData.content === undefined) return undefined;
 
 	const assetItem = fetchedData.content;
-
 
 	return assetItem as any as Asset;
 }
 
-export async function updateApi (url : string, content : any) {
+export async function updateApi(url: string, content: any) {
 	await axios.put(`${BACKEND_URL}/${url}`, content);
 }
 
-export async function saveToCart(assetKeys : string[], username : string) {
+export async function saveToCart(assetKeys: string[], username: string) {
 	if (assetKeys.length === 0) throw Error('Empty list');
 	if (username === '') throw Error('User name is necessary');
 
-	const json = {cart: assetKeys}
+	const json = { cart: assetKeys };
 	await axios.put(`${BACKEND_URL}/api/users/cart/${username}`, json);
 
-	console.log(`${BACKEND_URL}/api/users/cart/${username}`)
+	console.log(`${BACKEND_URL}/api/users/cart/${username}`);
 
 	console.log('Cart list updated');
 }
 
-export async function clearCart(username : string) {
+export async function clearCart(username: string) {
 	if (username === '') throw Error('User name is necessary');
 
 	await axios.delete(`${BACKEND_URL}/users/cart/${username}`);
 
 	console.log('Cart list cleared');
 }
-
 
 export async function validateLogin(username: string, password: string) {
 	const none: UserState = { isLoggedIn: false };
@@ -198,43 +213,35 @@ export async function validateLogin(username: string, password: string) {
 	try {
 		username = username.trim().toLowerCase();
 		const res = await fetchApi(`api/users/${username}`);
-		console.log("TESTE: ", res)
+		console.log('TESTE: ', res);
 
 		if (res.ok) {
-			if (res.content === undefined)
-				return undefined;
+			if (res.content === undefined) return undefined;
 
 			const content = res.content as any as UserAccount;
 
-			if (content.password !== password)
-				return none;
+			if (content.password !== password) return none;
 
 			let adm = false;
-			if (content.role === 'admin')
-				adm = true;
+			if (content.role === 'admin') adm = true;
 
-			const login : UserState = {
-				isLoggedIn: true, 
-				username: content.username, 
+			const login: UserState = {
+				isLoggedIn: true,
+				username: content.username,
 				email: content.email,
 				firstName: content.firstName,
 				lastName: content.lastName,
-				isAdmin: adm
+				isAdmin: adm,
 			};
-			
+
 			return login;
-		}
-
-		else 
-			return none;
-
-	} catch (err : any) {
+		} else return none;
+	} catch (err: any) {
 		return undefined;
 	}
-	
 }
 
-export async function validateSignup(conta : UserAccount) {
+export async function validateSignup(conta: UserAccount) {
 	try {
 		const json = {
 			username: conta.username,
@@ -242,75 +249,61 @@ export async function validateSignup(conta : UserAccount) {
 			email: conta.email,
 			role: conta.role,
 			firstName: conta.firstName,
-			lastName: conta.lastName
-		}
+			lastName: conta.lastName,
+		};
 
 		const res = await axios.post(`${BACKEND_URL}/api/users`, json);
 
 		console.log(res);
 
-		const login : UserState = {
-			isLoggedIn: true, 
-			username: conta.username, 
+		const login: UserState = {
+			isLoggedIn: true,
+			username: conta.username,
 			email: conta.email,
 			firstName: conta.firstName,
 			lastName: conta.lastName,
-			isAdmin: false
-		}
+			isAdmin: false,
+		};
 
 		return login;
-	}
-
-	catch (err : any) {
+	} catch (err: any) {
 		return undefined;
 	}
 }
 
 // Return true if account exists
-export async function validateAccount({
-	name = '',
-	email = '',
-}) {
+export async function validateAccount({ name = '', email = '' }) {
 	if (USING_MOCKUP) {
-			for (const account of userAccounts) {
-				if (
-					account.username.toLowerCase() === name.toLowerCase() ||
-					account.email.toLowerCase() === email.toLowerCase()
-				) {
-					return false;
-				}
+		for (const account of userAccounts) {
+			if (
+				account.username.toLowerCase() === name.toLowerCase() ||
+				account.email.toLowerCase() === email.toLowerCase()
+			) {
+				return false;
 			}
-			return true;
-	}
-
-	else {
+		}
+		return true;
+	} else {
 		try {
 			name = name.trim().toLowerCase();
 			const res = await fetchApi(`api/users/${name}`);
-	
-			console.log("So far good!")
-			console.log(res)
+
+			console.log('So far good!');
+			console.log(res);
 
 			if (res.ok) {
-				if (res.content === undefined)
-					return undefined;
-	
-				console.log("Very cool indeed!")
-	
+				if (res.content === undefined) return undefined;
+
+				console.log('Very cool indeed!');
+
 				return true;
-			}
-	
-			else 
-				return false;
-	
-		} catch (err : any) {
+			} else return false;
+		} catch (err: any) {
 			return undefined;
 		}
 	}
 }
 
-
-
-export async function delApi ( url : string ) {
-	await fetch(`${BACKEND_URL}/${url}`, {method: 'DELETE'});
+export async function delApi(url: string) {
+	await fetch(`${BACKEND_URL}/${url}`, { method: 'DELETE' });
 }
