@@ -28,6 +28,7 @@ const EditAssetPage = () => {
 	});
 
 	const [imageUrl, setImageUrl] = useState('');
+	const [dynImageUrl, setDynImageUrl] = useState('');
 	const [active, setActive] = useState(true);
 
 	useEffect(() => {
@@ -61,6 +62,7 @@ const EditAssetPage = () => {
 		formData.images = [
 			{
 				static: { img: imageUrl, alt: '' },
+
 			},
 		];
 
@@ -181,6 +183,18 @@ const EditAssetPage = () => {
 						value={imageUrl}
 						onChange={(e) => {
 							setImageUrl(e.target.value);
+						}}
+					/>
+				</div>
+				<div className="EditAssetPage-formgroup">
+					<label htmlFor="dynUrl">Dynamic Image Url:</label>
+					<input
+						type="text"
+						id="dynUrl"
+						name="dynUrl"
+						value={dynImageUrl}
+						onChange={(e) => {
+							setDynImageUrl(e.target.value);
 						}}
 					/>
 				</div>
