@@ -62,7 +62,7 @@ const AssetGridPage = () => {
 
 	return (
 		<div className="AssetGridPage">
-			<h1>Asset Grid Page</h1>
+			<h1>Search Results:</h1>
 			<div className="asset-grid">
 				{assets.map((asset) => (
 					<ItemWindow
